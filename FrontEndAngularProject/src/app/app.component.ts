@@ -7,6 +7,9 @@ import * as $ from 'jquery';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  constructor() {
+    console.log('It works here');
+   }
   
   ngOnInit(){
 //  start-smoth-scrolling 
@@ -33,6 +36,21 @@ $(document).ready(function(){
         }
     );
 });
+
+//script-for sticky-nav 
+	$(document).ready(function() {
+		 var navoffeset=$(".agileits_header").offset().top;
+		 $(window).scroll(function(){
+			var scrollpos=$(window).scrollTop(); 
+			if(scrollpos >=navoffeset){
+				$(".agileits_header").addClass("fixed");
+			}else{
+				$(".agileits_header").removeClass("fixed");
+			}
+		 });
+		 
+	});
+//script-for sticky-nav 
 
 
   }

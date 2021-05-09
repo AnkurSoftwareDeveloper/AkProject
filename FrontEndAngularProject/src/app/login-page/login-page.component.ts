@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-login-page',
@@ -9,7 +10,18 @@ export class LoginPageComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(){
+    $('.toggle').click(function(){
+      // Switches the Icon
+      $(this).children('i').toggleClass('fa-pencil');
+      // Switches the forms  
+      $('.form').animate({
+      height: "toggle",
+      'padding-top': 'toggle',
+      'padding-bottom': 'toggle',
+      opacity: "toggle"
+      }, "slow");
+    });
   }
 
 }
