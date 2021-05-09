@@ -262,7 +262,7 @@ ul.dropdown-menu.drp-mnu li a i {
     float: none !important;
 }
 .nav > li > a:hover, .nav > li > a:focus {
-    background-color: #84C639;
+    background-color: #84C639 !important;
     color: #fff;
 }
 .navbar-nav {
