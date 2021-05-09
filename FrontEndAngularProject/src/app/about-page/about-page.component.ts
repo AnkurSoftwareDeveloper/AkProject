@@ -10,6 +10,7 @@ export class AboutPageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }
