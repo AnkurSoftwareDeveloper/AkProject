@@ -8,6 +8,11 @@ import { FormsModule } from '@angular/forms';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AboutPageComponent } from './about-page/about-page.component';
+import { ProductsPageComponent } from './products-page/products-page.component';
+import { ProductDescriptionComponent } from './product-description/product-description.component';
+import { AllBestProductsComponent } from './all-best-products/all-best-products.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +20,12 @@ import { AboutPageComponent } from './about-page/about-page.component';
     LoginPageComponent,
     RegistrationPageComponent,
     HomePageComponent,
-    AboutPageComponent
+    AboutPageComponent,
+    ProductsPageComponent,
+    ProductDescriptionComponent,
+    AllBestProductsComponent,
+    ContactUsComponent,
+    PrivacyPolicyComponent
   ],
   imports: [
     BrowserModule,
