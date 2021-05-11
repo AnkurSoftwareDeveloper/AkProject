@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import * as $ from 'jquery';
+import { MyServiceService } from './services/my-service.service';
 
 @Component({
   selector: 'app-root',
@@ -7,12 +7,13 @@ import * as $ from 'jquery';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor() {
+  todaydate;
+  constructor(private myservice: MyServiceService) {
     console.log('It works here');
    }
   
   ngOnInit(){
-
+    this.todaydate = this.myservice.showTodayDate();
   }
 
 }
