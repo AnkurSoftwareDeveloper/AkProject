@@ -23,3 +23,26 @@ def ContactForm_list(request):
             serializer.save() 
             return JsonResponse(serializer.data, status=status.HTTP_201_CREATED) 
         return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@csrf_exempt 
+def ContactForm_detail(request, pk):
+    try: 
+        ContactForms = ContactForm.objects.get(pk=pk) 
+    except ContactForm.DoesNotExist: 
+        return HttpResponse(status=status.HTTP_404_NOT_FOUND) 
+ 
+    if request.method == 'GET': 
+        serializer = ContactFormSerializer(ContactForms) 
+        return JsonResponse(serializer.data) 
+ 
+    elif request.method == 'PUT': 
+        ContactForm_data = JSONParser().parse(request) 
+        serializer = ContactFormSerializer(ContactForms, data=ContactForm_data) 
+        if serializer.is_valid(): 
+           serializer.save() 
+           return JsonResponse(serializer.data) 
+        return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
+ 
+    elif request.method == 'DELETE': 
+        ContactForms.delete() 
+        return HttpResponse(status=status.HTTP_204_NO_CONTENT)

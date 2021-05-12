@@ -11,7 +11,7 @@ import {environment} from '../../environments/environment'
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor(private http: HttpClient,) { }
+  constructor(private http: HttpClient) { }
   profileForm = new FormGroup({
     Username: new FormControl(''),
     Password: new FormControl(''),
