@@ -14,7 +14,7 @@ export class AppComponent {
 
   postData = 
   {
-      "fullname": "anku",
+      "fullname": "anku5",
       "email": "ak@gmail.com",
       "contact":"6476744",
       "message":"price"
@@ -22,8 +22,11 @@ export class AppComponent {
 
   constructor(private myservice: MyServiceService,private http: HttpClient,) {
     console.log('It works here');
-    this.getPostById();
-    this.addPost(this.postData);
+    this.getPosts();
+    // this.getPostById();
+    // this.addPost(this.postData);
+     this.updatePost(this.postData);
+     //this.deletePost();
    }
   
    ngOnInit(): void {
@@ -48,6 +51,13 @@ export class AppComponent {
    
 }
 
+public getPosts(){
+  let endPoints="api/ContactForms/"
+    this.http.get(environment.baseURL+endPoints).subscribe(data => {
+    console.log("allpost",data);
+  });
+}
+
 public getPostById() {
   let id: number = 1;
   let endPoints = "api/ContactFormsDetails/" + id;
@@ -65,5 +75,18 @@ public addPost(postData: Object) {
   });
 }
 
+public updatePost(postData: Object) {
+  let endPoints = "api/ContactFormsDetails/4/"
+  this.http.put(environment.baseURL + endPoints, postData).subscribe(data => {
+    console.log("updatedata",data);
+  });
+}
+
+public deletePost() {
+  let endPoints = "api/ContactFormsDetails/5/"
+  this.http.delete(environment.baseURL + endPoints).subscribe(data => {
+    console.log("deletePost",data);
+  });
+}
 
 }
