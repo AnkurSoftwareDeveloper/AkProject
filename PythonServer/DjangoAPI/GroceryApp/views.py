@@ -7,6 +7,17 @@ from rest_framework import status
 
 from .models import ContactForm
 from .serializers import ContactFormSerializer
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import permission_classes
+from rest_framework.decorators import api_view
+
+@api_view(['GET','POST'])
+@permission_classes((IsAuthenticated, ))
+def example_view(request, format=None):
+    content = {
+        'status': 'request was permitted'
+    }
+    return Response(content)
 
 @csrf_exempt
 def ContactForm_list(request):

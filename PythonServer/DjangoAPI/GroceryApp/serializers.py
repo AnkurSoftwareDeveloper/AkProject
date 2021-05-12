@@ -9,3 +9,5 @@ class ContactFormSerializer(serializers.ModelSerializer):
                   'email',
                   'contact',
                   'message')
+         
+        # fields ='_all_'
