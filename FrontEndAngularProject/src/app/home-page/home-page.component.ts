@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
+import { MyServiceService } from '../services/my-service.service';
 
 @Component({
   selector: 'app-home-page',
@@ -7,11 +8,17 @@ import * as $ from 'jquery';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
+  category: any[];
 
-  constructor() { }
+  constructor(private myservice: MyServiceService) { }
 
   ngOnInit(): void { 
-   
+
+    this.myservice.getCategory().subscribe((data: any[])=>{
+      this.category = data;
+      console.log("allcategory", this.category);
+    })  
+    
   }
 
 }

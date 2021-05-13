@@ -17,7 +17,7 @@ export class AppComponent {
     "category_name": "Fruits & Vegetables"
   };
 
-  constructor(private myservice: MyServiceService,private http: HttpClient,) {
+  constructor(private myservice: MyServiceService,private http: HttpClient) {
     console.log('It works here');
     this.getPosts();
      this.getPostById();
@@ -28,24 +28,12 @@ export class AppComponent {
   
    ngOnInit(): void {
 
-   this.myservice.sendGetRequest().subscribe((data: any[])=>{
-    console.log(data);
-    this.category = data;
-    
-    const arr = [];
-
-    // extract upin, mtype, land from the original array
-    for (let item of data) {
-      arr.push({
-        fullname: item.fullname,
-        email: item.email,
-        contact: item.contact,
-        message: item.message
-      });
-    }
-    console.log(arr[1].fullname);
-  })  
-   
+  this.myservice.getCategory().subscribe((data: any[])=>{
+       console.log(data);
+       this.category = data;
+        
+       console.log("allpost", this.category);
+     })  
 }
 
 public getPosts(){
