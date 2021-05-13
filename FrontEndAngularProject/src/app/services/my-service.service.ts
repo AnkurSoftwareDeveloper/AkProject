@@ -35,4 +35,11 @@ export class MyServiceService {
     return this.httpClient.delete(environment.baseURL + endPoints);
   }
 
+  /////////////////////////////////////////
+
+  public getSubCategory(){
+    let endPoints="api/subcategory/"
+    return this.httpClient.get(environment.baseURL+endPoints);
+  }
+
 }

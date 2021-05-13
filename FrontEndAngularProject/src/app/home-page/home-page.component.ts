@@ -9,6 +9,7 @@ import { MyServiceService } from '../services/my-service.service';
 })
 export class HomePageComponent implements OnInit {
   category: any[];
+  subCategory: any[];
 
   constructor(private myservice: MyServiceService) { }
 
@@ -19,6 +20,10 @@ export class HomePageComponent implements OnInit {
       console.log("allcategory", this.category);
     })  
     
+    this.myservice.getSubCategory().subscribe((data: any[])=>{
+      this.subCategory = data;
+      console.log("allsubcategory", this.subCategory);
+    })  
   }
 
 }

@@ -15,7 +15,16 @@
            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                 <ul class="nav navbar-nav nav_1">
-                    <li *ngFor="let hero of category"><a href="/allBestProducts">{{hero.category_name}}</a> </li>
+                    <li class="dropdown mega-dropdown active" *ngFor="let categ of category">
+                        <a href="/allBestProducts" class="dropdown-toggle" data-toggle="dropdown">
+                            {{categ.category_name}}<span class="caret"></span></a> 
+                            <ul class="dropdown-menu">
+                                <li *ngFor="let subcat of subCategory">
+                                    <a class="dropdown-item" href="#" *ngIf="subcat.category === categ.category_id">
+                                        {{subcat.subCategory_name}}</a>
+                                </li>
+                            </ul>		
+                    </li>
                 </ul>
              </div><!-- /.navbar-collapse -->
         </nav>
