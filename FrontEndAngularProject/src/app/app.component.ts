@@ -9,21 +9,18 @@ import { MyServiceService } from './services/my-service.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  products: any;
-  productsData: any;
+  category: any;
+  categoryData: any;
 
   postData = 
   {
-      "fullname": "anku5",
-      "email": "ak@gmail.com",
-      "contact":"6476744",
-      "message":"price"
+    "category_name": "Fruits & Vegetables"
   };
 
   constructor(private myservice: MyServiceService,private http: HttpClient,) {
     console.log('It works here');
     this.getPosts();
-    // this.getPostById();
+     this.getPostById();
     // this.addPost(this.postData);
      this.updatePost(this.postData);
      //this.deletePost();
@@ -33,7 +30,7 @@ export class AppComponent {
 
    this.myservice.sendGetRequest().subscribe((data: any[])=>{
     console.log(data);
-    this.products = data;
+    this.category = data;
     
     const arr = [];
 
@@ -52,39 +49,44 @@ export class AppComponent {
 }
 
 public getPosts(){
-  let endPoints="api/ContactForms/"
+  let endPoints="api/category/"
     this.http.get(environment.baseURL+endPoints).subscribe(data => {
+      this.category = data;
     console.log("allpost",data);
   });
 }
 
 public getPostById() {
-  let id: number = 1;
-  let endPoints = "api/ContactFormsDetails/" + id;
+  let id: number = 2;
+  let endPoints = "api/categoryDetails/" + id;
   this.http.get(environment.baseURL + endPoints).subscribe(data => {
     console.log(data);
-    this.productsData= data;
-    console.log("byId", this.productsData);
+    this.category = data;
+    this.categoryData=this.category.category_name;
+    console.log("byId", this.category.category_name);
   });
 }
 
 public addPost(postData: Object) {
-  let endPoints = "api/ContactForms/"
+  let endPoints = "api/category/"
   this.http.post(environment.baseURL + endPoints, postData).subscribe(data => {
+    this.category = data;
     console.log("postdata",data);
   });
 }
 
 public updatePost(postData: Object) {
-  let endPoints = "api/ContactFormsDetails/4/"
+  let endPoints = "api/categoryDetails/1/"
   this.http.put(environment.baseURL + endPoints, postData).subscribe(data => {
+    this.category = data;
     console.log("updatedata",data);
   });
 }
 
 public deletePost() {
-  let endPoints = "api/ContactFormsDetails/5/"
+  let endPoints = "api/categoryDetails/5/"
   this.http.delete(environment.baseURL + endPoints).subscribe(data => {
+    this.category = data;
     console.log("deletePost",data);
   });
 }

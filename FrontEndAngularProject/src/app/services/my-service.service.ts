@@ -9,7 +9,7 @@ export class MyServiceService {
 
   constructor(private httpClient: HttpClient) { }
   public sendGetRequest(){
-    return this.httpClient.get(environment.baseURL + 'api/ContactForms/');
+    return this.httpClient.get(environment.baseURL + 'api/category/');
   }
 
 }

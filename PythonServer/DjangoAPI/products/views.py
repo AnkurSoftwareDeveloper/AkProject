@@ -1,49 +1,54 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+from django.http.response import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.parsers import JSONParser 
+from rest_framework import status
 
 from .serializers import *
 from .models import *
-# Create your views here.
 
 from rest_framework.views import APIView
 from rest_framework.response import Response 
 from rest_framework.permissions import IsAuthenticated
 
-class DemoView(APIView):
-    #permission_classes = [IsAuthenticated]
-    def get(self ,request):
-        print(request.user)
-        return Response({'sucess' : "Hurray you are authenticated"})
-    
 
-class ProductView(APIView):
-    
-    def get(self,request):
-        category = self.request.query_params.get('category')
-        if category:
-            queryset = Product.objects.filter(category__category_name =  category)
-        else:
-            queryset = Product.objects.all()
-        serializer = ProductSerializer(queryset , many = True)
-        return Response({'count' : len(serializer.data) ,'data' :serializer.data})
+@csrf_exempt
+def Category_list(request):
+    if request.method == 'GET':
+        Categorys = Category.objects.all()
+        serializer = CategorySerializer(Categorys, many=True)
+        return JsonResponse(serializer.data, safe=False)
+        # In order to serialize objects, we must set 'safe=False'
 
+    elif request.method == 'POST':
+        Categorys_data = JSONParser().parse(request)
+        serializer = CategorySerializer(data=Categorys_data)
+        if serializer.is_valid():
+            serializer.save() 
+            return JsonResponse(serializer.data, status=status.HTTP_201_CREATED) 
+        return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-# from django.core import serializers
-# from django.http import HttpResponse
-# import json
+@csrf_exempt 
+def Category_detail(request, pk):
+    try: 
+        Categorys = Category.objects.get(pk=pk) 
+    except Category.DoesNotExist: 
+        return HttpResponse(status=status.HTTP_404_NOT_FOUND) 
+ 
+    if request.method == 'GET': 
+        serializer = CategorySerializer(Categorys) 
+        return JsonResponse(serializer.data) 
+ 
+    elif request.method == 'PUT': 
+        Category_data = JSONParser().parse(request) 
+        serializer = CategorySerializer(Categorys, data=Category_data) 
+        if serializer.is_valid(): 
+           serializer.save() 
+           return JsonResponse(serializer.data) 
+        return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
+ 
+    elif request.method == 'DELETE': 
+        Categorys.delete() 
+        return HttpResponse(status=status.HTTP_204_NO_CONTENT)
 
-# def test(request):
-#     category = request.GET.get('category')
-#     if category:
-#         queryset = Product.objects.filter(category__category_name =  category) # id = 1, pk= 1
-#     else:
-#         queryset = Product.objects.all()
-#     serializer = serializers.serialize('json', queryset) # aaawaz nhi aa rha?
-#     print(serializer)
-#     #return JsonResponse({'count' : len(serializer) ,'data' :serializer}, safe=True)
-#     return HttpResponse(serializer, content_type='application/json')
-
-#     product_name = reqest.POST.get('product_name') # json.loads(request.body)
-#     data_to_store = Product(name=product_name, weight=1)
-#     existing_db  =  querySet[0] #[obj1, obj2, obj3] = onj1
-#     existing_obj.price = 3000
-#     data_to_store.save()
