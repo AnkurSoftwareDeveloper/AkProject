@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'loginPage', component: LoginPageComponent },
   { path: 'aboutPage', component: AboutPageComponent },
-  { path: 'productsPage', component: ProductsPageComponent },
+  { path: 'productsPage/:cat/:subcat', component: ProductsPageComponent },
   { path: 'allBestProducts', component: AllBestProductsComponent },
   { path: 'productDescription', component: ProductDescriptionComponent },
   { path: 'contactUs', component: ContactUsComponent },

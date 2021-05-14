@@ -7,4 +7,6 @@ urlpatterns = [
     path('categoryDetails/<int:pk>/', Category_detail),
     path('subcategory/', SubCategory_list),
     path('subcategoryDetails/<int:pk>/', SubCategory_detail),
+    path('product/', Product_list),
+    path('productDetails/<int:pk>/', Product_detail),
 ]

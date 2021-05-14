@@ -24,6 +24,8 @@ export class HomePageComponent implements OnInit {
       this.subCategory = data;
       console.log("allsubcategory", this.subCategory);
     })  
+
+    
   }
 
 }

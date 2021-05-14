@@ -12,7 +12,7 @@ class Category(models.Model):
 
 class SubCategory(models.Model):
     subCategory_id = models.AutoField(primary_key=True)
-    category = models.ForeignKey(Category , on_delete=models.PROTECT)
+    category_id = models.ForeignKey(Category , on_delete=models.PROTECT)
     subCategory_name = models.CharField(max_length=50)
     
     def __str__(self):
@@ -46,13 +46,14 @@ class Product(models.Model):
     product_name = models.CharField(max_length=50)
     description = models.TextField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='static/products')
+    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='./assets/images')
     price = models.FloatField(default=0)
     discount = models.FloatField(default=0)
     stock = models.IntegerField(default=100)
     quantity_type = models.ForeignKey(QuantityVariant , blank=True, null=True , on_delete=models.PROTECT)
     color_type = models.ForeignKey(ColorVariant , blank=True, null=True , on_delete=models.PROTECT)
-    # size_type = models.ForeignKey(SizeVariant , blank=True, null=True , on_delete=models.PROTECT)
+    size_type = models.ForeignKey(SizeVariant , blank=True, null=True , on_delete=models.PROTECT)
     
     class Meta:
         pass
@@ -62,7 +63,7 @@ class Product(models.Model):
     
 class ProductImages(models.Model):
     product = models.ForeignKey(Product , on_delete=models.PROTECT)
-    image = models.ImageField(upload_to='static/products')        
+    image = models.ImageField(upload_to='./assets/images')        
 
     def __str__(self):
         return self.image

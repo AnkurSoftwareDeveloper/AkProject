@@ -14,8 +14,7 @@ export class MyServiceService {
     return this.httpClient.get(environment.baseURL+endPoints);
   }
   
-  public getCategoryById() {
-    let id: number = 2;
+  public getCategoryById(id:any) {
     let endPoints = "api/categoryDetails/" + id;
     return this.httpClient.get(environment.baseURL + endPoints);
   }
@@ -39,6 +38,17 @@ export class MyServiceService {
 
   public getSubCategory(){
     let endPoints="api/subcategory/"
+    return this.httpClient.get(environment.baseURL+endPoints);
+  }
+
+  public getSubCategoryById(id:any) {
+    let endPoints = "api/subcategoryDetails/" + id;
+    return this.httpClient.get(environment.baseURL + endPoints);
+  }
+  /////////////////////////////////////////
+
+  public getProducts(){
+    let endPoints="api/product/"
     return this.httpClient.get(environment.baseURL+endPoints);
   }
 

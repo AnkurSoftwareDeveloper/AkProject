@@ -16,11 +16,12 @@
             <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                 <ul class="nav navbar-nav nav_1">
                     <li class="dropdown mega-dropdown active" *ngFor="let categ of category">
-                        <a href="/allBestProducts" class="dropdown-toggle" data-toggle="dropdown">
+                        <a [routerLink]="['/productsPage', categ.category_id, null]" class="dropdown-toggle" data-toggle="dropdown">
                             {{categ.category_name}}<span class="caret"></span></a> 
                             <ul class="dropdown-menu">
                                 <li *ngFor="let subcat of subCategory">
-                                    <a class="dropdown-item" href="#" *ngIf="subcat.category === categ.category_id">
+                                    <a class="dropdown-item" [routerLink]="['/productsPage', subcat.category_id,subcat.subCategory_id]" 
+                                    *ngIf="subcat.category_id === categ.category_id">
                                         {{subcat.subCategory_name}}</a>
                                 </li>
                             </ul>		
