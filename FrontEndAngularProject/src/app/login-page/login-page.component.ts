@@ -12,17 +12,18 @@ import {environment} from '../../environments/environment'
 export class LoginPageComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
-  profileForm = new FormGroup({
-    Username: new FormControl(''),
-    Password: new FormControl(''),
-    Email: new FormControl(''),
-    Phone: new FormControl(''),
+
+    profileForm = new FormGroup({
+    username: new FormControl(''),
+    password: new FormControl(''),
+    email: new FormControl(''),
+    phone: new FormControl(''),
   });
 
   onSubmit() {
     // TODO: Use EventEmitter with form value
     console.log(this.profileForm.value);
-    this.http.post(environment.baseURL + 'api/users', this.profileForm).subscribe(
+    this.http.post(environment.baseURL + 'api/register', this.profileForm).subscribe(
       (response) => console.log(response),
       (error) => console.log(error));
   }

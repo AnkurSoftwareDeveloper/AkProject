@@ -52,4 +52,9 @@ export class MyServiceService {
     return this.httpClient.get(environment.baseURL+endPoints);
   }
 
+  public getProductsById(id:any) {
+    let endPoints = "api/productDetails/" + id;
+    return this.httpClient.get(environment.baseURL + endPoints);
+  }
+
 }

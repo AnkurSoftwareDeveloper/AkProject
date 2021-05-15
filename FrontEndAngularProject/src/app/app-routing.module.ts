@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'aboutPage', component: AboutPageComponent },
   { path: 'productsPage/:cat/:subcat', component: ProductsPageComponent },
   { path: 'allBestProducts', component: AllBestProductsComponent },
-  { path: 'productDescription', component: ProductDescriptionComponent },
+  { path: 'productDescription/:prod', component: ProductDescriptionComponent },
   { path: 'contactUs', component: ContactUsComponent },
   { path: 'privacyPolicy', component: PrivacyPolicyComponent },
 
