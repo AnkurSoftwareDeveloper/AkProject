@@ -15,10 +15,10 @@
         </div>
         <div class="agileinfo_single">
             <h5>{{getProductsById.product_name}}</h5>
-            <div class="col-md-4 agileinfo_single_left">
-                <img id="example" src="{{getProductsById.image}}" alt=" " class="img-responsive" />
+            <div class="col-md-6 agileinfo_single_left">
+                <img id="example" src="{{getProductsById.image}}" style="height: 20em;" alt=" " class="img-responsive" />
             </div>
-            <div class="col-md-8 agileinfo_single_right">
+            <div class="col-md-6 agileinfo_single_right">
                 <div class="rating1">
                     <span class="starRating">
                         <input id="rating5" type="radio" name="rating" value="5">
@@ -41,21 +41,27 @@
                     <div class="snipcart-thumb agileinfo_single_right_snipcart">
                         <h4>₹{{getProductsById.discount}} <span>₹{{getProductsById.price}}</span></h4>
                     </div>
-                    <div class="snipcart-details agileinfo_single_right_details">
-                        <form action="#" method="post">
-                            <fieldset>
-                                <input type="hidden" name="cmd" value="_cart" />
-                                <input type="hidden" name="add" value="1" />
-                                <input type="hidden" name="business" value=" " />
-                                <input type="hidden" name="item_name" value="pulao basmati rice" />
-                                <input type="hidden" name="amount" value="21.00" />
-                                <input type="hidden" name="discount_amount" value="1.00" />
-                                <input type="hidden" name="currency_code" value="USD" />
-                                <input type="hidden" name="return" value=" " />
-                                <input type="hidden" name="cancel_return" value=" " />
-                                <input type="submit" name="submit" value="Add to cart" class="button" />
-                            </fieldset>
-                        </form>
+                    <div class="snipcart-details qunt">
+                        <div *ngIf="cart[getProductsById.product_id]"
+                            class="input-group bootstrap-touchspin">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default bootstrap-touchspin-down"
+                                    (click)="minusCart(getProductsById.product_id)"
+                                    type="button">-</button>
+                            </span>
+                            <input type="number" name="" value="{{cart[getProductsById.product_id]}}"
+                                [(ngModel)]="cart[getProductsById.product_id]" (ngModelChange)="updateCart(cart)"
+                                class="input-qty form-control text-center"
+                                style="display: block;">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default bootstrap-touchspin-up"
+                                    (click)="plusCart(getProductsById.product_id)"
+                                    type="button">+</button>
+                            </span>
+                        </div>
+                        <input *ngIf="!cart[getProductsById.product_id]"
+                            (click)="addCart(getProductsById.product_id)" type="submit" name="submit"
+                            value="Add to cart" class="button" />
                     </div>
                 </div>
             </div>

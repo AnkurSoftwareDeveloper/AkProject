@@ -13,6 +13,7 @@ export class AppComponent {
 
   category: any[];
   subCategory: any[];
+  cartno: number;
 
   // postData = 
   // {
@@ -21,7 +22,16 @@ export class AppComponent {
 
   constructor(private myservice: MyServiceService,private http: HttpClient,private route : ActivatedRoute) {
 
-
+    setInterval(() => {
+      if(this.cartno==null && this.cartno==undefined){
+        this.cartno=0;
+      }
+      else{
+        this.cartno =Object.keys(JSON.parse(localStorage.getItem('cart'))).length;
+        console.log(this.cartno);
+      }
+     },500)
+    
    }
   
    ngOnInit(): void {

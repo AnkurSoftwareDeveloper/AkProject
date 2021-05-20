@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { AllBestProductsComponent } from './all-best-products/all-best-products.component';
 import { AppComponent } from './app.component';
+import { CartPageComponent } from './cart-page/cart-page.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'productDescription/:prod', component: ProductDescriptionComponent },
   { path: 'contactUs', component: ContactUsComponent },
   { path: 'privacyPolicy', component: PrivacyPolicyComponent },
+  { path: 'cart', component: CartPageComponent },
 
   // otherwise redirect to home
   { path: '**', redirectTo: '' }

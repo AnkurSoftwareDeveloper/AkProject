@@ -1,0 +1,79 @@
+
+  <div class="w3l_banner_nav_right">
+<div class="row bootstrap snippets">
+    <!-- Cart -->
+    <div class="col-md-12">
+        <div class="col-lg-12 col-sm-12">
+            <span class="title">SHOPPING CART</span>
+        </div>
+        <div class="col-lg-12 col-sm-12 hero-feature">
+            <div class="table-responsive">
+                <table class="table table-bordered tbl-cart">
+                    <thead>
+                        <tr>
+                            <td class="hidden-xs">Image</td>
+                            <td>Product Name</td>
+                            <td>Size</td>
+                            <td>Color</td>
+                            <td class="td-qty">Quantity</td>
+                            <td>Unit Price</td>
+                            <td>Sub Total</td>
+                            <td><a class="btn btn-sm btn-outline-danger" (click)="clearCart()">Clear Cart</a></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let pro of getProductsById">
+                            <td class="hidden-xs">
+                                <a [routerLink]="['/productDescription', pro.product_id]">
+                                    <img src="{{pro.image}}" alt="Age Of Wisdom Tan Graphic Tee" title="" width="47" height="47">
+                                </a>
+                            </td>
+                            <td><a [routerLink]="['/productDescription', pro.product_id]">{{pro.product_name}}</a>
+                            </td>
+                            <td>
+                                <select name="">
+                                    <option value="" selected="selected">S</option>
+                                    <option value="">M</option>
+                                </select>
+                            </td>
+                            <td>-</td>
+                            <td>
+                                <div class="input-group bootstrap-touchspin">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default bootstrap-touchspin-down" (click)="minusCart(pro.product_id)" type="button">-</button>
+                                    </span>
+                                    <span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span>
+                                    <input type="number" name="" [(ngModel)]="cart[pro.product_id]" (ngModelChange)="updateCart(cart)" value="{{cart[pro.product_id]}}" class="input-qty form-control text-center" style="display: block;">
+                                    <span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default bootstrap-touchspin-up" (click)="plusCart(pro.product_id)" type="button">+</button>
+                                    </span>
+                                </div>
+                            </td>
+                            <td class="price">₹{{pro.discount}}</td>
+                            <td>₹ {{calculate(pro.discount,cart[pro.product_id])}}</td>
+                            <td class="text-center">
+                                <a class="remove_cart" rel="2" (click)="removeCartItem(pro.product_id)">
+                                    <i class="fa fa-trash-o"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="6" align="right">Total</td>
+                            <td class="total" colspan="2"><b>₹ {{totalPrice}}</b>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="btn-group btns-cart">
+                <button type="button" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Continue Shopping</button>
+                <button type="button" class="btn btn-primary">Update Cart</button>
+                <button type="button" class="btn btn-primary">Checkout <i class="fa fa-arrow-circle-right"></i></button>
+            </div>
+
+        </div>
+    </div>
+    <!-- End Cart -->
+</div>
+</div>

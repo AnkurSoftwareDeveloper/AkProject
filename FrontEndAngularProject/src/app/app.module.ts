@@ -16,6 +16,7 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
 import { MyServiceService } from './services/my-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { CartPageComponent } from './cart-page/cart-page.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CommonModule } from '@angular/common';
     ProductDescriptionComponent,
     AllBestProductsComponent,
     ContactUsComponent,
-    PrivacyPolicyComponent
+    PrivacyPolicyComponent,
+    CartPageComponent
   ],
   imports: [
     BrowserModule,
