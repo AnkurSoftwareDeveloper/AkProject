@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MyServiceService } from '../services/my-service.service';
 
 @Component({
@@ -13,7 +13,8 @@ export class CartPageComponent implements OnInit {
   getProductsById:any = [];
   totalPrice:number= 0;
 
-  constructor(private myservice: MyServiceService,private http: HttpClient,private route : ActivatedRoute) {
+  constructor(private myservice: MyServiceService,private http: HttpClient,private route : ActivatedRoute,
+    private router: Router) {
     this.cart = JSON.parse(localStorage.getItem('cart'));
     
    }
@@ -45,6 +46,13 @@ export class CartPageComponent implements OnInit {
         this.totalPrice += this.getProductsById[i].discount * this.cart[this.getProductsById[i].product_id];
       }
   }
+  }
+
+  continueShopping(){
+    this.router.navigate([''])
+    .then(() => {
+      window.location.reload();
+    });
   }
 
   removeCartItem(cartId:any){

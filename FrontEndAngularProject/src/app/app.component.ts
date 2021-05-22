@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { MyServiceService } from './services/my-service.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-root',

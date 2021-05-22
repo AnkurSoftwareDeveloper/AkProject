@@ -17,6 +17,7 @@ import { MyServiceService } from './services/my-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { CartPageComponent } from './cart-page/cart-page.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { CartPageComponent } from './cart-page/cart-page.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   providers: [MyServiceService],
   bootstrap: [AppComponent]

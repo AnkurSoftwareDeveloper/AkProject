@@ -11,6 +11,9 @@ export class ProductDescriptionComponent implements OnInit {
   productId: any;
   getProductsById: any="";
   cart: {};
+  products: any[];
+  slides: any = [[]];
+  selectedIdx : number =0;
 
   constructor(private myservice: MyServiceService, private route : ActivatedRoute) {
 
@@ -36,7 +39,43 @@ export class ProductDescriptionComponent implements OnInit {
       this.getProductsById = data;
       console.log("getProductsById", this.getProductsById);
     })  
+
+    this.myservice.getProducts().subscribe((data: any[])=>{
+      this.products = data;
+      this.slides = this.chunk(this.products, 4);
+    })  
   }
+
+  selectItem(prenex:any){
+    console.log("prenex", this.selectedIdx);
+    if(prenex=="prev" && this.selectedIdx !== 0)
+    {
+      console.log("prev", this.selectedIdx);
+      this.selectedIdx = this.selectedIdx - 1;
+    }
+    if(prenex=="next" && this.selectedIdx !< this.slides.length-1)
+    {
+      console.log("next", this.selectedIdx);
+      this.selectedIdx = this.selectedIdx + 1;
+    }
+  }
+
+  chunk(arr: any, chunkSize: any) {
+    let R = [];
+    for (let i = 0, len = arr.length; i < len; i += chunkSize) {
+      R.push(arr.slice(i, i + chunkSize));
+    }
+    return R;
+  }
+
+  ConvertToJSON(prod: any) {
+    //  console.log("ConvertToJSON", prod);
+      var data = [];
+      data.push(prod);
+      //console.log(data);
+      return data;
+    }
+  
 
   addCart(cartId:any) {
     console.log('working',cartId);

@@ -18,7 +18,7 @@
                             <td class="td-qty">Quantity</td>
                             <td>Unit Price</td>
                             <td>Sub Total</td>
-                            <td><a class="btn btn-sm btn-outline-danger" (click)="clearCart()">Clear Cart</a></td>
+                            <td><a class="btn btn-sm btn-outline-danger" (click)="clearCart()">Empty Cart</a></td>
                         </tr>
                     </thead>
                     <tbody>
@@ -66,10 +66,13 @@
                     </tbody>
                 </table>
             </div>
-            <div class="btn-group btns-cart">
-                <button type="button" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Continue Shopping</button>
-                <button type="button" class="btn btn-primary">Update Cart</button>
-                <button type="button" class="btn btn-primary">Checkout <i class="fa fa-arrow-circle-right"></i></button>
+            <div class="btns-cart">
+                <button type="button" class="btn btn-primary" style="float: left;" (click)="continueShopping()">
+                    <i class="fa fa-arrow-circle-left"></i> Continue Shopping
+                </button>
+                <button type="button" class="btn btn-primary" style="float: right;">Checkout 
+                    <i class="fa fa-arrow-circle-right"></i>
+                </button>
             </div>
 
         </div>
