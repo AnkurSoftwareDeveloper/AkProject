@@ -55,6 +55,10 @@ export class CartPageComponent implements OnInit {
     });
   }
 
+  Checkout(){
+    this.router.navigate(['/checkOut']);
+  }
+
   removeCartItem(cartId:any){
     console.log(cartId);
     delete this.cart[cartId];

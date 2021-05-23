@@ -10,6 +10,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { ProductDescriptionComponent } from './product-description/product-description.component';
 import { ProductsPageComponent } from './products-page/products-page.component';
+import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'contactUs', component: ContactUsComponent },
   { path: 'privacyPolicy', component: PrivacyPolicyComponent },
   { path: 'cart', component: CartPageComponent },
+  { path: 'checkOut', component: CheckoutPageComponent },
 
   // otherwise redirect to home
   { path: '**', redirectTo: '' }

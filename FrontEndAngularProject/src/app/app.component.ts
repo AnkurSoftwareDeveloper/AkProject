@@ -11,6 +11,7 @@ import * as $ from 'jquery';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  title = 'frontend';
 
   category: any[];
   subCategory: any[];

@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { RouterModule } from '@angular/router';
+import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { RouterModule } from '@angular/router';
     AllBestProductsComponent,
     ContactUsComponent,
     PrivacyPolicyComponent,
-    CartPageComponent
+    CartPageComponent,
+    CheckoutPageComponent
   ],
   imports: [
     BrowserModule,
