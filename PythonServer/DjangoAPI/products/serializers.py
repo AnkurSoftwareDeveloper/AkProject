@@ -11,25 +11,15 @@ class SubCategorySerializer(serializers.ModelSerializer):
         model = SubCategory
         fields = '__all__'
 
-class QuantityVariantSerializer(serializers.ModelSerializer):
+class StockAlertSerializer(serializers.ModelSerializer):
     class Meta:
-        model = QuantityVariant
+        model = StockAlert
         fields = '__all__' 
-        
-class ColorVariantSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ColorVariant
-        fields = '__all__' 
-
-class SizeVariantSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = SizeVariant
-        fields = '__all__'    
-
 
 class ProductSerializer(serializers.ModelSerializer):
     category = CategorySerializer()
-    quantity_type = QuantityVariantSerializer()
+    subcategory = SubCategorySerializer()
+    stockalert = StockAlertSerializer()
     class Meta:
         model = Product
         fields = '__all__'

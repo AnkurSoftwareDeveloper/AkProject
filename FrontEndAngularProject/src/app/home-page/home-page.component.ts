@@ -31,6 +31,7 @@ export class HomePageComponent implements OnInit {
 
     this.myservice.getProducts().subscribe((data: any[])=>{
       this.products = data;
+      console.log("products", this.products);
       this.slides = this.chunk(this.products, 4);
     })  
 

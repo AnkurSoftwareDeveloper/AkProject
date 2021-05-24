@@ -23,47 +23,48 @@
 
                 <div *ngFor="let pro of products">
                     <div *ngFor="let cnew of ConvertToJSON(pro.category)">
-                        <div *ngIf="(cnew.category_id == categoryId && (subCategoryId==pro.subcategory || subCategoryId=='null'))"
-                            class="col-md-3 sm-4 clearfix w3ls_w3l_banner_left w3ls_w3l_banner_left_asdfdfd">
-                            <div class="hover14 column">
-                                <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-                                    <div class="tag"><img src="./assets/images/tag.png" alt=" " class="img-responsive">
-                                    </div>
-                                    <div class="agile_top_brand_left_grid1">
-                                        <figure>
-                                            <div class="snipcart-item block">
-                                                <div class="snipcart-thumb" style="text-align: center;">
-                                                    <a [routerLink]="['/productDescription', pro.product_id]"><img
-                                                            src="{{pro.image}}" alt=" " class="img-responsive" /></a>
-                                                    <p>{{pro.product_name}} <span
-                                                            *ngFor="let new of ConvertToJSON(pro.quantity_type)">{{new.variant_name}}</span>
-                                                    </p>
-                                                    <h4>₹{{pro.discount}} <span>₹{{pro.price}}</span></h4>
-                                                </div>
-                                                <div class="snipcart-details">
-                                                    <div *ngIf="cart[pro.product_id]"
-                                                        class="input-group bootstrap-touchspin">
-                                                        <span class="input-group-btn">
-                                                            <button class="btn btn-default bootstrap-touchspin-down"
-                                                                (click)="minusCart(pro.product_id)"
-                                                                type="button">-</button>
-                                                        </span>
-                                                        <input type="number" name="" value="{{cart[pro.product_id]}}"
-                                                            [(ngModel)]="cart[pro.product_id]" (ngModelChange)="updateCart(cart)"
-                                                            class="input-qty form-control text-center"
-                                                            style="display: block;">
-                                                        <span class="input-group-btn">
-                                                            <button class="btn btn-default bootstrap-touchspin-up"
-                                                                (click)="plusCart(pro.product_id)"
-                                                                type="button">+</button>
-                                                        </span>
+                        <div *ngFor="let scnew of ConvertToJSON(pro.subcategory)">
+                            <div *ngIf="(cnew.category_id == categoryId && (subCategoryId==scnew.subCategory_id || subCategoryId=='null'))"
+                                class="col-md-3 sm-4 clearfix w3ls_w3l_banner_left w3ls_w3l_banner_left_asdfdfd">
+                                <div class="hover14 column">
+                                    <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+                                        <div class="tag"><img src="./assets/images/tag.png" alt=" " class="img-responsive">
+                                        </div>
+                                        <div class="agile_top_brand_left_grid1">
+                                            <figure>
+                                                <div class="snipcart-item block">
+                                                    <div class="snipcart-thumb" style="text-align: center;">
+                                                        <a [routerLink]="['/productDescription', pro.product_id]"><img
+                                                                src="{{pro.image}}" alt=" " class="img-responsive" /></a>
+                                                        <p>{{pro.product_name}} <span>{{pro.quantity}}</span>
+                                                        </p>
+                                                        <h4>₹{{pro.discount_price}} <span>₹{{pro.price}}</span></h4>
                                                     </div>
-                                                    <input *ngIf="!cart[pro.product_id]"
-                                                        (click)="addCart(pro.product_id)" type="submit" name="submit"
-                                                        value="Add to cart" class="button" />
+                                                    <div class="snipcart-details">
+                                                        <div *ngIf="cart[pro.product_id]"
+                                                            class="input-group bootstrap-touchspin">
+                                                            <span class="input-group-btn">
+                                                                <button class="btn btn-default bootstrap-touchspin-down"
+                                                                    (click)="minusCart(pro.product_id)"
+                                                                    type="button">-</button>
+                                                            </span>
+                                                            <input type="number" name="" value="{{cart[pro.product_id]}}"
+                                                                [(ngModel)]="cart[pro.product_id]" (ngModelChange)="updateCart(cart)"
+                                                                class="input-qty form-control text-center"
+                                                                style="display: block;">
+                                                            <span class="input-group-btn">
+                                                                <button class="btn btn-default bootstrap-touchspin-up"
+                                                                    (click)="plusCart(pro.product_id)"
+                                                                    type="button">+</button>
+                                                            </span>
+                                                        </div>
+                                                        <input *ngIf="!cart[pro.product_id]"
+                                                            (click)="addCart(pro.product_id)" type="submit" name="submit"
+                                                            value="Add to cart" class="button" />
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </figure>
+                                            </figure>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -6,9 +6,7 @@ from .models import *
 admin.site.register(Category)
 admin.site.register(SubCategory)
 admin.site.register(Product)
-admin.site.register(QuantityVariant)
-admin.site.register(ColorVariant)
-admin.site.register(SizeVariant)
+admin.site.register(StockAlert)
 admin.site.register(ProductImages)
 
 

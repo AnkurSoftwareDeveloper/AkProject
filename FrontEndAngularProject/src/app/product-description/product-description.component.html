@@ -39,7 +39,8 @@
                 </div>
                 <div class="snipcart-item block">
                     <div class="snipcart-thumb agileinfo_single_right_snipcart">
-                        <h4>₹{{getProductsById.discount}} <span>₹{{getProductsById.price}}</span></h4>
+                        <p>{{getProductsById.quantity}}</p>
+                        <h4>₹{{getProductsById.discount_price}} <span>₹{{getProductsById.price}}</span></h4>
                     </div>
                     <div class="snipcart-details qunt">
                         <div *ngIf="cart[getProductsById.product_id]"
@@ -92,10 +93,9 @@
                                                 <div class="snipcart-thumb">
                                                     <a [routerLink]="['/productDescription', card.product_id]"><img
                                                             src="{{card.image}}" alt=" " class="img-responsive" /></a>
-                                                    <p>{{card.product_name}} <span
-                                                            *ngFor="let new of ConvertToJSON(card.quantity_type)">{{new.variant_name}}</span>
+                                                    <p>{{card.product_name}} <span>{{card.quantity}}</span>
                                                     </p>
-                                                    <h4>₹{{card.discount}} <span>₹{{card.price}}</span></h4>
+                                                    <h4>₹{{card.discount_price}} <span>₹{{card.price}}</span></h4>
                                                 </div>
                                                 <div class="snipcart-details">
                                                     <div *ngIf="cart[card.product_id]"

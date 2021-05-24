@@ -13,8 +13,6 @@
                         <tr>
                             <td class="hidden-xs">Image</td>
                             <td>Product Name</td>
-                            <td>Size</td>
-                            <td>Color</td>
                             <td class="td-qty">Quantity</td>
                             <td>Unit Price</td>
                             <td>Sub Total</td>
@@ -28,15 +26,8 @@
                                     <img src="{{pro.image}}" alt="Age Of Wisdom Tan Graphic Tee" title="" width="47" height="47">
                                 </a>
                             </td>
-                            <td><a [routerLink]="['/productDescription', pro.product_id]">{{pro.product_name}}</a>
+                            <td><a [routerLink]="['/productDescription', pro.product_id]">{{pro.product_name}}<span>{{pro.quantity}}</span></a>
                             </td>
-                            <td>
-                                <select name="">
-                                    <option value="" selected="selected">S</option>
-                                    <option value="">M</option>
-                                </select>
-                            </td>
-                            <td>-</td>
                             <td>
                                 <div class="input-group bootstrap-touchspin">
                                     <span class="input-group-btn">
@@ -50,8 +41,8 @@
                                     </span>
                                 </div>
                             </td>
-                            <td class="price">₹{{pro.discount}}</td>
-                            <td>₹ {{calculate(pro.discount,cart[pro.product_id])}}</td>
+                            <td class="price">₹{{pro.discount_price}}</td>
+                            <td>₹ {{calculate(pro.discount_price,cart[pro.product_id])}}</td>
                             <td class="text-center">
                                 <a class="remove_cart" rel="2" (click)="removeCartItem(pro.product_id)">
                                     <i class="fa fa-trash-o"></i>
@@ -59,7 +50,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="6" align="right">Total</td>
+                            <td colspan="4" align="right">Total</td>
                             <td class="total" colspan="2"><b>₹ {{totalPrice}}</b>
                             </td>
                         </tr>

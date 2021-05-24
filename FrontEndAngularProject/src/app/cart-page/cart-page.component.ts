@@ -42,8 +42,8 @@ export class CartPageComponent implements OnInit {
   calculateTotal(){
     this.totalPrice=0;
     for (var i = 0; i < this.getProductsById.length; i++) {
-      if (this.getProductsById[i].discount) {
-        this.totalPrice += this.getProductsById[i].discount * this.cart[this.getProductsById[i].product_id];
+      if (this.getProductsById[i].discount_price) {
+        this.totalPrice += this.getProductsById[i].discount_price * this.cart[this.getProductsById[i].product_id];
       }
   }
   }

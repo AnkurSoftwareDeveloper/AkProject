@@ -20,17 +20,22 @@ export class AddproductsPageComponent implements OnInit {
 
   profileForm = new FormGroup({
     product_name: new FormControl(''),
-    password: new FormControl(''),
-    email: new FormControl(''),
-    phone: new FormControl(''),
+    description: new FormControl(''),
+    category: new FormControl(''),
+    subcategory: new FormControl(''),
+    quantity: new FormControl(''),
+    price: new FormControl(''),
+    discount_price: new FormControl(''),
+    stockalert: new FormControl(''),
+    image: new FormControl(''),
   });
   
   onSubmit() {
     // TODO: Use EventEmitter with form value
     console.log(this.profileForm.value);
-    this.myservice.addProducts(this.profileForm).subscribe(
-      (response) => console.log(response),
-      (error) => console.log(error));
+    // this.myservice.addProducts(this.profileForm).subscribe(
+    //   (response) => console.log(response),
+    //   (error) => console.log(error));
   }
 
 }

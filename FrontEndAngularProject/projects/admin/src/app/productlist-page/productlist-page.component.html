@@ -13,11 +13,10 @@
                     <td>Product Name</td>
                     <td>Category</td>
                     <td>Sub Category</td>
-                    <td>Size</td>
-                    <td>Color</td>
                     <td>Quantity</td>
                     <td>Unit Price</td>
                     <td>Discount Price</td>
+                    <td>Stock Alert</td>
                     <td>Action</td>
                 </tr>
             </thead>
@@ -29,12 +28,11 @@
                     </td>
                     <td>{{pro.product_name}}</td>
                     <td *ngFor="let new of ConvertToJSON(pro.category)">{{new.category_name}}</td>
-                    <td>{{pro.subcategory}}</td>
-                    <td>{{pro.size_type}}</td>
-                    <td>{{pro.color_type}}</td>
-                    <td *ngFor="let new of ConvertToJSON(pro.quantity_type)">{{new.variant_name}}</td>
+                    <td *ngFor="let new of ConvertToJSON(pro.subcategory)">{{new.subCategory_name}}</td>
+                    <td>{{pro.quantity}}</td>
                     <td class="price">₹{{pro.price}}</td>
-                    <td class="price">₹{{pro.discount}}</td>
+                    <td class="price">₹{{pro.discount_price}}</td>
+                    <td *ngFor="let new of ConvertToJSON(pro.stockalert)">{{new.stockalert_name}}</td>
                     <td class="text-center">
                         <a class="action" rel="2" (click)="removeCartItem(pro.product_id)">
                             <i class="fa fa-pencil"></i>
