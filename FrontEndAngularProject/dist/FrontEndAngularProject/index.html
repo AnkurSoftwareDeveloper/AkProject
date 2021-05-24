@@ -3,11 +3,118 @@
 <head>
   <meta charset="utf-8">
   <title>FrontEndAngularProject</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="http://localhost:4200/">  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="stylesheet" href="styles.3ff695c00d717f2d2a11.css"></head>
+
+  <link rel="stylesheet" href="./assets/css/flexslider.css" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  <script src="./assets/js/jquery.flexslider.js"></script>
+ 
+
+<!-- flexSlider -->
+<script type="text/javascript">
+j = jQuery.noConflict();
+
+j(window).load(function(){
+  j('.flexslider').flexslider({
+    animation: "slide",
+    start: function(slider){
+      j('body').removeClass('loading');
+    }
+  });
+});
+
+ //login dropdown
+j(document).ready(function(){
+    j(".dropdown").hover(            
+        function() {
+            j('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+            j(this).toggleClass('open');        
+        },
+        function() {
+            j('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+            j(this).toggleClass('open');       
+        }
+    );
+});
+
+// script-for sticky-nav fixed
+j(document).ready(function() {
+		 var navoffeset=$(".agileits_header").offset().top;
+		 j(window).scroll(function(){
+			var scrollpos=$(window).scrollTop(); 
+			if(scrollpos >=navoffeset){
+				j(".agileits_header").addClass("fixed");
+			}else{
+				j(".agileits_header").removeClass("fixed");
+			}
+		 });
+		 
+	});
+</script>
+
+
+<!-- //for-mobile-apps -->
+<link href="./assets/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="./assets/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- font-awesome icons -->
+<link href="./assets/css/font-awesome.css" rel="stylesheet" type="text/css" media="all" /> 
+<!-- //font-awesome icons -->
+<link href='//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="./assets/js/move-top.js"></script>
+<script type="text/javascript" src="./assets/js/easing.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+  $(".scroll").click(function(event){		
+    event.preventDefault();
+    $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+  });
+});
+</script>
+<!-- start-smoth-scrolling -->
+
+<!-- Bootstrap Core JavaScript && product Sliding-->
+<script src="./assets/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+ 
+<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+								
+			$().UItoTop({ easingType: 'easeOutQuart' });
+								
+			});
+	</script>
+<!-- //here ends scrolling icon -->
+
+<script src='./assets/js/okzoom.js'></script>
+  <script>
+    $(function(){
+      $('#example').okzoom({
+        width: 150,
+        height: 150,
+        border: "1px solid black",
+        shadow: "0 0 5px #000"
+      });
+    });
+
+  </script>
+
+
+</head>
 <body>
   <app-root></app-root>
-<script src="runtime.e227d1a0e31cbccbf8ec.js" defer></script><script src="polyfills.a4021de53358bb0fec14.js" defer></script><script src="main.a0451b2860e4c0ad2eef.js" defer></script></body>
+<script src="http://localhost:4200/runtime.js" defer></script><script src="http://localhost:4200/polyfills.js" defer></script><script src="http://localhost:4200/styles.js" defer></script><script src="http://localhost:4200/vendor.js" defer></script><script src="http://localhost:4200/main.js" defer></script></body>
 </html>

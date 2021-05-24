@@ -1,0 +1,73 @@
+<div class="btn-toolbar">
+    <button class="btn btn-primary">New Product</button>
+    <button class="btn">Import</button>
+    <button class="btn">Export</button>
+</div>
+<div class="well">
+    <div class="table-responsive">
+        <table class="table table-bordered tbl-cart">
+            <thead>
+                <tr>
+                    <td>Product Id</td>
+                    <td class="hidden-xs">Image</td>
+                    <td>Product Name</td>
+                    <td>Category</td>
+                    <td>Sub Category</td>
+                    <td>Size</td>
+                    <td>Color</td>
+                    <td>Quantity</td>
+                    <td>Unit Price</td>
+                    <td>Discount Price</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let pro of products">
+                    <td>{{pro.product_id}}</td>
+                    <td class="hidden-xs">
+                            <img src="{{pro.image}}" alt="Age Of Wisdom Tan Graphic Tee" title="" width="47" height="47">
+                    </td>
+                    <td>{{pro.product_name}}</td>
+                    <td *ngFor="let new of ConvertToJSON(pro.category)">{{new.category_name}}</td>
+                    <td>{{pro.subcategory}}</td>
+                    <td>{{pro.size_type}}</td>
+                    <td>{{pro.color_type}}</td>
+                    <td *ngFor="let new of ConvertToJSON(pro.quantity_type)">{{new.variant_name}}</td>
+                    <td class="price">₹{{pro.price}}</td>
+                    <td class="price">₹{{pro.discount}}</td>
+                    <td class="text-center">
+                        <a class="action" rel="2" (click)="removeCartItem(pro.product_id)">
+                            <i class="fa fa-pencil"></i>
+                        </a>
+                        <a class="action" rel="2" (click)="removeCartItem(pro.product_id)">
+                            <i class="fa fa-trash-o"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="pagination">
+    <ul>
+        <li><a href="#">Prev</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">Next</a></li>
+    </ul>
+</div>
+<div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Delete Confirmation</h3>
+    </div>
+    <div class="modal-body">
+        <p class="error-text">Are you sure you want to delete the user?</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        <button class="btn btn-danger" data-dismiss="modal">Delete</button>
+    </div>
+</div>
