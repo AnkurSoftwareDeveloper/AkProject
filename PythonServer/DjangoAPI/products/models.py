@@ -31,7 +31,7 @@ class Product(models.Model):
     description = models.TextField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='./assets/images')
+    image = models.ImageField(upload_to='./images', blank=True, null=True)
     quantity = models.CharField(max_length=25)
     price = models.FloatField(default=0)
     discount_price = models.FloatField(default=0)
