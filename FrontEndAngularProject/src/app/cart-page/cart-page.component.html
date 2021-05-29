@@ -23,7 +23,7 @@
                         <tr *ngFor="let pro of getProductsById">
                             <td class="hidden-xs">
                                 <a [routerLink]="['/productDescription', pro.product_id]">
-                                    <img src="{{pro.image}}" alt="Age Of Wisdom Tan Graphic Tee" title="" width="47" height="47">
+                                    <img src="http://127.0.0.1:8000{{pro.image}}" alt="Age Of Wisdom Tan Graphic Tee" title="" width="47" height="47">
                                 </a>
                             </td>
                             <td><a [routerLink]="['/productDescription', pro.product_id]">{{pro.product_name}}<span>{{pro.quantity}}</span></a>

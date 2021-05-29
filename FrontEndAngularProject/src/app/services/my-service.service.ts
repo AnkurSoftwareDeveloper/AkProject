@@ -57,4 +57,47 @@ export class MyServiceService {
     return this.httpClient.get(environment.baseURL + endPoints);
   }
 
+  public addProducts(postData: Object) {
+    let endPoints = "api/product/"
+    return this.httpClient.post(environment.baseURL + endPoints, postData);
+  }
+  
+  public updateProducts(postData: Object, id:any) {
+    let endPoints = "api/productDetails/" + id;
+    return this.httpClient.put(environment.baseURL + endPoints, postData);
+  }
+  
+  public deleteProducts(id:any) {
+    let endPoints = "api/productDetails/" + id;
+    return this.httpClient.delete(environment.baseURL + endPoints);
+  }
+
+/////////////////////////////////////////
+
+public getStockAlert(){
+  let endPoints="api/stockalert/"
+  return this.httpClient.get(environment.baseURL+endPoints);
+}
+
+public getStockAlertById(id:any) {
+  let endPoints = "api/stockalertDetails/" + id;
+  return this.httpClient.get(environment.baseURL + endPoints);
+}
+
+public addStockAlert(postData: Object) {
+  let endPoints = "api/stockalert/"
+  return this.httpClient.post(environment.baseURL + endPoints, postData);
+}
+
+public updateStockAlert(postData: Object, id:any) {
+  let endPoints = "api/stockalertDetails/" + id;
+  return this.httpClient.put(environment.baseURL + endPoints, postData);
+}
+
+public deleteStockAlert(id:any) {
+  let endPoints = "api/stockalertDetails/" + id;
+  return this.httpClient.delete(environment.baseURL + endPoints);
+}
+
+
 }

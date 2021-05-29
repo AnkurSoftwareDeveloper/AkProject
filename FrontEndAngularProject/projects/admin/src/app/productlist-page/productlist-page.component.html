@@ -24,15 +24,15 @@
                 <tr *ngFor="let pro of products">
                     <td>{{pro.product_id}}</td>
                     <td class="hidden-xs">
-                            <img src="{{pro.image}}" alt="Age Of Wisdom Tan Graphic Tee" title="" width="47" height="47">
+                            <img src="http://127.0.0.1:8000{{pro.image}}" alt="Age Of Wisdom Tan Graphic Tee" title="" width="47" height="47">
                     </td>
                     <td>{{pro.product_name}}</td>
-                    <td *ngFor="let new of ConvertToJSON(pro.category)">{{new.category_name}}</td>
-                    <td *ngFor="let new of ConvertToJSON(pro.subcategory)">{{new.subCategory_name}}</td>
+                    <td>{{getCategoryName(pro.category)}}</td>
+                    <td>{{getSubCategoryName(pro.subcategory)}}</td>
                     <td>{{pro.quantity}}</td>
                     <td class="price">₹{{pro.price}}</td>
                     <td class="price">₹{{pro.discount_price}}</td>
-                    <td *ngFor="let new of ConvertToJSON(pro.stockalert)">{{new.stockalert_name}}</td>
+                    <td>{{getStockAlertName(pro.stockalert)}}</td>
                     <td class="text-center">
                         <a class="action" rel="2" (click)="removeCartItem(pro.product_id)">
                             <i class="fa fa-pencil"></i>

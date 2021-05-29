@@ -16,6 +16,9 @@ export class ProductsPageComponent implements OnInit {
   getCategoryById: any;
   categ: any;
   cart: {};
+  category: any[];
+  subCategory: any[];
+  stockAlert: any[];
   
   constructor(private myservice: MyServiceService, private route : ActivatedRoute) { 
     this.route.params.subscribe(params => {
@@ -54,6 +57,22 @@ export class ProductsPageComponent implements OnInit {
         console.log("getSubCategoryById", this.getSubCategoryById);
       })  
     }
+
+    this.myservice.getCategory().subscribe((data: any[])=>{
+      this.category = data;
+      console.log("allcategory", this.category);
+    })  
+    
+    this.myservice.getSubCategory().subscribe((data: any[])=>{
+      this.subCategory = data;
+      console.log("allsubcategory", this.subCategory);
+    })  
+
+    this.myservice.getStockAlert().subscribe((data: any[])=>{
+      this.stockAlert = data;
+      console.log("getStockAlert", this.stockAlert);
+    })  
+
     
   }
 
@@ -63,6 +82,27 @@ export class ProductsPageComponent implements OnInit {
     data.push(prod);
     //console.log(data);
     return data;
+  }
+
+  getCategoryName(id: any){
+    for (var data of this.category) {
+      if(data.category_id==id)
+         return data.category_name;
+    }
+  }
+
+  getSubCategoryName(id: any){
+    for (var data of this.subCategory) {
+      if(data.subCategory_id==id)
+         return data.subCategory_name;
+    }
+  }
+
+  getStockAlertName(id: any){
+    for (var data of this.stockAlert) {
+      if(data.stockalert_id==id)
+         return data.stockalert_name;
+    }
   }
 
   addCart(cartId:any) {

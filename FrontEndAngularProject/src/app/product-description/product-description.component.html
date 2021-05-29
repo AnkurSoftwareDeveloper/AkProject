@@ -16,7 +16,7 @@
         <div class="agileinfo_single">
             <h5>{{getProductsById.product_name}}</h5>
             <div class="col-md-6 agileinfo_single_left">
-                <img id="example" src="{{getProductsById.image}}" style="height: 20em;" alt=" " class="img-responsive" />
+                <img id="example" src="http://127.0.0.1:8000{{getProductsById.image}}" style="height: 20em;" alt=" " class="img-responsive" />
             </div>
             <div class="col-md-6 agileinfo_single_right">
                 <div class="rating1">
@@ -92,7 +92,7 @@
                                             <div class="snipcart-item block">
                                                 <div class="snipcart-thumb">
                                                     <a [routerLink]="['/productDescription', card.product_id]"><img
-                                                            src="{{card.image}}" alt=" " class="img-responsive" /></a>
+                                                            src="http://127.0.0.1:8000{{card.image}}" alt=" " class="img-responsive" /></a>
                                                     <p>{{card.product_name}} <span>{{card.quantity}}</span>
                                                     </p>
                                                     <h4>₹{{card.discount_price}} <span>₹{{card.price}}</span></h4>
