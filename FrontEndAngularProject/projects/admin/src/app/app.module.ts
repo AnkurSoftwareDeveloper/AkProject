@@ -11,13 +11,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AddproductsPageComponent } from './addproducts-page/addproducts-page.component';
 import { ProductlistPageComponent } from './productlist-page/productlist-page.component';
+import { CategoryPageComponent } from './category-page/category-page.component';
+import { SubcategoryPageComponent } from './subcategory-page/subcategory-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardPageComponent,
     AddproductsPageComponent,
-    ProductlistPageComponent
+    ProductlistPageComponent,
+    CategoryPageComponent,
+    SubcategoryPageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="content-header">
+        <h2 class="content-title">Categories</h2>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                 <div class="col-md-4">
+                      <form (ngSubmit)="onSubmit()" [formGroup] = "categoryForm">
+                           <div class="form-group">
+                                <label for="category_name" class="form-label">CATEGORY NAME</label>
+                                <input type="text" placeholder="Type here" class="form-control" formControlName="category_name" id="category_name">
+                           </div>
+                           
+                           <div class="d-grid">
+                                <button class="btn btn-primary" type="submit">Save</button>
+                           </div>
+                      </form>
+                 </div>
+                 <div class="col-md-8">
+                      
+                    <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                </div>
+                            </th>
+                            <th>ID</th>
+                            <th>Category Name</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let cat of category">
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                </div>
+                            </td>
+                            <td>{{cat.category_id}}</td>
+                            <td><b>{{cat.category_name}}</b></td>
+                            <td class="text-center">
+                                <a class='btn btn-info btn-xs' (click)="editCategory(cat.category_id)"><span class="glyphicon glyphicon-edit"></span> Edit</a> 
+                                <a class="btn btn-danger btn-xs" (click)="delCategory(cat.category_id)"><span class="glyphicon glyphicon-remove"></span> Del</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    </table>
+  
+                 </div> <!-- .col// -->
+            </div> <!-- .row // -->
+       </div>
+    </div>
+</div>

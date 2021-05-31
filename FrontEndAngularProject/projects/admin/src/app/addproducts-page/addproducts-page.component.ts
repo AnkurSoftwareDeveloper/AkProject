@@ -38,15 +38,15 @@ export class AddproductsPageComponent implements OnInit {
 
 
     this.addproduct = this.formBuilder.group({
-      product_name: [''],
+      product_name: ['', [Validators.required]],
       description: ['', Validators.required],
-      category: [''],
-      subcategory: [''],
-      quantity: [''],
-      price: [''],
-      discount_price: [''],
-      stockalert: [''],
-      image: [''],
+      category: ['', [Validators.required]],
+      subcategory: ['', [Validators.required]],
+      quantity: ['', [Validators.required]],
+      price: ['', [Validators.required]],
+      discount_price: ['', [Validators.required]],
+      stockalert: ['', [Validators.required]],
+      image: ['', [Validators.required]],
     });
   }
 

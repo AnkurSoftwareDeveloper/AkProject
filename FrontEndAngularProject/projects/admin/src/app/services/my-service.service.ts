@@ -24,13 +24,13 @@ export class MyServiceService {
     return this.httpClient.post(environment.baseURL + endPoints, postData);
   }
   
-  public updateCategory(postData: Object) {
-    let endPoints = "api/categoryDetails/1/"
+  public updateCategory(id:any, postData: Object) {
+    let endPoints = "api/categoryDetails/" + id +"/";
     return this.httpClient.put(environment.baseURL + endPoints, postData);
   }
   
-  public deleteCategory() {
-    let endPoints = "api/categoryDetails/5/"
+  public deleteCategory(id:any) {
+    let endPoints = "api/categoryDetails/" + id;
     return this.httpClient.delete(environment.baseURL + endPoints);
   }
 
@@ -44,6 +44,21 @@ export class MyServiceService {
   public getSubCategoryById(id:any) {
     let endPoints = "api/subcategoryDetails/" + id;
     return this.httpClient.get(environment.baseURL + endPoints);
+  }
+
+  public addSubCategory(postData: Object) {
+    let endPoints = "api/subcategory/"
+    return this.httpClient.post(environment.baseURL + endPoints, postData);
+  }
+  
+  public updateSubCategory(id:any, postData: Object) {
+    let endPoints = "api/subcategoryDetails/" + id +"/";
+    return this.httpClient.put(environment.baseURL + endPoints, postData);
+  }
+  
+  public deleteSubCategory(id:any) {
+    let endPoints = "api/subcategoryDetails/" + id;
+    return this.httpClient.delete(environment.baseURL + endPoints);
   }
   /////////////////////////////////////////
 
@@ -63,7 +78,7 @@ export class MyServiceService {
   }
   
   public updateProducts(postData: Object, id:any) {
-    let endPoints = "api/productDetails/" + id;
+    let endPoints = "api/productDetails/" + id +"/";
     return this.httpClient.put(environment.baseURL + endPoints, postData);
   }
   
@@ -90,7 +105,7 @@ public addStockAlert(postData: Object) {
 }
 
 public updateStockAlert(postData: Object, id:any) {
-  let endPoints = "api/stockalertDetails/" + id;
+  let endPoints = "api/stockalertDetails/" + id +"/";
   return this.httpClient.put(environment.baseURL + endPoints, postData);
 }
 
