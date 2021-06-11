@@ -6,7 +6,7 @@
          <div class="card-body">
              <div class="row">
                   <div class="col-md-4">
-                       <form (ngSubmit)="onSubmit()" [formGroup] = "subCategoryForm">
+                       <form (ngSubmit)="onSubmit()" formGroup = "subCategoryForm">
                          <div class="form-group">
                               <label class="control-label" for="category_id">CATEGORY</label>
                                 <select id="category_id" name="category_id" formControlName="category_id" class="form-control">

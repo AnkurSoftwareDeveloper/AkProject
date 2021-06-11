@@ -7,8 +7,9 @@ export const environment = {
   production: false,
   development: true,
   environmentName:"DEV",
-  baseURL:"http://127.0.0.1:8000/" // your will be http://localhost/backend/api
-
+  baseURL:"http://127.0.0.1:8000", // your will be http://localhost/backend/api
+  jwtLogin: 'api/accounts/token/',
+  jwtRefresh: 'api/accounts/token/refresh/',
 };
 /*
  * For easier debugging in development mode, you can import the following file
