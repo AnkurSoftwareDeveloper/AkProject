@@ -13,5 +13,6 @@ urlpatterns = [
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('token/verify/', TokenVerifyView.as_view(), name='token_verify'),
     path('login/', CustomTokenObtainPairView.as_view(), name='custom_token_obtain_pair'),
+    path('adminlogin/', AdminCustomTokenObtainPairView.as_view(), name='custom_token_obtain_pair'),
 ]
 

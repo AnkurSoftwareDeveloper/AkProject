@@ -19,7 +19,7 @@ export class LoginPageComponent implements OnInit {
   loginForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,private http: HttpClient,private authenticationService: AuthService,private route: ActivatedRoute,
-    private router: Router,) { }
+    private router: Router) { }
 
     profileForm = new FormGroup({
     username: new FormControl(''),

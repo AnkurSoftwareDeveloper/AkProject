@@ -1,17 +1,21 @@
-<ul class="nav justify-content-end topnav">
-  <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#">Disabled</a>
-  </li>
-</ul>
+<div class="nav justify-content-end topnav">
+  <ul *ngIf="currentUser">
+    <li class="dropdown profile_details_drop">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"> {{login_name}} </i>
+        </a>
+      <div class="dropdown">
+          <div class="dropdown-content">
+            <a href="#" (click)="logout()">Logout</a>
+          </div>                 
+      </div>	
+    </li>
+  </ul>
+  <ul *ngIf="!currentUser">
+    <li class="profile_details_drop">
+      <a routerLink="/adminlogin"><i class="fa fa-user" aria-hidden="true"> Login | Sign Up </i></a>
+    </li>
+  </ul>
+</div>
 
 <div class="nav-side-menu">
     <div class="brand">Brand Logo</div>

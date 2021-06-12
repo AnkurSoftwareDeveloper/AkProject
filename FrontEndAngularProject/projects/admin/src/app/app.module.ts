@@ -13,6 +13,7 @@ import { AddproductsPageComponent } from './addproducts-page/addproducts-page.co
 import { ProductlistPageComponent } from './productlist-page/productlist-page.component';
 import { CategoryPageComponent } from './category-page/category-page.component';
 import { SubcategoryPageComponent } from './subcategory-page/subcategory-page.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SubcategoryPageComponent } from './subcategory-page/subcategory-page.co
     AddproductsPageComponent,
     ProductlistPageComponent,
     CategoryPageComponent,
-    SubcategoryPageComponent
+    SubcategoryPageComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,7 @@ import { AddproductsPageComponent } from './addproducts-page/addproducts-page.co
 import { ProductlistPageComponent } from './productlist-page/productlist-page.component';
 import { CategoryPageComponent } from './category-page/category-page.component';
 import { SubcategoryPageComponent } from './subcategory-page/subcategory-page.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 const routes: Routes = [
   {path: '', component: DashboardPageComponent},
@@ -12,7 +13,7 @@ const routes: Routes = [
   {path: 'productlist', component: ProductlistPageComponent},
   {path: 'category', component: CategoryPageComponent},
   {path: 'subcategory', component: SubcategoryPageComponent},
-
+  {path: 'adminlogin', component: LoginPageComponent},
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
 ];

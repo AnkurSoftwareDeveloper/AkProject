@@ -68,4 +68,20 @@ export class ProductlistPageComponent implements OnInit {
     }
   }
 
+  editProduct(id: any){
+    alert("Edit");
+  }
+
+  delProduct(id: any){
+    var result = confirm("Want to delete?");
+    if (result) {       
+      // this.myservice.deleteCategory(id).subscribe(
+      //   (response) => console.log(response),
+      //   (error) => console.log(error)); 
+      alert('Deleted');
+    } else {
+      alert('Not deleted');
+    }
+  }
+
 }

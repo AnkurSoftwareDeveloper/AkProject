@@ -1,0 +1,13 @@
+<div class="login-box" >
+	<div class="login-header">Login</div>
+	<div class="login-body form">
+		<form [formGroup]="adminloginForm" (ngSubmit)="onLoginSubmit()">
+			<label>Username / Email</label>
+			<input type="text" class="form-control" name="username" formControlName="username" required=" ">
+			<label>Password</label>
+			<input type="password" class="form-control" name="password" formControlName="password" required=" ">
+			<input type="submit" value="Login" class="form-control btn btn-success ">
+            <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+		</form>
+	</div>
+</div>
