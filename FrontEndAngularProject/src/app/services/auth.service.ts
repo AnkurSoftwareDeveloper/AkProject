@@ -28,6 +28,7 @@ login(username: string, password: string) {
     return this.http.post<any>(`${environment.baseURL}/${environment.jwtLogin}`, { username, password })
         .pipe(
             map(response => {
+                console.log(response);
                 // login successful if there's a jwt token in the response
                 let currentUser: User;
                 if (response.access) {
@@ -35,6 +36,7 @@ login(username: string, password: string) {
                     currentUser = jwt_decode(response.access)
                     currentUser.token = response.access
                     currentUser.refreshToken = response.refresh
+                    currentUser.username = response.user_name
                     localStorage.setItem('currentUser', JSON.stringify(currentUser));
                     this.currentUserSubject.next(currentUser);
                 } 

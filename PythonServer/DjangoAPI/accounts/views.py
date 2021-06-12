@@ -12,23 +12,6 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from .serializers import UserCreateSerializer
 from rest_framework import response, permissions, status
 
-# class RegisterView(APIView):
-    
-#     def post(self , request):
-#         username = request.data['username']
-#         password = request.data['password']
-#         user = User(username=username)
-#         user.set_password(password)
-#         user.save()
-#         refresh = RefreshToken.for_user(user)
-
-#         return Response(
-#             {
-#                 "status":"success" ,
-#                 'user_id' :user.id , 
-#                 'refresh': str(refresh),
-#                 'access': str(refresh.access_token)
-#             })
 
 @api_view(['GET','POST'])
 @csrf_exempt
@@ -45,3 +28,27 @@ def registration(request):
         "access": str(refresh.access_token),
     }
     return response.Response(res, status.HTTP_201_CREATED)
+
+# login////////////////////////////////////
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView
+
+class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+
+    def validate(self, attrs):
+        credentials = {
+            'username': '',
+            'password': attrs.get("password")
+        }
+        user_obj = User.objects.filter(email=attrs.get("username")).first() or User.objects.filter(username=attrs.get("username")).first()
+        if user_obj:
+            credentials['username'] = user_obj.username
+        ## This data variable will contain refresh and access tokens
+        data = super().validate(credentials)
+        ## You can add more User model's attributes like username,email etc. in the data dictionary like this.
+        data['user_name'] = self.user.username
+        return data
+
+
+class CustomTokenObtainPairView(TokenObtainPairView):
+    serializer_class = CustomTokenObtainPairSerializer

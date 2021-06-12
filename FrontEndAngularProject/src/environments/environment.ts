@@ -8,7 +8,7 @@ export const environment = {
   development: true,
   environmentName:"DEV",
   baseURL:"http://127.0.0.1:8000", // your will be http://localhost/backend/api
-  jwtLogin: 'api/accounts/token/',
+  jwtLogin: 'api/accounts/login/',
   jwtRefresh: 'api/accounts/token/refresh/',
 };
 /*

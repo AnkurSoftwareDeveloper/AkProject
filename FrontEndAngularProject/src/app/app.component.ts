@@ -20,7 +20,7 @@ export class AppComponent {
   subCategory: any[];
   cartno: number;
   currentUser: User;
-  login_id: any;
+  login_name: any;
   // postData = 
   // {
   //   "category_name": "Fruits & Vegetables"
@@ -57,14 +57,16 @@ export class AppComponent {
 
     if(this.currentUser){
       let login_credential = JSON.parse(localStorage.getItem('currentUser'));
-      this.login_id=login_credential.user_id;
-      console.log(this.login_id);
+      this.login_name=login_credential.username;
+      console.log(this.login_name);
     }
 }
 
 logout() {
   this.authenticationService.logout();
-  this.router.navigate(['/']);
+  this.router.navigate(['/']).then(() => {
+    window. location. reload();
+    });
 }
 
 
