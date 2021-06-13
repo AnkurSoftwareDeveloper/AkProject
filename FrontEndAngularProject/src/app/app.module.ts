@@ -19,7 +19,6 @@ import { CommonModule } from '@angular/common';
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { RouterModule } from '@angular/router';
 import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
-import { AdminRoutingModule } from "../../projects/admin/src/app/app-routing.module";
 
 @NgModule({
   declarations: [
@@ -40,7 +39,6 @@ import { AdminRoutingModule } from "../../projects/admin/src/app/app-routing.mod
     BrowserModule,
     CommonModule,
     AppRoutingModule,
-    AdminRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
