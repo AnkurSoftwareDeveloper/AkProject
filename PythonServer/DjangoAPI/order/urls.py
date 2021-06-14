@@ -5,5 +5,6 @@ from .views import *
 urlpatterns = [
     path('checkout/', checkout),
     path('myorder/', myorder),
-    path('tracker/', tracker)
+    path('tracker/', tracker),
+    path('myorderdetail/<int:pk>/', myorder_detail),
 ]

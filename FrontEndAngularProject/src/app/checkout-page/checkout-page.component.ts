@@ -39,6 +39,7 @@ export class CheckoutPageComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    console.log("cartitem", this.cart);
     for (var item in this.cart) {
       console.log("cartitem", item);
       this.myservice.getProductsById(item).subscribe((data)=>{
@@ -58,7 +59,8 @@ export class CheckoutPageComponent implements OnInit {
       state: ['', Validators.required],
       phone: ['', Validators.required],
       amount: ['', Validators.required],
-      user_id: ['', Validators.required]
+      user_id: ['', Validators.required],
+      itemsQuntJson: ['', Validators.required]
     });
   }
 
@@ -66,6 +68,7 @@ export class CheckoutPageComponent implements OnInit {
 
   onSubmit(){
     this.checkOutForm.controls['itemsJson'].setValue(JSON.stringify(this.getProductsById));
+    this.checkOutForm.controls['itemsQuntJson'].setValue(JSON.stringify(this.cart));
     this.checkOutForm.controls['city'].setValue("Patna");
     this.checkOutForm.controls['state'].setValue("Bihar");
     this.checkOutForm.controls['amount'].setValue(this.totalPrice);

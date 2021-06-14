@@ -14,6 +14,8 @@ import { ProductlistPageComponent } from './productlist-page/productlist-page.co
 import { CategoryPageComponent } from './category-page/category-page.component';
 import { SubcategoryPageComponent } from './subcategory-page/subcategory-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { OrderlistPageComponent } from './orderlist-page/orderlist-page.component';
+import { OrderdetailsPageComponent } from './orderdetails-page/orderdetails-page.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { LoginPageComponent } from './login-page/login-page.component';
     ProductlistPageComponent,
     CategoryPageComponent,
     SubcategoryPageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    OrderlistPageComponent,
+    OrderdetailsPageComponent
   ],
   imports: [
     BrowserModule,

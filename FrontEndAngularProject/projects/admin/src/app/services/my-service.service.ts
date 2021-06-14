@@ -114,5 +114,25 @@ public deleteStockAlert(id:any) {
   return this.httpClient.delete(environment.baseURL + endPoints);
 }
 
+////////////////////////////////////////////
+public getMyOrder(postData: Object) {
+  let endPoints = "/api/myorder/"
+  return this.httpClient.post(environment.baseURL + endPoints, postData);
+}
+
+public getAllOrder() {
+  let endPoints = "/api/myorder/"
+  return this.httpClient.get(environment.baseURL+endPoints);
+}
+
+public getMyOrdertById(id:any) {
+  let endPoints = "/api/myorderdetail/" + id;
+  return this.httpClient.get(environment.baseURL + endPoints);
+}
+
+public getTracker(postData: Object) {
+  let endPoints = "/api/tracker/"
+  return this.httpClient.post(environment.baseURL + endPoints, postData);
+}
 
 }

@@ -6,7 +6,7 @@
                 Order Id  {{myord.order_id}}
             </div>
             <div class="col-md-8">
-                <div class="row align-items-center" *ngFor="let myordItem of convert(myord.itemsJson)">
+                <div class="row align-items-center" *ngFor="let myordItem of convertItemsJson(myord.itemsJson)">
                     <div class="col-md-6">
                         <a class="itemside" href="#">
                             <div class="left">
@@ -17,7 +17,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-md-2"> <span>₹{{myordItem.discount_price}}</span> </div>
+                    <div class="col-md-2"> <span>₹{{myordItem.discount_price}} * {{convertQuntJson(myord.itemsQuntJson,myordItem.product_id)}}</span> </div>
                     <div class="col-md-2">
                         <span class="badge rounded-pill alert-success">Active</span>
                     </div>

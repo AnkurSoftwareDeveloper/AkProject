@@ -6,6 +6,7 @@ class Order(models.Model):
     user_id=models.ForeignKey(User , on_delete=models.PROTECT)
     order_id= models.AutoField(primary_key=True)
     itemsJson= models.CharField(max_length=5000)
+    itemsQuntJson= models.CharField(max_length=500)
     amount=models.IntegerField(default=0)
     name=models.CharField(max_length=50)
     email=models.CharField(max_length=100)

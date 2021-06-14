@@ -23,7 +23,13 @@ def checkout(request):
     
 @csrf_exempt
 def myorder(request):
-    if request.method=="POST":
+    if request.method == 'GET':
+        Orders = Order.objects.all()
+        serializer = OrderSerializer(Orders, many=True)
+        return JsonResponse(serializer.data, safe=False)
+        # In order to serialize objects, we must set 'safe=False'
+
+    elif request.method=="POST":
         request = json.loads(request.body)
         user_id = request['user_id']
         try:
@@ -36,6 +42,30 @@ def myorder(request):
         except Exception as e:
             return HttpResponse('{}')
 
+@csrf_exempt 
+def myorder_detail(request, pk):
+    try: 
+        Orders = Order.objects.get(pk=pk) 
+    except Order.DoesNotExist: 
+        return HttpResponse(status=status.HTTP_404_NOT_FOUND) 
+ 
+    if request.method == 'GET': 
+        serializer = OrderSerializer(Orders) 
+        return JsonResponse(serializer.data) 
+ 
+    elif request.method == 'PUT': 
+        Order_data = JSONParser().parse(request) 
+        serializer = OrderSerializer(Orders, data=Order_data) 
+        if serializer.is_valid(): 
+           serializer.save() 
+           return JsonResponse(serializer.data) 
+        return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
+ 
+    elif request.method == 'DELETE': 
+        Orders.delete() 
+        return HttpResponse(status=status.HTTP_204_NO_CONTENT)
+
+# ///////////////////////////////////////////////////////////////
 
 @csrf_exempt
 def tracker(request):

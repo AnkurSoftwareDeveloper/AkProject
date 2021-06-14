@@ -1,0 +1,31 @@
+<div class="well">
+    <div class="table-responsive">
+        <table class="table table-bordered tbl-cart">
+            <thead>
+                <tr>
+                    <td>Order Id</td>
+                    <td>Name</td>
+                    <td>Email</td>
+                    <td>Phone</td>
+                    <td>Amount</td>
+                    <td>Status</td>
+                    <td class="text-center">Action</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let allord of allOrder">
+                    <td>{{allord.order_id}}</td>
+                    <td>{{allord.name}}</td>
+                    <td>{{allord.email}}</td>
+                    <td>{{allord.phone}}</td>
+                    <td>₹{{allord.amount}}</td>
+                    <td><span class="badge rounded-pill alert-warning">Pending</span></td>
+                    <td class="text-center">
+                        <a class='btn btn-info btn-xs' [routerLink]="['/orderdetails', allord.order_id]"><span class="glyphicon glyphicon-edit"></span> Details</a> 
+                        <a class="btn btn-danger btn-xs" (click)="delProduct(allord.order_id)"><span class="glyphicon glyphicon-remove"></span> Del</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

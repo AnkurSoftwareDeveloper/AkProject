@@ -1,0 +1,63 @@
+.content-main {
+    padding: 30px 3%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.content-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+.float-end {
+    float: right !important;
+}
+.float-right {
+    text-align: right !important;
+}
+.dlist {
+    display: flex;
+}
+.icontext {
+    display: inline-flex;
+    align-items: center;
+}
+.icontext .icon {
+    position: relative;
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+.icon-sm {
+    width: 48px;
+    height: 48px;
+    line-height: 48px !important;
+    font-size: 20px;
+}
+.icon-xs, .icon-sm, .icon-md, .icon-lg {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+.rounded-circle {
+    border-radius: 50% !important;
+}
+.bg-primary-light {
+    background-color: rgba(49,103,235,.2) !important;
+}
+a.itemside {
+    color: initial;
+    text-decoration: none;
+}
+.itemside {
+    position: relative;
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+.itemside .info {
+    padding-left: 15px;
+    padding-right: 7px;
+}

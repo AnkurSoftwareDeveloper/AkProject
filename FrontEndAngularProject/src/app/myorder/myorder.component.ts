@@ -15,6 +15,7 @@ export class MyorderComponent implements OnInit {
   trackItem: any[];
   orderItem: any;
   showtracker: any;
+  orderItemQunt: any;
 
   constructor(private myservice: MyServiceService, private http: HttpClient) {
     this.login_Id=(JSON.parse(localStorage.getItem('currentUser'))).user_id;
@@ -33,9 +34,17 @@ export class MyorderComponent implements OnInit {
     
   }
 
-  convert(orderJson: any){
+  convertItemsJson(orderJson: any){
     this.orderItem=JSON.parse(orderJson)
     return this.orderItem
+  }
+  convertQuntJson(orderQuntJson: any,proId: any){
+    this.orderItemQunt=JSON.parse(orderQuntJson)
+    for (let [key, value] of Object.entries(this.orderItemQunt)) {
+      if(key==proId){
+        return value
+      }
+    }
   }
 
   trackorder(ordId: any){
