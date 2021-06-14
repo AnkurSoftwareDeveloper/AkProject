@@ -45,7 +45,7 @@ export class CartPageComponent implements OnInit {
       if (this.getProductsById[i].discount_price) {
         this.totalPrice += this.getProductsById[i].discount_price * this.cart[this.getProductsById[i].product_id];
       }
-  }
+    }
   }
 
   continueShopping(){
@@ -56,7 +56,14 @@ export class CartPageComponent implements OnInit {
   }
 
   Checkout(){
-    this.router.navigate(['/checkOut']);
+    console.log(this.cart)
+    if(Object.keys(this.cart).length != 0){
+      this.router.navigate(['/checkOut']);
+    }
+    else{
+      alert("Your cart is empty");
+    }
+    
   }
 
   removeCartItem(cartId:any){
@@ -70,7 +77,7 @@ export class CartPageComponent implements OnInit {
 
   clearCart() {
     this.cart = JSON.parse(localStorage.getItem('cart'));
-    localStorage.clear();
+    // localStorage.clear();
     this.cart = {};
     localStorage.setItem('cart', JSON.stringify(this.cart));
     window.location.reload();

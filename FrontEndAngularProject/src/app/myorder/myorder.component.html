@@ -1,0 +1,41 @@
+<div class="w3l_banner_nav_right">
+    <h3>Your Order :</h3>
+    <div class="itemlist" *ngFor="let myord of myOrder">
+        <div class="row align-items-center">
+            <div class="col-md-2 ">
+                Order Id  {{myord.order_id}}
+            </div>
+            <div class="col-md-8">
+                <div class="row align-items-center" *ngFor="let myordItem of convert(myord.itemsJson)">
+                    <div class="col-md-6">
+                        <a class="itemside" href="#">
+                            <div class="left">
+                                <img src="http://127.0.0.1:8000{{myordItem.image}}" class="img-sm imgsize" alt="Item">
+                            </div>
+                            <div class="info">
+                                <h6 class="mb-0">{{myordItem.product_name}}</h6>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-2"> <span>₹{{myordItem.discount_price}}</span> </div>
+                    <div class="col-md-2">
+                        <span class="badge rounded-pill alert-success">Active</span>
+                    </div>
+                    <div class="col-md-2">
+                        <span>04.12.2020</span>
+                    </div>
+                </div> 
+            </div>
+            <div class="col-md-2">
+                <button (click)="trackorder(myord.order_id)" class="btn btn-success">Track order</button>
+            </div>
+        </div>
+        <div *ngIf="showtracker==myord.order_id">
+            <div *ngFor="let track of trackItem">
+                <div class="text-center">
+                    <b>{{track.time}} : {{track.text}}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

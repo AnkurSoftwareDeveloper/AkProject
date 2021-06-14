@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { ProductsPageComponent } from './products-page/products-page.component';
@@ -19,12 +18,12 @@ import { CommonModule } from '@angular/common';
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { RouterModule } from '@angular/router';
 import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
+import { MyorderComponent } from './myorder/myorder.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
-    RegistrationPageComponent,
     HomePageComponent,
     AboutPageComponent,
     ProductsPageComponent,
@@ -33,7 +32,8 @@ import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
     ContactUsComponent,
     PrivacyPolicyComponent,
     CartPageComponent,
-    CheckoutPageComponent
+    CheckoutPageComponent,
+    MyorderComponent
   ],
   imports: [
     BrowserModule,

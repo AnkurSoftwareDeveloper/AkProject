@@ -1,6 +1,6 @@
 <div class="w3l_banner_nav_right" style="padding: 25px;">
     <div class="">
-        <h2>Step 1 - My Cart Checkout - Review Your Cart Items</h2>
+        <h3>Step 1 - My Cart Checkout - Review Your Cart Items</h3>
         <div id="items">
             <ul class="list-group">
                 <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let pro of getProductsById">
@@ -9,45 +9,54 @@
                 </li>
             </ul>
         </div>
+        <div style="padding: 25px;" class="text-center">Your Cart Total Is <b>₹ {{totalPrice}}</b>
+        Enter your details below & place your order. Thanks for using My Awesome Cart!</div>
     </div>
     <div class="">
-        <h2>Step 2 - Enter Address & Other Details:</h2>
-        <form>
+        <h3>Step 2 - Enter Address & Other Details:</h3>
+        <form [formGroup]="checkOutForm" (ngSubmit)="onSubmit()">
+            <input type="hidden" name="itemsJson" id="itemsJson" formControlName="itemsJson">
+            <input type="hidden" name="amount" id="amount">
+            <input type="hidden" name="user_id" id="user_id">
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="inputname">Name</label>
-                    <input type="name" class="form-control" id="inputname" placeholder="Name">
+                    <label for="name">Name</label>
+                    <input type="name" class="form-control" id="name" placeholder="Name" formControlName="name">
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="inputEmail4">Email</label>
-                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Email" formControlName="email">
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputAddress">Address</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                <label for="address">Address</label>
+                <input type="text" class="form-control" id="address" placeholder="1234 Main St" formControlName="address">
             </div>
             <div class="form-group">
-                <label for="inputAddress2">Address line 2</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                <label for="address2">Address line 2</label>
+                <input type="text" class="form-control" id="address2" placeholder="Apartment, studio, or floor" formControlName="address2">
             </div>
             <div class="form-row">
+                <div class="form-group col-md-2">
+                    <label for="zip_code">Zip</label>
+                    <!-- <input type="text" class="form-control" id="inputZip"> -->
+                    <select id="zip_code" name="zip_code" formControlName="zip_code" class="form-control">
+                        <option>Select option</option>
+                        <option value="801117">801117</option>
+                    </select>
+                </div>
                 <div class="form-group col-md-6">
-                    <label for="inputCity">City</label>
-                    <input type="text" class="form-control" id="inputCity">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="city" value="Patna"  disabled>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="inputState">State</label>
-                    <input type="text" class="form-control" id="inputAddress2" placeholder="Enter State">
-                </div>
-                <div class="form-group col-md-2">
-                    <label for="inputZip">Zip</label>
-                    <input type="text" class="form-control" id="inputZip">
+                    <label for="state">State</label>
+                    <input type="text" class="form-control" id="state" value="Bihar" disabled>
                 </div>
             </div>
             <div class="form-group">
-                    <label for="inputZip">Phone Number</label>
-                    <input type="tel" class="form-control" id="inputPhone">
+                    <label for="Phone">Phone Number</label>
+                    <input type="tel" class="form-control" id="phone" formControlName="phone">
                 </div>
             <button type="submit" class="btn btn-primary">Place Order</button>
         </form>
