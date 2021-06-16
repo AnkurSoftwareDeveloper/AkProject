@@ -77,9 +77,21 @@ export class CheckoutPageComponent implements OnInit {
 
     console.log(this.checkOutForm.value);
 
-    this.http.post(environment.baseURL + '/api/checkout/', this.checkOutForm.value).subscribe(
-      (response) => console.log(response),
-      (error) => console.log(error));
+    this.myservice.checkout(this.checkOutForm.value).subscribe((data: any[])=>{
+      console.log("checkout", data);
+
+    this.cart = {};
+    localStorage.setItem('cart', JSON.stringify(this.cart));
+
+      this.router.navigate(['/']).then(() => {
+        window. location. reload();
+        });
+      alert("Your order is successfully placed Thanks...");
+    })  
+
+    // this.http.post(environment.baseURL + '/api/checkout/', this.checkOutForm.value).subscribe(
+    //   (response) => console.log(response),
+    //   (error) => console.log(error));
   }
 
 }

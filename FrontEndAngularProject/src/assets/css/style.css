@@ -127,7 +127,7 @@ ul.agileits_social_icons li a,
 }
 
 .agileits_header {
-    background: #212121;
+    background: linear-gradient( -45deg , black, transparent);
 }
 
 .w3l_offers {
@@ -145,8 +145,8 @@ ul.agileits_social_icons li a,
 
 .w3l_search {
     float: left;
-    width: 27%;
-    margin: .1em 0 0em 10em;
+    width: 46%;
+    margin: 1em 0 0em 14em;
 }
 
 .w3l_search input[type="text"] {
@@ -163,7 +163,7 @@ ul.agileits_social_icons li a,
 .w3l_search input[type="submit"] {
     outline: none;
     padding: 10px 0 9px;
-    width: 15%;
+    width: 10%;
     border: 1px solid;
     position: relative;
     background: url(../images/img-sp.png) no-repeat 14px 5px #FA1818;
@@ -175,7 +175,7 @@ ul.agileits_social_icons li a,
 
 .w3l_header_right {
     float: left;
-    padding-left: 10em;
+    padding: 1em;
 }
 
 .w3l_header_right ul li {
@@ -549,7 +549,7 @@ ul.dropdown-menu.drp-mnu li a i {
 .team,
 .newsletter-top-serv-btm,
 .w3ls_w3l_banner_nav_right_grid_sub {
-    padding: 5em 0 !important;
+    padding: 2em 0 !important;
 }
 
 .wthree_banner_bottom_left {
@@ -740,8 +740,8 @@ h3.title:after,
 /*-- cart --*/
 
 .product_list_header {
-    float: left;
-    margin-left: 7em;
+    float: right;
+    margin: 1em;
 }
 
 .snipcart-details {
@@ -3066,7 +3066,7 @@ ul.wmuSliderPagination {
 
 @media (max-width:1440px) {
     .w3l_header_right {
-        padding-left: 4em;
+        padding: 1em;
     }
     .w3l_banner_nav_right_banner3 h3,
     .w3l_banner_nav_right_banner4 h3,
@@ -3111,7 +3111,7 @@ ul.wmuSliderPagination {
 
 @media (max-width:1366px) {
     .w3l_search {
-        margin: .1em 0 0em 6em;
+        margin: 1em 0 0em 12em;
     }
     .w3l_banner_nav_right_banner1,
     .w3l_banner_nav_right_banner,
@@ -3156,7 +3156,7 @@ ul.wmuSliderPagination {
         margin-left: 47em;
     }
     .product_list_header {
-        margin-left: 3em;
+        margin: 1em;
     }
     .wthree_banner_btm_pos h3 span {
         padding-left: 5em;
@@ -3232,8 +3232,8 @@ ul.wmuSliderPagination {
         padding: .6em 1em;
     }
     .w3l_search {
-        margin: .1em 0 0em 3em;
-        width: 30%;
+        margin: 1em 0 0em 8em;
+        width: 45%;
     }
     .w3l_search input[type="submit"] {
         background: url(../images/img-sp.png) no-repeat 6px 5px #FA1818;
@@ -3242,7 +3242,7 @@ ul.wmuSliderPagination {
         background: url(../images/img-sp.png) no-repeat 6px 5px #84C639;
     }
     .product_list_header {
-        margin-left: 2em;
+        margin: 1em;
     }
     #PPMiniCart {
         left: 42% !important;
@@ -3307,7 +3307,7 @@ ul.wmuSliderPagination {
     .team,
     .newsletter-top-serv-btm,
     .w3ls_w3l_banner_nav_right_grid_sub {
-        padding: 4em 0 !important;
+        padding: 1em 0 !important;
     }
     .agile_footer_grids_w3_footer {
         width: 35%;
@@ -3441,7 +3441,7 @@ ul.wmuSliderPagination {
 
 @media (max-width: 1024px) {
     .w3l_header_right {
-        padding-left: 2em;
+        padding: 1em;
     }
     .more {
         margin-left: 40em;
@@ -3501,7 +3501,7 @@ ul.wmuSliderPagination {
 
 @media (max-width: 991px) {
     .w3l_search {
-        margin: .1em 0 0em 2em;
+        margin: 1em 0 0em 6em;
     }
     .w3ls_logo_products_left h1 a {
         font-size: 1.2em;
@@ -3775,20 +3775,17 @@ ul.wmuSliderPagination {
     .w3l_offers a {
         padding: .6em 2em;
     }
-    .w3l_search {
-        width: 42%;
-    }
     .w3l_offers a {
         padding: .6em 1em;
         font-size: .9em;
     }
     .w3l_search {
-        width: 25%;
-        margin: .1em 0 0em 1em;
+        width: 48%;
+        margin: 1em 0 0em 8em;
     }
     .w3l_search input[type="submit"] {
         background: url(../images/img-sp.png) no-repeat 0px 5px #FA1818;
-        width: 18%;
+        width: 12%;
     }
     .w3l_search input[type="submit"]:hover {
         background: url(../images/img-sp.png) no-repeat 0px 5px #84C639;
@@ -3797,10 +3794,10 @@ ul.wmuSliderPagination {
         width: 82%;
     }
     .product_list_header {
-        margin-left: 1.5em;
+        margin: 1em;
     }
     .w3l_header_right {
-        padding-left: 2em;
+        padding: 1em;
     }
     .w3l_offers a {
         padding: .75em 1em;
@@ -3910,7 +3907,7 @@ ul.wmuSliderPagination {
     .team,
     .newsletter-top-serv-btm,
     .w3ls_w3l_banner_nav_right_grid_sub {
-        padding: 3em 0 !important;
+        padding: 0.5em 0 !important;
     }
     .agileinfo_single_left {
         width: 75%;
@@ -3923,10 +3920,10 @@ ul.wmuSliderPagination {
 
 @media (max-width: 768px) {
     .product_list_header {
-        margin-left: 1em;
+        margin: 1em;
     }
     .w3l_header_right {
-        padding-left: 1.5em;
+        padding: 1em;
     }
     #PPMiniCart {
         left: 39% !important;
@@ -4051,11 +4048,11 @@ ul.wmuSliderPagination {
 
 @media (max-width: 736px) {
     .w3l_search {
-        width: 50%;
-        margin: .1em 0 1em 10em;
+        width: 48%;
+        margin: 1em 0 1em 8em;
     }
     .w3l_header_right {
-        padding-left: 6.5em;
+        padding: 1em;
     }
     .w3l_search input[type="submit"] {
         background: url(../images/img-sp.png) no-repeat 10px 5px #FA1818;
@@ -4089,8 +4086,8 @@ ul.wmuSliderPagination {
 
 @media (max-width: 667px) {
     .w3l_search {
-        width: 55%;
-        margin: .1em 0 1em 5.8em;
+        width: 50%;
+        margin: 1em 0 1em 8em;
     }
     .container {
         width: auto;
@@ -4121,10 +4118,10 @@ ul.wmuSliderPagination {
         position: relative;
     }
     .w3l_search {
-        margin: .1em 0 1em 5em;
+        margin: 1em 0 1em 6em;
     }
     .w3l_header_right {
-        padding-left: 4.5em;
+        padding: 1em;
     }
     .logo_products {
         padding: 2em 0 1em;
@@ -4216,7 +4213,7 @@ ul.wmuSliderPagination {
 
 @media (max-width: 600px) {
     .w3l_search {
-        margin: .1em 0 1em 3.9em;
+        margin: 1em 0 1em 5em;
     }
     .w3ls_logo_products_left1 ul.special_items li i {
         padding: 0 1em;
@@ -4249,7 +4246,7 @@ ul.wmuSliderPagination {
 
 @media (max-width: 568px) {
     .w3l_search {
-        margin: .1em 0 1em 2.9em;
+        margin: 1em 0 1em 4em;
     }
     .more {
         margin-left: 24.5em;
@@ -4279,7 +4276,7 @@ ul.wmuSliderPagination {
         max-height: 350px !important;
     }
     .w3l_search {
-        margin: .1em 0 0.5em 1.7em;
+        margin: 1em 0 0.5em 3em;
         width: 51%;
     }
     .w3l_search input[type="text"] {
@@ -4359,7 +4356,7 @@ ul.wmuSliderPagination {
     .team,
     .newsletter-top-serv-btm,
     .w3ls_w3l_banner_nav_right_grid_sub {
-        padding: 2em 0 !important;
+        padding: 0.2em 0 !important;
     }
     .wthree_banner_bottom_left {
         width: 90%;
@@ -4621,7 +4618,7 @@ ul.wmuSliderPagination {
         padding: .62em .5em;
     }
     .w3l_search {
-        margin: .1em 0 0.5em 0.7em;
+        margin: 1em 0 0.5em 2em;
     }
     .w3l_search input[type="submit"] {
         width: 18%;
@@ -4788,9 +4785,8 @@ ul.wmuSliderPagination {
         text-align: center;
     }
     .w3l_search {
-        margin: .1em 0;
-        float: none;
-        width: 100%;
+        margin: 1em 0;
+        width: 60%;
     }
     .w3l_search input[type="submit"] {
         background: url(../images/img-sp.png) no-repeat 17px 3px #FA1818;
@@ -4843,10 +4839,10 @@ ul.wmuSliderPagination {
         width: 100%;
     }
     .product_list_header {
-        margin-left: .3em;
+        margin: 1em;
     }
     .w3l_header_right {
-        padding-left: 3.5em;
+        padding: 1em;
     }
     #PPMiniCart form {
         width: 300px !important;
@@ -5252,7 +5248,7 @@ ul.wmuSliderPagination {
         padding: 1em 0;
     }
     .w3l_header_right {
-        padding-left: 1.5em;
+        padding: 1em;
     }
     #PPMiniCart form {
         width: 285px !important;

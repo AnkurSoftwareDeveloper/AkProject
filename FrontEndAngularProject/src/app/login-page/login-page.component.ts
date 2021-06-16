@@ -6,6 +6,7 @@ import {environment} from '../../environments/environment'
 import { AuthService } from '../services/auth.service';
 import { first } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MyServiceService } from '../services/my-service.service';
 
 @Component({
   selector: 'app-login-page',
@@ -18,7 +19,7 @@ export class LoginPageComponent implements OnInit {
   error = '';
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,private http: HttpClient,private authenticationService: AuthService,private route: ActivatedRoute,
+  constructor(private myservice: MyServiceService, private formBuilder: FormBuilder,private http: HttpClient,private authenticationService: AuthService,private route: ActivatedRoute,
     private router: Router) { }
 
     profileForm = new FormGroup({
@@ -26,7 +27,6 @@ export class LoginPageComponent implements OnInit {
     password: new FormControl(''),
     password2: new FormControl(''),
     email: new FormControl(''),
-    phone: new FormControl(''),
   });
 
 ngOnInit(){
@@ -60,9 +60,17 @@ ngOnInit(){
   onSubmit() {
     // TODO: Use EventEmitter with form value
     console.log(this.profileForm.value);
-    this.http.post(environment.baseURL + '/api/accounts/register/', this.profileForm.value).subscribe(
-      (response) => console.log(response),
-      (error) => console.log(error));
+    // this.http.post(environment.baseURL + '/api/accounts/register/', this.profileForm.value).subscribe(
+    //   (response) => console.log(response),
+    //   (error) => console.log(error));
+
+      this.myservice.addUser(this.profileForm.value).subscribe((data: any[])=>{
+        console.log("addUser", data);
+        this.router.navigate(['/loginPage']).then(() => {
+          window. location. reload();
+          });
+        alert("You are successfully Register please login");
+      })  
 
   }
 

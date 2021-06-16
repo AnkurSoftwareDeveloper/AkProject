@@ -1,7 +1,7 @@
 <!-- header -->
 	<div class="agileits_header">
-		<div class="w3l_offers">
-			<a href="products.html">Today's special Offers !</a>
+		<div class="mylogo">
+			<a href="index.html"><img src="./assets/images/mylogo.png" alt=" " class="logo_products_left"/></a>
 		</div>
 		<div class="w3l_search">
 			<form action="#" method="post">
@@ -9,62 +9,39 @@
 				<input type="submit" value=" ">
 			</form>
 		</div>
-		<div class="product_list_header">  
-            <input type="submit" routerLink="/cart" name="submit" value="My cart item({{cartno}})" class="button" />
-		</div>
-		<div class="w3l_header_right">
-			<ul *ngIf="currentUser">
-				<li class="dropdown profile_details_drop">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"> {{login_name}} </i>
-						<span class="caret"></span></a>
-					<div class="mega-dropdown-menu">
-						<div class="w3ls_vegetables">
-							<ul class="dropdown-menu drp-mnu">
-								<li><a routerLink="/myorder" >My Order</a></li>
-								<li><a href="#" (click)="logout()">Logout</a></li> 
-							</ul>
-						</div>                  
-					</div>	
-				</li>
-			</ul>
-			<ul *ngIf="!currentUser">
-				<li class="profile_details_drop">
-					<a routerLink="/loginPage"><i class="fa fa-user" aria-hidden="true"> Login | Sign Up </i></a>
-				</li>
-			</ul>
-		</div>
-		<div class="w3l_header_right1">
-			<h2><a href="/contactUs">Contact Us</a></h2>
+		<div style="float: right;">
+			<div class="w3l_header_right">
+				<ul *ngIf="currentUser">
+					<li class="dropdown profile_details_drop">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"> {{login_name}} </i>
+							<span class="caret"></span></a>
+						<div class="mega-dropdown-menu">
+							<div class="w3ls_vegetables">
+								<ul class="dropdown-menu drp-mnu">
+									<li><a routerLink="/myorder" >My Order</a></li>
+									<li><a href="#" (click)="logout()">Logout</a></li> 
+								</ul>
+							</div>                  
+						</div>	
+					</li>
+				</ul>
+				<ul *ngIf="!currentUser">
+					<li class="profile_details_drop">
+						<a routerLink="/loginPage"><i class="fa fa-user" aria-hidden="true"> Login | Sign Up </i></a>
+					</li>
+				</ul>
+			</div>
+			<div class="product_list_header">  
+				<input type="submit" routerLink="/cart" name="submit" value="My cart item({{cartno}})" class="button" />
+			</div>
 		</div>
 		<div class="clearfix"> </div>
 	</div>
 
-	<div class="logo_products">
-		<div class="container">
-			<div class="w3ls_logo_products_left">
-				<h1><a href="index.html"><span>Grocery</span> Store</a></h1>
-			</div>
-			<div class="w3ls_logo_products_left1">
-				<ul class="special_items">
-					<li><a href="events.html">Events</a><i>/</i></li>
-					<li><a routerLink="/aboutPage">About Us</a><i>/</i></li>
-					<li><a routerLink="/allBestProducts">Best Deals</a><i>/</i></li>
-					<li><a href="services.html">Services</a></li>
-				</ul>
-			</div>
-			<div class="w3ls_logo_products_left1">
-				<ul class="phone_email">
-					<li><i class="fa fa-phone" aria-hidden="true"></i>(+0123) 234 567</li>
-					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com">store@grocery.com</a></li>
-				</ul>
-			</div>
-			<div class="clearfix"> </div>
-		</div>
-	</div>
 <!-- //header -->
 
 <!-- banner -->
-<div class="banner">
+<div class="banner" style="padding: 5em 0 1em;">
     <div class="w3l_banner_nav_left">
         <nav class="navbar nav_bottom">
          <!-- Brand and toggle get grouped for better mobile display -->
@@ -127,7 +104,7 @@
 					<li><a routerLink="/aboutPage">About Us</a></li>
 					<li><a href="products.html">Best Deals</a></li>
 					<li><a href="services.html">Services</a></li>
-					<li><a href="short-codes.html">Short Codes</a></li>
+					<li><a routerLink="/contactUs">Contact Us</a></li>
 				</ul>
 			</div>
 			<div class="col-md-3 w3_footer_grid">
@@ -148,28 +125,21 @@
 					<li><a href="household.html">Households</a></li>
 				</ul>
 			</div>
-			
-			<div class="clearfix"> </div>
-			<div class="agile_footer_grids">
-				<div class="col-md-3 w3_footer_grid agile_footer_grids_w3_footer">
-					<div class="w3_footer_grid_bottom">
-						<h4>100% secure payments</h4>
-						<img src="./assets/images/card.png" alt=" " class="img-responsive" />
-					</div>
+			<div class="col-md-3">
+				<div class="w3_footer_grid_bottom">
+					<h4>100% secure payments</h4>
+					<img src="./assets/images/card.png" alt=" " class="img-responsive" />
 				</div>
-				<div class="col-md-3 w3_footer_grid agile_footer_grids_w3_footer">
-					<div class="w3_footer_grid_bottom">
-						<h5>connect with us</h5>
-						<ul class="agileits_social_icons">
-							<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-							<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-							<li><a href="#" class="google"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-							<li><a href="#" class="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-							<li><a href="#" class="dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-						</ul>
-					</div>
+				<div class="w3_footer_grid_bottom">
+					<h5>connect with us</h5>
+					<ul class="agileits_social_icons">
+						<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+						<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+						<li><a href="#" class="google"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+						<li><a href="#" class="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+						<li><a href="#" class="dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+					</ul>
 				</div>
-				<div class="clearfix"> </div>
 			</div>
 			
 		</div>
