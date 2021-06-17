@@ -75,17 +75,18 @@
                             *ngFor="let card of item; let cardIndex = index">
                             <div class="hover14 column">
                                 <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-                                    <div class="tag"><img src="./assets/images/tag.png" alt=" " class="img-responsive">
+                                    <div class="agile_top_brand_left_grid_pos">
+                                        <img src="./assets/images/offer.png" alt=" " class="img-responsive" />
                                     </div>
                                     <div class="agile_top_brand_left_grid1">
                                         <figure>
                                             <div class="snipcart-item block">
                                                 <div class="snipcart-thumb">
                                                     <a [routerLink]="['/productDescription', card.product_id]"><img
-                                                            src="http://127.0.0.1:8000{{card.image}}" alt=" " class="img-responsive" /></a>
-                                                    <p>{{card.product_name}} <span>{{card.quantity}}</span>
-                                                    </p>
-                                                    <h4>₹{{card.discount_price}} <span>₹{{card.price}}</span></h4>
+                                                            src="http://127.0.0.1:8000{{card.image}}" alt=" " style="height: 10em; width: 10em;" class="img-responsive" /></a>
+                                                    <p>{{card.product_name}}</p> 
+                                                    <span>{{card.quantity}}</span>
+                                                    <h4 style="padding-top: 0.6em;">₹{{card.discount_price}} <span>₹{{card.price}}</span></h4>
                                                 </div>
                                                 <div class="snipcart-details">
                                                     <div *ngIf="cart[card.product_id]"

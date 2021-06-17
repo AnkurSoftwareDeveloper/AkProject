@@ -110,6 +110,16 @@ public getTracker(postData: Object) {
   return this.httpClient.post(environment.baseURL + endPoints, postData);
 }
 
+public getTrackAll(postData: Object) {
+  let endPoints = "/api/trackall/"
+  return this.httpClient.post(environment.baseURL + endPoints, postData);
+}
+
+public addOrderUpdate(postData: Object) {
+  let endPoints = "/api/orderupdate/"
+  return this.httpClient.post(environment.baseURL + endPoints, postData);
+}
+
 ///////////////////////////////////////////
 public addUser(postData: Object) {
   let endPoints = "/api/accounts/register/"

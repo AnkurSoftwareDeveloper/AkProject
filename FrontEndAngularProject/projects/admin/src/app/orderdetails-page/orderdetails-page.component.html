@@ -12,20 +12,25 @@
                 </span> <br>
                 <small class="text-muted">Order ID: {{getOrdersById.order_id}}</small>
               </div>
-              <div class="col-lg-6 col-md-6 float-right">
-                <select class="form-select d-inline-block" style="max-width: 200px">
-                  <option>Change status</option>
-                  <option>Awaiting payment</option>
-                  <option>Order Recieved</option>
-                  <option>Order Shipped</option>
-                  <option>Delivered</option>
-                </select>
-                <a class="btn btn-light" href="#">Save</a>
-                <a class="btn btn-secondary ms-2" href="#"><i class="fa fa-print"></i></a>
+              <div class="col-lg-4 col-md-4 float-right">
+                <form (ngSubmit)="onSubmit()" [formGroup] = "changeStatus">
+                    <select id="status" name="status" formControlName="status" class="form-select d-inline-block" style="max-width: 200px">
+                    <option value="Your order has been placed">Order Placed</option>
+                    <option value="Your order has been confirmed">Order Confirmed</option>
+                    <option value="Your order has been shipped">Order Shipped</option>
+                    <option value="Your order has been delivered">Delivered</option>
+                    <option value="Your order has been canceled">Order Canceled</option>
+                    </select>
+                    <button class="btn btn-primary" type="submit">Save</button>
+                </form>
+              </div>
+              <div class="col-lg-2 col-md-2 float-right">
+                <button [useExistingCss]="true" printSectionId="print-section" ngxPrint><i class="fa fa-print"></i></button>
+                <!-- <a class="btn btn-secondary ms-2" href="#"><i class="fa fa-print"></i></a> -->
               </div>
             </div>
           </header> <!-- card-header end// -->
-          <div class="card-body">
+          <div id="print-section" class="card-body">
 
             <div class="row mb-5 order-info-wrap">
               <div class="col-md-4">

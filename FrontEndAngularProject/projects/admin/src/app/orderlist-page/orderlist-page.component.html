@@ -19,7 +19,11 @@
                     <td>{{allord.email}}</td>
                     <td>{{allord.phone}}</td>
                     <td>₹{{allord.amount}}</td>
-                    <td><span class="badge rounded-pill alert-warning">Pending</span></td>
+                    <td>
+                    <span *ngIf="checkstatus(allord.order_id)==1" class="badge rounded-pill alert-warning">Pending</span>
+                    <span *ngIf="checkstatus(allord.order_id)==2" class="badge rounded-pill alert-danger">Canceled</span>
+                    <span *ngIf="checkstatus(allord.order_id)==3" class="badge rounded-pill alert-success">Delivered</span>
+                    </td>
                     <td class="text-center">
                         <a class='btn btn-info btn-xs' [routerLink]="['/orderdetails', allord.order_id]"><span class="glyphicon glyphicon-edit"></span> Details</a> 
                         <a class="btn btn-danger btn-xs" (click)="delProduct(allord.order_id)"><span class="glyphicon glyphicon-remove"></span> Del</a>

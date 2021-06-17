@@ -6,5 +6,7 @@ urlpatterns = [
     path('checkout/', checkout),
     path('myorder/', myorder),
     path('tracker/', tracker),
+    path('trackall/', trackAll),
+    path('orderupdate/', order_update),
     path('myorderdetail/<int:pk>/', myorder_detail),
 ]

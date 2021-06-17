@@ -2841,7 +2841,7 @@ ul.wmuSliderPagination {
 /*-- //Ratings --*/
 
 .agileinfo_single_right {
-    padding-left: 5em;
+    padding-left: 5em !important;
 }
 
 .agileinfo_single_right_snipcart {
@@ -3193,7 +3193,7 @@ ul.wmuSliderPagination {
         background-position: -125px 0px;
     }
     .agileinfo_single_right {
-        padding-left: 3em;
+        padding-left: 3em !important;
     }
     .agileinfo_single_right_details {
         width: 33% !important;
@@ -4509,7 +4509,7 @@ ul.wmuSliderPagination {
         font-size: 1.3em;
     }
     .agileinfo_single_right {
-        padding-left: 1em;
+        padding-left: 1em !important;
     }
     .about_counter_left {
         width: 50%;
@@ -4925,7 +4925,7 @@ ul.wmuSliderPagination {
         width: 90%;
     }
     .agileinfo_single_right {
-        padding: 0;
+        padding: 0 !important;
     }
     p.animi,
     .w3_testimonials_grids {

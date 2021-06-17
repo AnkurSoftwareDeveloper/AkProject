@@ -16,6 +16,7 @@ import { SubcategoryPageComponent } from './subcategory-page/subcategory-page.co
 import { LoginPageComponent } from './login-page/login-page.component';
 import { OrderlistPageComponent } from './orderlist-page/orderlist-page.component';
 import { OrderdetailsPageComponent } from './orderdetails-page/orderdetails-page.component';
+import {NgxPrintModule} from 'ngx-print';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { OrderdetailsPageComponent } from './orderdetails-page/orderdetails-page
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    NgxPrintModule
   ],
   providers: [],
   bootstrap: [AppComponent]

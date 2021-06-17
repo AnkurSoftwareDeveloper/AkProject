@@ -26,17 +26,22 @@
                         class="col-md-3 sm-4 clearfix w3ls_w3l_banner_left w3ls_w3l_banner_left_asdfdfd">
                         <div class="hover14 column">
                             <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-                                <div class="tag"><img src="./assets/images/tag.png" alt=" " class="img-responsive">
+                                <div class="agile_top_brand_left_grid_pos">
+                                    <img src="./assets/images/offer.png" alt=" " class="img-responsive" />
                                 </div>
+                                <!-- <div class="tag" style="z-index: 1;">
+                                    <img src="./assets/images/tag.png" alt=" " class="img-responsive">
+                                </div> -->
                                 <div class="agile_top_brand_left_grid1">
                                     <figure>
                                         <div class="snipcart-item block">
                                             <div class="snipcart-thumb" style="text-align: center;">
-                                                <a [routerLink]="['/productDescription', pro.product_id]"><img
-                                                        src="http://127.0.0.1:8000{{pro.image}}" alt=" " class="img-responsive" /></a>
-                                                <p>{{pro.product_name}} <span>{{pro.quantity}}</span>
-                                                </p>
-                                                <h4>₹{{pro.discount_price}} <span>₹{{pro.price}}</span></h4>
+                                                <a [routerLink]="['/productDescription', pro.product_id]">
+                                                    <img src="http://127.0.0.1:8000{{pro.image}}" alt=" " style="height: 10em; width: 10em;" class="img-responsive" />
+                                                </a>
+                                                <p>{{pro.product_name}}</p>
+                                                 <span>{{pro.quantity}}</span>
+                                                <h4 style="padding-top: 0.6em;">₹{{pro.discount_price}} <span>₹{{pro.price}}</span></h4>
                                             </div>
                                             <div class="snipcart-details">
                                                 <div *ngIf="cart[pro.product_id]"

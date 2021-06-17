@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MyServiceService } from '../services/my-service.service';
+import { HttpClient } from '@angular/common/http';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-orderdetails-page',
@@ -12,8 +14,11 @@ export class OrderdetailsPageComponent implements OnInit {
   getOrdersById: any;
   orderItem: any;
   orderItemQunt: any;
+  changeStatus: FormGroup;
+  trackAllItem: any[];
 
-  constructor(private myservice: MyServiceService, private route : ActivatedRoute) {
+  constructor(private formBuilder: FormBuilder,private myservice: MyServiceService,private http: HttpClient,
+    private route : ActivatedRoute) {
     this.route.params.subscribe(params => {
       this.orderId = params['ord'];
         console.log(this.orderId); 
@@ -27,6 +32,47 @@ export class OrderdetailsPageComponent implements OnInit {
       console.log("getMyOrdertById", this.getOrdersById, this.orderItem);
     })  
 
+    this.myservice.getOrderDetails().subscribe((data: any[])=>{
+      this.trackAllItem = data;
+      console.log(this.trackAllItem);
+    })  
+
+    this.changeStatus = this.formBuilder.group({
+
+      order_id: ['', Validators.required],
+      user_id: ['', Validators.required],
+      status: ['', Validators.required],
+
+    });
+
+  }
+
+  ngAfterViewInit(){
+    setTimeout(() => {
+
+      for (var data of this.trackAllItem) {
+        if(data.order_id==this.getOrdersById.order_id){
+          this.changeStatus.setValue({
+            status: data.status,
+            order_id: this.orderId,
+            user_id: this.getOrdersById.user_id,
+          });
+          break;
+        }
+        
+      }
+      console.log(this.changeStatus.value);
+      }, 500);
+  }
+
+  onSubmit(){
+    this.changeStatus.controls['order_id'].setValue(this.orderId);
+    this.changeStatus.controls['user_id'].setValue(this.getOrdersById.user_id);
+    console.log(this.changeStatus.value);
+
+    this.myservice.addOrderUpdate(this.changeStatus.value).subscribe(
+      (response) => console.log(response),
+      (error) => console.log(error));
   }
 
   convertQuntJson(orderQuntJson: any,proId: any){

@@ -26,3 +26,15 @@ a.itemside {
 .imgsize{
     max-width: 40%;
 }
+
+.badge {
+    display: inline-block;
+    padding: .45em .85em;
+    font-size: 1em;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 1rem;
+}

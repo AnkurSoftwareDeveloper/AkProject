@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils.timezone import now
+from datetime import datetime  
 from django.contrib.auth.models import User
 
 class Order(models.Model):
@@ -20,8 +20,8 @@ class OrderUpdate(models.Model):
     user_id=models.ForeignKey(User , on_delete=models.PROTECT)
     update_id  = models.AutoField(primary_key=True)
     order_id = models.IntegerField(default="")
-    update_desc = models.CharField(max_length=5000)
-    timestamp = models.DateTimeField(default=now)
+    status = models.CharField(max_length=500)
+    time = models.DateTimeField(default=datetime.now, blank=True)
 
     def __str__(self):
-        return self.update_desc[0:7] + "..."
+        return self.status[0:7] + "..."
