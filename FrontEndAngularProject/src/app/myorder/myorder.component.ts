@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { MyServiceService } from '../services/my-service.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-myorder',
@@ -18,7 +19,7 @@ export class MyorderComponent implements OnInit {
   orderItemQunt: any;
   trackAllItem: any[];
 
-  constructor(private myservice: MyServiceService, private http: HttpClient) {
+  constructor(private myservice: MyServiceService, private http: HttpClient,private customDatePipe: DatePipe) {
     this.login_Id=(JSON.parse(localStorage.getItem('currentUser'))).user_id;
    }
 
@@ -56,10 +57,13 @@ export class MyorderComponent implements OnInit {
   OrderTime(ordId: any){
     for (var data of this.trackAllItem) {
       if(data.order_id==ordId){
-        let time=((data.time.toString().split('')).slice(0,16)).join('');
-        return time
+        return data.time
       }
     }
+  }
+
+  convertTimeFormate(time: any){
+    return this.customDatePipe.transform(time,"EEEE d MMMM y h:mm a");
   }
 
   checkstatus(ordId: any){

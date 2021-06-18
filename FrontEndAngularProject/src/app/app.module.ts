@@ -19,6 +19,7 @@ import { CartPageComponent } from './cart-page/cart-page.component';
 import { RouterModule } from '@angular/router';
 import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 import { MyorderComponent } from './myorder/myorder.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { MyorderComponent } from './myorder/myorder.component';
     HttpClientModule,
     RouterModule
   ],
-  providers: [MyServiceService],
+  providers: [MyServiceService,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
