@@ -7,6 +7,8 @@ from .models import *
 from .serializers import *
 from rest_framework.parsers import JSONParser 
 import json
+from rest_framework.permissions import IsAdminUser, IsAuthenticated
+from rest_framework.decorators import api_view, permission_classes
 
 @csrf_exempt
 def checkout(request):
@@ -22,6 +24,8 @@ def checkout(request):
         return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 @csrf_exempt
+@api_view(['GET','POST'])
+@permission_classes((IsAuthenticated, ))
 def myorder(request):
     if request.method == 'GET':
         Orders = Order.objects.all().order_by('-order_id')

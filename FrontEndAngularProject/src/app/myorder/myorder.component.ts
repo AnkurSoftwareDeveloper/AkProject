@@ -18,6 +18,7 @@ export class MyorderComponent implements OnInit {
   showtracker: any;
   orderItemQunt: any;
   trackAllItem: any[];
+  cancelOrderButt: boolean;
 
   constructor(private myservice: MyServiceService, private http: HttpClient,private customDatePipe: DatePipe) {
     this.login_Id=(JSON.parse(localStorage.getItem('currentUser'))).user_id;
@@ -63,22 +64,32 @@ export class MyorderComponent implements OnInit {
   }
 
   convertTimeFormate(time: any){
-    return this.customDatePipe.transform(time,"EEEE d MMMM y h:mm a");
+    return this.customDatePipe.transform(time,"EEEE, d MMMM, y, h:mm a");
   }
 
   checkstatus(ordId: any){
     for (var data of this.trackAllItem) {
       if(data.order_id==ordId){
-        if(data.status=="Your order has been placed")
+        if(data.status=="Your order has been placed"){
+          this.cancelOrderButt=true;
          return 1;
-        if(data.status=="Your order has been confirmed")
+        }
+        if(data.status=="Your order has been confirmed"){
+          this.cancelOrderButt=true;
         return 2;
-        if(data.status=="Your order has been shipped")
+        }
+        if(data.status=="Your order has been shipped"){
+           this.cancelOrderButt=false;
         return 3;
-        if(data.status=="Your order has been canceled")
+        }
+        if(data.status=="Your order has been canceled"){
+          this.cancelOrderButt=false;
         return 4;
-        if(data.status=="Your order has been delivered")
+        }
+        if(data.status=="Your order has been delivered"){
+          this.cancelOrderButt=false;
         return 5;
+        }
       }
     }
   }

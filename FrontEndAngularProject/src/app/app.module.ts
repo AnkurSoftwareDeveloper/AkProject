@@ -20,6 +20,9 @@ import { RouterModule } from '@angular/router';
 import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 import { MyorderComponent } from './myorder/myorder.component';
 import { DatePipe } from '@angular/common';
+import { ChangepasswordComponent } from './changepassword/changepassword.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './_helpers';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import { DatePipe } from '@angular/common';
     PrivacyPolicyComponent,
     CartPageComponent,
     CheckoutPageComponent,
-    MyorderComponent
+    MyorderComponent,
+    ChangepasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +49,7 @@ import { DatePipe } from '@angular/common';
     HttpClientModule,
     RouterModule
   ],
-  providers: [MyServiceService,DatePipe],
+  providers: [MyServiceService,DatePipe,{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

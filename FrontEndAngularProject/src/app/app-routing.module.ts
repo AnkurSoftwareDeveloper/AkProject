@@ -13,6 +13,7 @@ import { ProductsPageComponent } from './products-page/products-page.component';
 import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 import { AuthGuard } from './_guards';
 import { MyorderComponent } from './myorder/myorder.component';
+import { ChangepasswordComponent } from './changepassword/changepassword.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'cart', component: CartPageComponent },
   { path: 'checkOut', component: CheckoutPageComponent, canActivate: [AuthGuard] },
   { path: 'myorder', component: MyorderComponent, canActivate: [AuthGuard] },
+  { path: 'changepassword', component: ChangepasswordComponent, canActivate: [AuthGuard] },
 
   // otherwise redirect to home
   { path: '**', redirectTo: '' }

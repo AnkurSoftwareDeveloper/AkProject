@@ -25,10 +25,10 @@
                 <span *ngIf="checkstatus(myord.order_id)==4" class="badge rounded-pill alert-danger">Canceled</span>
                 <span *ngIf="checkstatus(myord.order_id)==5" class="badge rounded-pill alert-success">Delivered</span>
                 <br><br>
-                <p>{{OrderTime(myord.order_id) | date:'medium'}}</p>
+                <p>{{OrderTime(myord.order_id) | date:'mediumDate'}}</p>
             </div>
             <div class="col-md-2">
-                <button (click)="cancelorder(myord.order_id)" class="btn btn-danger btn-block">Cancel order</button><br>
+                <button *ngIf="cancelOrderButt" (click)="cancelorder(myord.order_id)" class="btn btn-danger btn-block">Cancel order</button><br>
                 <button (click)="trackorder(myord.order_id)" class="btn btn-success btn-block">Track order</button>
             </div>
         </div>

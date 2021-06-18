@@ -74,3 +74,5 @@ class AdminCustomTokenObtainPairSerializer(TokenObtainPairSerializer):
 
 class AdminCustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = AdminCustomTokenObtainPairSerializer
+
+# change password/////////////////////////////////////////////////////
