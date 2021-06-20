@@ -14,6 +14,8 @@ import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 import { AuthGuard } from './_guards';
 import { MyorderComponent } from './myorder/myorder.component';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { SearchPageComponent } from './search-page/search-page.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -28,6 +30,8 @@ const routes: Routes = [
   { path: 'checkOut', component: CheckoutPageComponent, canActivate: [AuthGuard] },
   { path: 'myorder', component: MyorderComponent, canActivate: [AuthGuard] },
   { path: 'changepassword', component: ChangepasswordComponent, canActivate: [AuthGuard] },
+  { path: 'forgotpassword', component: ForgotpasswordComponent },
+  { path: 'searchPage', component: SearchPageComponent },
 
   // otherwise redirect to home
   { path: '**', redirectTo: '' }

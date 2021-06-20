@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { MyServiceService } from './services/my-service.service';
 import * as $ from 'jquery';
@@ -60,6 +60,15 @@ export class AppComponent {
       this.login_name=login_credential.username;
       console.log(this.login_name);
     }
+
+    //////// scroll top////////
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+          return;
+      }
+      window.scrollTo(0, 0)
+  });
+  
 }
 
 logout() {

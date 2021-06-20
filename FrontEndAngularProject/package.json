@@ -25,6 +25,7 @@
     "flexslider": "^2.7.2",
     "jquery": "^3.6.0",
     "jwt-decode": "^3.1.2",
+    "ngx-cookie": "^5.0.2",
     "ngx-print": "^1.2.1",
     "ngx-slick": "^0.2.1",
     "ngx-slick-carousel": "^0.5.1",

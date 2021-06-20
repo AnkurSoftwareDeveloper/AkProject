@@ -128,7 +128,12 @@ public addUser(postData: Object) {
 
 public changePassword(postData: Object) {
   let endPoints = "/api/accounts/changepassword/"
-  return this.httpClient.post(environment.baseURL + endPoints, postData);
+  return this.httpClient.put(environment.baseURL + endPoints, postData);
+}
+
+public forgetPassword(postData: Object) {
+  let endPoints = "/api/accounts/passwordreset/"
+  return this.httpClient.get(environment.baseURL + endPoints, postData);
 }
 
 public checkout(postData: Object) {

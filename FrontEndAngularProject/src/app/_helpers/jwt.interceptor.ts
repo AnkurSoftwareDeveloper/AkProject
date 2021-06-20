@@ -4,10 +4,11 @@ import { Observable, pipe, throwError, BehaviorSubject } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { environment } from '../../environments/environment';
 import { catchError, switchMap, filter, take } from 'rxjs/operators'
+import { Router } from '@angular/router';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
-    constructor(private authenticationService: AuthService) { }
+    constructor(private authenticationService: AuthService,private router: Router) { }
     
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // add auth header with jwt if user is logged in and request is to api url
@@ -34,13 +35,21 @@ export class JwtInterceptor implements HttpInterceptor {
               && request.url === `${environment.baseURL}/${environment.jwtRefresh}`) {
               // We do another check to see if refresh token failed
               // In this case we want to logout user and to redirect it to login page  
-              // console.log('on your way out')            
-              this.authenticationService.logout();              
+              console.log('on your way out')            
+              this.authenticationService.logout();    
+              // this.router.navigate(['/']).then(() => {
+              //   window. location. reload();
+              //   });          
               return throwError(error);
             }
             else if (error instanceof HttpErrorResponse && error.status === 403) {
                 return this.handle403Error(request, next);
             } else {
+                console.log("throw error");
+                this.authenticationService.logout();    
+                // this.router.navigate(['/']).then(() => {
+                // window. location. reload();
+                // });        
                 return throwError(error);
             }
           }));
@@ -51,7 +60,7 @@ export class JwtInterceptor implements HttpInterceptor {
     private refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
     private handle403Error(request: HttpRequest<any>, next: HttpHandler) {
-        // console.log('handling 403')
+         console.log('handling 403')
         if (!this.isRefreshing) {
           this.isRefreshing = true;
           this.refreshTokenSubject.next(null);

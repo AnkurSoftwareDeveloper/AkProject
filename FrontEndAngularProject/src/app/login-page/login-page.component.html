@@ -38,7 +38,10 @@
           <div *ngIf="error" class="alert alert-danger">{{error}}</div>
         </form>
         </div>
-        <div class="cta"><a href="#">Forgot your password?</a></div>
+        <div class="cta">
+          <a href="http://localhost:8000/api/accounts/passwordreset/" target="_blank" rel="noopener noreferrer">
+          Forgot your password?</a>
+        </div>
       </div>
     </div>
   </div>

@@ -1,13 +1,15 @@
+from django.http.response import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
 
 from rest_framework.views import APIView
+from rest_framework import generics
 from rest_framework.response import Response 
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
-from .serializers import UserCreateSerializer
+from .serializers import ChangePasswordSerializer, UserCreateSerializer
 from rest_framework import response, permissions, status
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -76,3 +78,40 @@ class AdminCustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = AdminCustomTokenObtainPairSerializer
 
 # change password/////////////////////////////////////////////////////
+from rest_framework import status
+from rest_framework.generics import UpdateAPIView
+from rest_framework.authtoken.models import Token
+
+class ChangePasswordView(UpdateAPIView):
+    serializer_class = ChangePasswordSerializer
+
+    def update(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        # if using drf authtoken, create a new token 
+        # if hasattr(user, 'auth_token'):
+        #     user.auth_token.delete()
+        # token, created = Token.objects.get_or_create(user=user)
+        # return new token
+        response = {
+                'status': 'success',
+                'code': status.HTTP_200_OK,
+                'message': 'Password updated successfully',
+                'data': []
+            }
+        return Response(response)
+        # return Response({'token': token.key}, status=status.HTTP_200_OK)
+
+#send email//////////////////
+from django.core.mail import get_connection
+from django.core.mail.message import EmailMessage
+
+def sending_email(request):
+    connection = get_connection(use_tls=True, host='smtp.gmail.com', port=587,username='ankur555raj@gmail.com', password='ecdzpccngfmowcvl')
+    EmailMessage('test', 'Hello', 'ankur555raj@gmail.com', ['kamal12345raj@gmail.com'], connection=connection).send()
+    res = {
+        "status":"success" ,
+    }
+    return HttpResponse('{}')
+

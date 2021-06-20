@@ -17,6 +17,8 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { OrderlistPageComponent } from './orderlist-page/orderlist-page.component';
 import { OrderdetailsPageComponent } from './orderdetails-page/orderdetails-page.component';
 import {NgxPrintModule} from 'ngx-print';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './_helpers';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,7 @@ import {NgxPrintModule} from 'ngx-print';
     RouterModule,
     NgxPrintModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

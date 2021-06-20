@@ -23,6 +23,8 @@ import { DatePipe } from '@angular/common';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './_helpers';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { SearchPageComponent } from './search-page/search-page.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { JwtInterceptor } from './_helpers';
     CartPageComponent,
     CheckoutPageComponent,
     MyorderComponent,
-    ChangepasswordComponent
+    ChangepasswordComponent,
+    ForgotpasswordComponent,
+    SearchPageComponent
   ],
   imports: [
     BrowserModule,
