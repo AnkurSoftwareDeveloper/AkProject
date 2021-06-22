@@ -99,6 +99,39 @@ public deleteStockAlert(id:any) {
   return this.httpClient.delete(environment.baseURL + endPoints);
 }
 
+/////////////////////////////////////////
+
+public getpinCode(){
+  let endPoints="/api/pinCode/"
+  return this.httpClient.get(environment.baseURL+endPoints);
+}
+/////////////////////////////////////////
+
+public getAddressByUser(postData: Object){
+  let endPoints="/api/addressbyuser/"
+  return this.httpClient.post(environment.baseURL + endPoints, postData);
+}
+
+public getAddresssById(id:any) {
+  let endPoints = "/api/addressDetails/" + id;
+  return this.httpClient.get(environment.baseURL + endPoints);
+}
+
+public addAddress(postData: Object) {
+  let endPoints = "/api/address/"
+  return this.httpClient.post(environment.baseURL + endPoints, postData);
+}
+
+public updateAddress(postData: Object, id:any) {
+  let endPoints = "/api/addressDetails/" + id;
+  return this.httpClient.put(environment.baseURL + endPoints, postData);
+}
+
+public deleteAddress(id:any) {
+  let endPoints = "/api/addressDetails/" + id;
+  return this.httpClient.delete(environment.baseURL + endPoints);
+}
+
 ///////////////////////////////////
 public getMyOrder(postData: Object) {
   let endPoints = "/api/myorder/"

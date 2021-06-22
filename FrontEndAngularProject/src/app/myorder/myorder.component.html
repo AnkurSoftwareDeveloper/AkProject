@@ -1,41 +1,43 @@
 <div class="w3l_banner_nav_right">
     <h3>Your Order :</h3>
-    <div class="itemlist" *ngFor="let myord of myOrder">
-        <div class="row align-items-center">
-            <div class="col-md-2 ">
-                OD{{myord.order_id}}
+    <div *ngIf="myOrder?.length > 0">
+        <div class="itemlist" *ngFor="let myord of myOrder">
+            <div class="row align-items-center">
+                <div class="col-md-2 ">
+                    OD{{myord.order_id}}
+                </div>
+                <div class="col-md-6">
+                    <div class="row align-items-center" *ngFor="let myordItem of convertItemsJson(myord.itemsJson)">
+                        <div class="col-md-8">
+                            <a class="itemside" href="#">
+                                <div class="left">
+                                    <img src="http://127.0.0.1:8000{{myordItem.image}}" class="img-sm imgsize" alt="Item">
+                                </div>
+                                <div class="info">
+                                    <h6 class="mb-0">{{myordItem.product_name}}</h6>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-4"> <span>₹{{myordItem.discount_price}} * {{convertQuntJson(myord.itemsQuntJson,myordItem.product_id)}}</span> </div>
+                    </div> 
+                </div>
+                <div class="col-md-2">
+                    <span *ngIf="checkstatus(myord.order_id)<=3" class="badge rounded-pill alert-warning">Pending</span>
+                    <span *ngIf="checkstatus(myord.order_id)==4" class="badge rounded-pill alert-danger">Canceled</span>
+                    <span *ngIf="checkstatus(myord.order_id)==5" class="badge rounded-pill alert-success">Delivered</span>
+                    <br><br>
+                    <p>{{OrderTime(myord.order_id) | date:'mediumDate'}}</p>
+                </div>
+                <div class="col-md-2">
+                    <button *ngIf="cancelOrderButt" (click)="cancelorder(myord.order_id)" class="btn btn-danger btn-block">Cancel order</button><br>
+                    <button (click)="trackorder(myord.order_id)" class="btn btn-success btn-block">Track order</button>
+                </div>
             </div>
-            <div class="col-md-6">
-                <div class="row align-items-center" *ngFor="let myordItem of convertItemsJson(myord.itemsJson)">
-                    <div class="col-md-8">
-                        <a class="itemside" href="#">
-                            <div class="left">
-                                <img src="http://127.0.0.1:8000{{myordItem.image}}" class="img-sm imgsize" alt="Item">
-                            </div>
-                            <div class="info">
-                                <h6 class="mb-0">{{myordItem.product_name}}</h6>
-                            </div>
-                        </a>
+            <div *ngIf="showtracker==myord.order_id">
+                <div *ngFor="let track of trackItem">
+                    <div class="text-center">
+                        <b>{{convertTimeFormate(track.time)}} : {{track.status}}</b>
                     </div>
-                    <div class="col-md-4"> <span>₹{{myordItem.discount_price}} * {{convertQuntJson(myord.itemsQuntJson,myordItem.product_id)}}</span> </div>
-                 </div> 
-            </div>
-            <div class="col-md-2">
-                <span *ngIf="checkstatus(myord.order_id)<=3" class="badge rounded-pill alert-warning">Pending</span>
-                <span *ngIf="checkstatus(myord.order_id)==4" class="badge rounded-pill alert-danger">Canceled</span>
-                <span *ngIf="checkstatus(myord.order_id)==5" class="badge rounded-pill alert-success">Delivered</span>
-                <br><br>
-                <p>{{OrderTime(myord.order_id) | date:'mediumDate'}}</p>
-            </div>
-            <div class="col-md-2">
-                <button *ngIf="cancelOrderButt" (click)="cancelorder(myord.order_id)" class="btn btn-danger btn-block">Cancel order</button><br>
-                <button (click)="trackorder(myord.order_id)" class="btn btn-success btn-block">Track order</button>
-            </div>
-        </div>
-        <div *ngIf="showtracker==myord.order_id">
-            <div *ngFor="let track of trackItem">
-                <div class="text-center">
-                    <b>{{convertTimeFormate(track.time)}} : {{track.status}}</b>
                 </div>
             </div>
         </div>

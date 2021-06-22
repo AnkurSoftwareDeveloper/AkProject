@@ -42,10 +42,3 @@ class Product(models.Model):
         
     def __str__(self):
         return self.product_name
-    
-class ProductImages(models.Model):
-    product = models.ForeignKey(Product , on_delete=models.PROTECT)
-    image = models.ImageField(upload_to='./assets/images')        
-
-    def __str__(self):
-        return self.image

@@ -13,53 +13,83 @@
         Enter your details below & place your order. Thanks for using My Awesome Cart!</div>
     </div>
     <div class="">
-        <h3>Step 2 - Enter Address & Other Details:</h3>
-        <form [formGroup]="checkOutForm" (ngSubmit)="onSubmit()">
-            <input type="hidden" name="itemsJson" id="itemsJson">
-            <input type="hidden" name="amount" id="amount">
-            <input type="hidden" name="user_id" id="user_id">
-            <input type="hidden" name="itemsQuntJson" id="itemsQuntJson">
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="name">Name</label>
-                    <input type="name" class="form-control" id="name" placeholder="Name" formControlName="name">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Email" formControlName="email">
+        <h3>Step 2 - Delivery Address :</h3>
+            <div class="row" *ngFor="let useradd of userAddress">
+                <div class="panel panel-default" style="display: flex; padding-left: 1em;">
+                    <input type="radio" class="custom-control-input" id="{{useradd.address_id}}" name="address_id" value="useradd.address_id" style="margin-top: 37px;">
+                    <label class="custom-control-label panel-body card-input" for="{{useradd.address_id}}" style="width: 100%;">
+                        <span >
+                            {{useradd.name}} {{useradd.phone}}
+                        </span><br>
+                        <span >
+                            {{useradd.address}} {{useradd.city}} {{useradd.state}} - {{pin(useradd.pin_code)}}
+                        </span>
+                    </label>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="address">Address</label>
-                <input type="text" class="form-control" id="address" placeholder="1234 Main St" formControlName="address">
+            <div class="row">
+                <div class="panel panel-default" (click)="expanded = true" style="display: flex; padding-left: 1em;">
+                    <i class="fa fa-plus" style="margin-top: 23px;"></i>
+                    <label class="panel-body card-input" style="width: 100%;">
+                        <span > Add a new Address</span>
+                        <div *ngIf="expanded == true" class="hide-cursor">
+                            <form [formGroup]="addressForm" (ngSubmit)="addressSubmit()">
+                                <input type="hidden" class="form-control" id="user_id" placeholder="user_id" formControlName="user_id">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="name">Name</label>
+                                        <input type="name" class="form-control" id="name" placeholder="Name" formControlName="name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Phone">Phone Number</label>
+                                    <input type="tel" class="form-control" id="phone" formControlName="phone">
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">Address</label>
+                                    <input type="text" class="form-control" id="address" placeholder="1234 Main St" formControlName="address">
+                                </div>
+                                <div class="form-group">
+                                    <label for="address2">Address line 2</label>
+                                    <input type="text" class="form-control" id="address2" placeholder="Apartment, studio, or floor" formControlName="address2">
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="pin_code">Pin Code</label>
+                                        <!-- <input type="text" class="form-control" id="inputZip"> -->
+                                        <select id="pin_code" name="pin_code" formControlName="pin_code" class="form-control">
+                                            <option>Select option</option>
+                                            <option *ngFor="let pin of pincode" value="{{pin.pinCode_id}}">{{pin.pin_code}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="city">City</label>
+                                        <input type="text" class="form-control" id="city" value="Patna"  disabled>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="state">State</label>
+                                        <input type="text" class="form-control" id="state" value="Bihar" disabled>
+                                    </div>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary">Add Address</button>
+                            </form>
+                        </div>
+                    </label>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="address2">Address line 2</label>
-                <input type="text" class="form-control" id="address2" placeholder="Apartment, studio, or floor" formControlName="address2">
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-2">
-                    <label for="zip_code">Zip</label>
-                    <!-- <input type="text" class="form-control" id="inputZip"> -->
-                    <select id="zip_code" name="zip_code" formControlName="zip_code" class="form-control">
-                        <option>Select option</option>
-                        <option value="801109">801109</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="city">City</label>
-                    <input type="text" class="form-control" id="city" value="Patna"  disabled>
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="state">State</label>
-                    <input type="text" class="form-control" id="state" value="Bihar" disabled>
-                </div>
-            </div>
-            <div class="form-group">
-                    <label for="Phone">Phone Number</label>
-                    <input type="tel" class="form-control" id="phone" formControlName="phone">
-                </div>
-            <button type="submit" class="btn btn-primary">Place Order</button>
-        </form>
+        
     </div>
+    <div class="">
+        <h3>Step 3 - Payment Options</h3>
+        <div id="items">
+            <input type="radio" class="" name="COD" readonly="" id="COD">
+            <label class="">Cash on Delivery</label>
+        </div>
+        <div id="items">
+            <input type="radio" class="" name="COD" readonly="" id="UPI">
+            <label class="">Online Payment</label>
+        </div>
+    </div>
+    <button type="submit" (click)="checkOutSubmit()" class="btn btn-primary">Confirm Order</button>
 </div>

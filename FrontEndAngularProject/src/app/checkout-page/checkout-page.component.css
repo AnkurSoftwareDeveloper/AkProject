@@ -1,0 +1,8 @@
+
+  .card-input:hover {
+      cursor: pointer;
+  }
+  .hide-cursor{
+    cursor: auto;
+  }
+  

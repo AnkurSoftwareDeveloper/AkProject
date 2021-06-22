@@ -14,9 +14,12 @@ export class CheckoutPageComponent implements OnInit {
 
   cart: {};
   getProductsById:any = [];
-  checkOutForm: FormGroup;
+  addressForm: FormGroup;
   totalPrice:number= 0;
   login_Id: any;
+  expanded: boolean;
+  pincode: any[];
+  userAddress: any;
   
   constructor(private formBuilder: FormBuilder, private myservice: MyServiceService,private http: HttpClient,private route : ActivatedRoute,
     private router: Router) { 
@@ -39,6 +42,23 @@ export class CheckoutPageComponent implements OnInit {
     }
 
   ngOnInit(): void {
+
+    this.expanded = false
+
+    this.myservice.getpinCode().subscribe((data: any[])=>{
+      this.pincode = data;
+      console.log("getpinCode", this.pincode);
+    })  
+    const loginId={
+      "user_id": this.login_Id
+    }
+    console.log(loginId);
+
+    this.myservice.getAddressByUser(loginId).subscribe((data)=>{
+      this.userAddress= data;
+      console.log("userAddress", this.userAddress);
+      })  
+
     console.log("cartitem", this.cart);
     for (var item in this.cart) {
       console.log("cartitem", item);
@@ -48,36 +68,50 @@ export class CheckoutPageComponent implements OnInit {
       })  
     }
 
-    this.checkOutForm = this.formBuilder.group({
-      itemsJson: ['', Validators.required],
+    this.addressForm = this.formBuilder.group({
+      user_id: ['', Validators.required],
       name: ['', Validators.required],
-      email: ['', Validators.required],
       address: ['', Validators.required],
       address2: ['', Validators.required],
-      zip_code: ['', Validators.required],
+      pin_code: ['', Validators.required],
       city: ['', Validators.required],
       state: ['', Validators.required],
       phone: ['', Validators.required],
-      amount: ['', Validators.required],
-      user_id: ['', Validators.required],
-      itemsQuntJson: ['', Validators.required]
     });
   }
 
-  get f() { return this.checkOutForm.controls; }
+  pin(pinid: any){
+    for (var item of this.pincode) {
+        if(item.pinCode_id==pinid)
+          return item.pin_code
+    }
+  }
 
-  onSubmit(){
-    this.checkOutForm.controls['itemsJson'].setValue(JSON.stringify(this.getProductsById));
-    this.checkOutForm.controls['itemsQuntJson'].setValue(JSON.stringify(this.cart));
-    this.checkOutForm.controls['city'].setValue("Patna");
-    this.checkOutForm.controls['state'].setValue("Bihar");
-    this.checkOutForm.controls['amount'].setValue(this.totalPrice);
-    this.checkOutForm.controls['address'].setValue(this.f.address.value +" "+ this.f.address2.value);
-    this.checkOutForm.controls['user_id'].setValue(this.login_Id);
+  get f() { return this.addressForm.controls; }
 
-    console.log(this.checkOutForm.value);
+  addressSubmit(){
+    this.addressForm.controls['city'].setValue("Patna");
+    this.addressForm.controls['state'].setValue("Bihar");
+    this.addressForm.controls['address'].setValue(this.f.address.value +" "+ this.f.address2.value);
+    this.addressForm.controls['user_id'].setValue(this.login_Id);
 
-    this.myservice.checkout(this.checkOutForm.value).subscribe((data: any[])=>{
+    console.log(this.addressForm.value);
+
+    this.myservice.addAddress(this.addressForm.value).subscribe((data: any[])=>{
+      console.log("addressForm", data);
+        window. location. reload();
+    })  
+  }
+  
+  checkOutSubmit(){
+    let checkOut={
+      itemsJson : JSON.stringify(this.getProductsById),
+      itemsQuntJson : JSON.stringify(this.cart),
+      amount : this.totalPrice,
+      user_id : this.login_Id
+    }
+   
+    this.myservice.checkout(checkOut).subscribe((data: any[])=>{
       console.log("checkout", data);
 
     this.cart = {};
@@ -88,10 +122,6 @@ export class CheckoutPageComponent implements OnInit {
         });
       alert("Your order is successfully placed Thanks...");
     })  
-
-    // this.http.post(environment.baseURL + '/api/checkout/', this.checkOutForm.value).subscribe(
-    //   (response) => console.log(response),
-    //   (error) => console.log(error));
   }
 
 }
