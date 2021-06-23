@@ -16,7 +16,8 @@
         <h3>Step 2 - Delivery Address :</h3>
             <div class="row" *ngFor="let useradd of userAddress">
                 <div class="panel panel-default" style="display: flex; padding-left: 1em;">
-                    <input type="radio" class="custom-control-input" [(ngModel)]="radioAddData" id="{{useradd.address_id}}" name="radioAddData" value="useradd.address_id" style="margin-top: 37px;">
+                    <input type="radio" class="custom-control-input" (change)="onAddChange($event.target.value)" 
+                    id="{{useradd.address_id}}" name="radioAddData" value="{{useradd.address_id}}" style="margin-top: 37px;">
                     <label class="custom-control-label panel-body card-input" for="{{useradd.address_id}}" style="width: 100%;">
                         <span >
                             {{useradd.name}} {{useradd.phone}}
@@ -83,11 +84,11 @@
     <div class="">
         <h3>Step 3 - Payment Options</h3>
         <div id="items">
-            <input type="radio" class="" name="radioPayData" [(ngModel)]="radioPayData" readonly="" id="COD" value="Cash on Delivery">
+            <input type="radio" class="" name="payRadio" (change)="onPayChange($event.target.value)" readonly="" id="COD" value="Cash on Delivery">
             <label class="">Cash on Delivery</label>
         </div>
         <div id="items">
-            <input type="radio" class="" name="radioPayData" [(ngModel)]="radioPayData" readonly="" id="UPI" value="UPI">
+            <input type="radio" class="" name="payRadio" (change)="onPayChange($event.target.value)" readonly="" id="UPI" value="UPI">
             <label class="">Online Payment</label>
         </div>
     </div>

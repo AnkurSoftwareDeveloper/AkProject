@@ -32,7 +32,7 @@ export class AppComponent {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
 
     setInterval(() => {
-      if(this.cartno==null && this.cartno==undefined){
+      if(localStorage.getItem('cart')==null && localStorage.getItem('cart')==undefined){
         this.cartno=0;
       }
       else{

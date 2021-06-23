@@ -104,6 +104,13 @@ export class CheckoutPageComponent implements OnInit {
         window. location. reload();
     })  
   }
+
+  onAddChange(addRadio: any){
+    this.radioAddData=addRadio;
+  }
+  onPayChange(payRadio: any){
+    this.radioPayData=payRadio;
+  }
   
   checkOutSubmit(){
     let checkOut={
