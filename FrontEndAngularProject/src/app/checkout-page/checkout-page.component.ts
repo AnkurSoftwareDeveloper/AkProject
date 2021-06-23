@@ -20,6 +20,8 @@ export class CheckoutPageComponent implements OnInit {
   expanded: boolean;
   pincode: any[];
   userAddress: any;
+  radioAddData: any;
+  radioPayData: any;
   
   constructor(private formBuilder: FormBuilder, private myservice: MyServiceService,private http: HttpClient,private route : ActivatedRoute,
     private router: Router) { 
@@ -108,8 +110,12 @@ export class CheckoutPageComponent implements OnInit {
       itemsJson : JSON.stringify(this.getProductsById),
       itemsQuntJson : JSON.stringify(this.cart),
       amount : this.totalPrice,
-      user_id : this.login_Id
+      user_id : this.login_Id,
+      address : this.radioAddData,
+      paymentStatus : this.radioPayData
     }
+
+    console.log("checkout", checkOut);
    
     this.myservice.checkout(checkOut).subscribe((data: any[])=>{
       console.log("checkout", data);
