@@ -16,6 +16,8 @@ export class OrderdetailsPageComponent implements OnInit {
   orderItemQunt: any;
   changeStatus: FormGroup;
   trackAllItem: any[];
+  getAddressById: any;
+  pincode: any[];
 
   constructor(private formBuilder: FormBuilder,private myservice: MyServiceService,private http: HttpClient,
     private route : ActivatedRoute) {
@@ -30,11 +32,20 @@ export class OrderdetailsPageComponent implements OnInit {
       this.getOrdersById = data;
       this.orderItem=JSON.parse(this.getOrdersById.itemsJson);
       console.log("getMyOrdertById", this.getOrdersById, this.orderItem);
+          this.myservice.getAddressById(this.getOrdersById.address).subscribe((data)=>{
+            this.getAddressById = data;
+            console.log("getAddressById", this.getAddressById);
+          })  
     })  
-
+    
     this.myservice.getOrderDetails().subscribe((data: any[])=>{
       this.trackAllItem = data;
       console.log(this.trackAllItem);
+    })  
+
+    this.myservice.getpinCode().subscribe((data: any[])=>{
+      this.pincode = data;
+      console.log("getpinCode", this.pincode);
     })  
 
     this.changeStatus = this.formBuilder.group({
@@ -63,6 +74,13 @@ export class OrderdetailsPageComponent implements OnInit {
       }
       console.log(this.changeStatus.value);
       }, 500);
+  }
+
+  pin(pinid: any){
+    for (var item of this.pincode) {
+        if(item.pinCode_id==pinid)
+          return item.pin_code
+    }
   }
 
   onSubmit(){

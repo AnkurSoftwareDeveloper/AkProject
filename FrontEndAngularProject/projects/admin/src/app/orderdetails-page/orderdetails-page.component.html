@@ -41,7 +41,7 @@
                   <div class="text">
                     <h4 class="mb-1"><b>Customer</b></h4> 
                     <p class="mb-1">
-                        {{getOrdersById.name}} <br> {{getOrdersById.email}} <br> +91{{getOrdersById.phone}}
+                        {{getAddressById.name}} <br> {{getAddressById.email}} <br> +91{{getAddressById.phone}}
                     </p>
                   </div>
                 </article> 
@@ -67,7 +67,7 @@
                   <div class="text">
                     <h4 class="mb-1"><b>Deliver to</b></h4> 
                     <p class="mb-1">
-                        {{getOrdersById.address}}<br>City: {{getOrdersById.city}}, {{getOrdersById.state}}<br> {{getOrdersById.zip_code}}
+                        {{getAddressById.address}}<br>City: {{getAddressById.city}}, {{getAddressById.state}}<br> {{pin(getAddressById.pin_code)}}
                     </p>
                   </div>
                 </article> 
@@ -115,7 +115,8 @@
                               <dl class="dlist"> 
                                 <dt class="text-muted">Status:</dt> 
                                 <dd>  
-                                  <span class="badge rounded-pill alert-success text-success">Payment done</span> 
+                                  <span *ngIf="getOrdersById.paymentStatus=='Cash on Delivery'" class="badge rounded-pill alert-danger text-error">{{getOrdersById.paymentStatus}}</span>
+                                  <span *ngIf="getOrdersById.paymentStatus=='UPI'" class="badge rounded-pill alert-success text-success">{{getOrdersById.paymentStatus}}</span> 
                                 </dd> 
                               </dl>
                           </article>

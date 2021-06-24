@@ -146,4 +146,27 @@ public getOrderDetails(){
   return this.httpClient.get(environment.baseURL+endPoints);
 }
 
+/////////////////////////////////////////////
+public getAllAddress() {
+  let endPoints = "/api/address/"
+  return this.httpClient.get(environment.baseURL+endPoints);
+}
+public getAddressById(id:any) {
+  let endPoints = "/api/addressdetails/" + id;
+  return this.httpClient.get(environment.baseURL + endPoints);
+}
+
+
+/////////////////////////////////////////////
+public getAllUser() {
+  let endPoints = "/api/accounts/userdetails/"
+  return this.httpClient.get(environment.baseURL+endPoints);
+}
+
+/////////////////////////////////////////
+
+public getpinCode(){
+  let endPoints="/api/pinCode/"
+  return this.httpClient.get(environment.baseURL+endPoints);
+}
 }

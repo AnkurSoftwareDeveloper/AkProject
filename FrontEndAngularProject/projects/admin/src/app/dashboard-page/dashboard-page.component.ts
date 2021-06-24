@@ -13,6 +13,7 @@ export class DashboardPageComponent implements OnInit {
   allOrder: any[];
   trackAllItem: any[];
   pendingOrder: any=[];
+  allAddress: any[];
 
   constructor(private myservice: MyServiceService,private http: HttpClient,private route : ActivatedRoute) { }
 
@@ -25,8 +26,19 @@ export class DashboardPageComponent implements OnInit {
       this.trackAllItem = data;
       console.log(this.trackAllItem);
     })  
+    this.myservice.getAllAddress().subscribe((data: any[])=>{
+      this.allAddress = data;
+      console.log(this.allAddress);
+    })  
 
-  //  this.checkPendingOrders();
+  }
+  
+  addressDetail(addid: any){
+    for (var data of this.allAddress) {
+      if(data.address_id==addid){
+        return data
+      }
+    }
   }
 
   checkstatus(ordId: any){

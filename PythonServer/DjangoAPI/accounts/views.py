@@ -14,6 +14,17 @@ from rest_framework import response, permissions, status
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import exceptions
+from django.contrib.auth import get_user_model
+from django.http import JsonResponse
+from django.core.serializers import serialize
+
+@csrf_exempt
+def UserDetails(request):
+    if request.method == 'GET':
+        User = get_user_model()
+        Users = User.objects.all()
+        data = serialize("json", Users)
+        return JsonResponse(data, safe=False)  # or JsonResponse({'data': data})
 
 @api_view(['GET','POST'])
 @csrf_exempt

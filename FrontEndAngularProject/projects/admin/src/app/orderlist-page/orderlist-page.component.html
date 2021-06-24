@@ -5,9 +5,10 @@
                 <tr>
                     <td>Order Id</td>
                     <td>Name</td>
-                    <td>Email</td>
+                    <!-- <td>Email</td> -->
                     <td>Phone</td>
                     <td>Amount</td>
+                    <td>Payment</td>
                     <td>Status</td>
                     <td class="text-center">Action</td>
                 </tr>
@@ -15,10 +16,11 @@
             <tbody>
                 <tr *ngFor="let allord of allOrder">
                     <td>{{allord.order_id}}</td>
-                    <td>{{allord.name}}</td>
-                    <td>{{allord.email}}</td>
-                    <td>{{allord.phone}}</td>
+                    <td>{{addressDetail(allord.address).name}}</td>
+                    <!-- <td>{{userDetail(allord.user_id).email}}</td> -->
+                    <td>{{addressDetail(allord.address).phone}}</td>
                     <td>₹{{allord.amount}}</td>
+                    <td>{{allord.paymentStatus}}</td>
                     <td>
                     <span *ngIf="checkstatus(allord.order_id)==1" class="badge rounded-pill alert-warning">Pending</span>
                     <span *ngIf="checkstatus(allord.order_id)==2" class="badge rounded-pill alert-danger">Canceled</span>

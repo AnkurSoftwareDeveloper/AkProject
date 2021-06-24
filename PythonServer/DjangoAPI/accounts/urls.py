@@ -10,6 +10,7 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     # path('register' , RegisterView.as_view()),
+    path('userdetails/', UserDetails),
     path('register/', registration, name='register'),
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
