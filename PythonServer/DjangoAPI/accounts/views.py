@@ -18,14 +18,47 @@ from django.contrib.auth import get_user_model
 from django.http import JsonResponse
 from django.core.serializers import serialize
 
+@api_view(['GET'])
 @csrf_exempt
-def UserDetails(request):
+def UserProfile(request):
     if request.method == 'GET':
         User = get_user_model()
-        Users = User.objects.all()
-        data = serialize("json", Users)
-        return JsonResponse(data, safe=False)  # or JsonResponse({'data': data})
+        all_users = User.objects.all().values("id","username", "email", "first_name", "last_name")
+        user_list = list(all_users)
+        return JsonResponse(user_list, safe=False)
 
+@api_view(['GET','POST','DELETE'])
+@csrf_exempt 
+def User_detail(request, pk):
+    try: 
+        Users = User.objects.get(pk=pk) 
+    except User.DoesNotExist: 
+        return HttpResponse(status=status.HTTP_404_NOT_FOUND) 
+ 
+    if request.method == 'GET': 
+        print(Users.email)
+        res = {
+        "username": Users.username ,
+        'email' : Users.email , 
+        "first_name": Users.first_name ,
+        'last_name' : Users.last_name,
+        }
+        return response.Response(res, status.HTTP_201_CREATED)
+ 
+    elif request.method == 'POST': 
+        Users.first_name=request.POST.get('first_name')                    
+        Users.last_name=request.POST.get('last_name')
+        Users.save()
+        res = {
+        "status":"success" , 
+        }
+        return response.Response(res, status.HTTP_201_CREATED)
+ 
+    elif request.method == 'DELETE': 
+        Users.delete() 
+        return HttpResponse(status=status.HTTP_204_NO_CONTENT)
+
+#//////////////////////////////////////////////////////////////
 @api_view(['GET','POST'])
 @csrf_exempt
 def registration(request):

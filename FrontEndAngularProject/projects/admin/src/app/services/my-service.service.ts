@@ -159,10 +159,13 @@ public getAddressById(id:any) {
 
 /////////////////////////////////////////////
 public getAllUser() {
-  let endPoints = "/api/accounts/userdetails/"
+  let endPoints = "/api/accounts/userprofile/"
   return this.httpClient.get(environment.baseURL+endPoints);
 }
-
+public getUserById(id:any) {
+  let endPoints = "/api/accounts/userdetails/" + id;
+  return this.httpClient.get(environment.baseURL + endPoints);
+}
 /////////////////////////////////////////
 
 public getpinCode(){

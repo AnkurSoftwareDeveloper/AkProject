@@ -168,7 +168,12 @@ public forgetPassword(postData: Object) {
   let endPoints = "/api/accounts/passwordreset/"
   return this.httpClient.get(environment.baseURL + endPoints, postData);
 }
+public addUserProfile(postData: Object) {
+  let endPoints = "/api/accounts/userprofile/"
+  return this.httpClient.post(environment.baseURL + endPoints, postData);
+}
 
+//////////////////////////////////////////
 public checkout(postData: Object) {
   let endPoints = "/api/checkout/"
   return this.httpClient.post(environment.baseURL + endPoints, postData);

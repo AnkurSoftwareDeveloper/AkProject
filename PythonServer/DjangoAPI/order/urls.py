@@ -6,7 +6,7 @@ urlpatterns = [
     path('pinCode/', PinCode_list),
     path('pinCodeDetails/<int:pk>/', PinCode_detail),
     path('address/', Address_list),
-    path('addressbyuser/', AddreshByUser),
+    path('addressbyuser/', AddressByUser),
     path('addressdetails/<int:pk>/', Address_detail),
     path('checkout/', checkout),
     path('myorder/', myorder),

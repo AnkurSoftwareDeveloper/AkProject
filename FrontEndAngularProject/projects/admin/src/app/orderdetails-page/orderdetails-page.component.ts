@@ -18,6 +18,7 @@ export class OrderdetailsPageComponent implements OnInit {
   trackAllItem: any[];
   getAddressById: any;
   pincode: any[];
+  getUserById: any;
 
   constructor(private formBuilder: FormBuilder,private myservice: MyServiceService,private http: HttpClient,
     private route : ActivatedRoute) {
@@ -35,6 +36,11 @@ export class OrderdetailsPageComponent implements OnInit {
           this.myservice.getAddressById(this.getOrdersById.address).subscribe((data)=>{
             this.getAddressById = data;
             console.log("getAddressById", this.getAddressById);
+          })  
+
+          this.myservice.getUserById(this.getOrdersById.user_id).subscribe((data)=>{
+            this.getUserById = data;
+            console.log("getUserById", this.getUserById);
           })  
     })  
     

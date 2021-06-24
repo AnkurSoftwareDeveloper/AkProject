@@ -91,7 +91,7 @@ def Address_detail(request, pk):
         return HttpResponse(status=status.HTTP_204_NO_CONTENT)
 
 @csrf_exempt
-def AddreshByUser(request):
+def AddressByUser(request):
     if request.method=="POST":
         request = json.loads(request.body)
         user_id = request['user_id']

@@ -29,19 +29,19 @@ export class OrderlistPageComponent implements OnInit {
       this.allAddress = data;
       console.log(this.allAddress);
     })  
-    // this.myservice.getAllUser().subscribe((data: any[])=>{
-    //   this.allUser = data;
-    //   console.log(this.allUser);
-    // })  
+    this.myservice.getAllUser().subscribe((data: any[])=>{
+      this.allUser = data;
+      console.log(this.allUser);
+    })  
   }
 
-  // userDetail(userid: any){
-  //   for (var data of this.allAddress) {
-  //     if(data.user_id==userid){
-  //       return data
-  //     }
-  //   }
-  // }
+  userDetail(userid: any){
+    for (var data of this.allUser) {
+      if(data.id==userid){
+        return data
+      }
+    }
+  }
 
   addressDetail(addid: any){
     for (var data of this.allAddress) {
