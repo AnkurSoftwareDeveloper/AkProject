@@ -8,14 +8,14 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-xs-6 col-md-6">
-                          <a href="#" class="btn btn-success btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>Users</a>
+                          <a href="#" class="btn btn-success btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>Users<br/>({{userLen}})</a>
                           <a href="#" class="btn btn-danger btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br/>Products</a>
                           <a href="#" class="btn btn-warning btn-lg" role="button"><span class="glyphicon glyphicon-bookmark"></span> <br/>Category</a>
                           <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br/>SubCategory</a>
                         </div>
                         <div class="col-xs-6 col-md-6">
-                            <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br/>Total Orders</a>
-                          <a href="#" class="btn btn-info btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br/>Pending Orders</a>
+                            <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br/>Total Orders <br/>({{allOrderLen}})</a>
+                          <a href="#" class="btn btn-info btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br/>Pending Orders <br/>({{pendingOrderLen}})</a>
                           <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-picture"></span> <br/>Photos</a>
                           <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-tag"></span> <br/>Feedback</a>
                         </div>
@@ -26,13 +26,14 @@
     </div>
 </div>
 <div class="well">
+    <h2 class="text-center">Pending Orders</h2>
     <div class="table-responsive">
         <table class="table table-bordered tbl-cart">
             <thead>
                 <tr>
                     <td>Order Id</td>
                     <td>Name</td>
-                    <!-- <td>Email</td> -->
+                    <td>Email</td>
                     <td>Phone</td>
                     <td>Amount</td>
                     <td>Payment</td>
@@ -44,7 +45,7 @@
                 <tr *ngFor="let allord of pendingOrder">
                     <td>{{allord.order_id}}</td>
                     <td>{{addressDetail(allord.address).name}}</td>
-                    <!-- <td>{{userDetail(allord.user_id).email}}</td> -->
+                    <td>{{userDetail(allord.user_id).email}}</td>
                     <td>{{addressDetail(allord.address).phone}}</td>
                     <td>₹{{allord.amount}}</td>
                     <td>{{allord.paymentStatus}}</td>

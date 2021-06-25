@@ -9,6 +9,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { AuthGuard } from './_guards';
 import { OrderlistPageComponent } from './orderlist-page/orderlist-page.component';
 import { OrderdetailsPageComponent } from './orderdetails-page/orderdetails-page.component';
+import { UserPageComponent } from './user-page/user-page.component';
 
 const routes: Routes = [
   {path: '', component: DashboardPageComponent, canActivate: [AuthGuard]},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'subcategory', component: SubcategoryPageComponent, canActivate: [AuthGuard]},
   {path: 'orderlist', component: OrderlistPageComponent, canActivate: [AuthGuard]},
   {path: 'orderdetails/:ord', component: OrderdetailsPageComponent, canActivate: [AuthGuard]},
+  {path: 'user', component: UserPageComponent, canActivate: [AuthGuard]},
   {path: 'adminlogin', component: LoginPageComponent},
   // otherwise redirect to home
   { path: '**', redirectTo: '' }

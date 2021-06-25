@@ -14,12 +14,17 @@ export class DashboardPageComponent implements OnInit {
   trackAllItem: any[];
   pendingOrder: any=[];
   allAddress: any[];
+  allUser: any;
+  userLen: number;
+  allOrderLen: number;
+  pendingOrderLen: number;
 
   constructor(private myservice: MyServiceService,private http: HttpClient,private route : ActivatedRoute) { }
 
   ngOnInit(): void {
     this.myservice.getAllOrder().subscribe((data: any[])=>{
       this.allOrder = data;
+      this.allOrderLen = data.length;
       console.log(this.allOrder);
     })  
     this.myservice.getOrderDetails().subscribe((data: any[])=>{
@@ -30,7 +35,20 @@ export class DashboardPageComponent implements OnInit {
       this.allAddress = data;
       console.log(this.allAddress);
     })  
+    this.myservice.getAllUser().subscribe((data: any[])=>{
+      this.allUser = data;
+      this.userLen=data.length;
+      console.log(this.allUser);
+    })
 
+  }
+
+  userDetail(userid: any){
+    for (var data of this.allUser) {
+      if(data.id==userid){
+        return data
+      }
+    }
   }
   
   addressDetail(addid: any){
@@ -63,10 +81,11 @@ export class DashboardPageComponent implements OnInit {
         if(this.checkstatus(data.order_id)!==2 && this.checkstatus(data.order_id)!==3)
         {
           this.pendingOrder.push(data);
+          this.pendingOrderLen=this.pendingOrderLen+1;
         }
       }
       console.log("pendingOrder",this.pendingOrder);
-  }, 500);
+  }, 50);
   }
 
 }

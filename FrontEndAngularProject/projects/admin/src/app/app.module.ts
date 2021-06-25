@@ -19,6 +19,7 @@ import { OrderdetailsPageComponent } from './orderdetails-page/orderdetails-page
 import {NgxPrintModule} from 'ngx-print';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './_helpers';
+import { UserPageComponent } from './user-page/user-page.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { JwtInterceptor } from './_helpers';
     SubcategoryPageComponent,
     LoginPageComponent,
     OrderlistPageComponent,
-    OrderdetailsPageComponent
+    OrderdetailsPageComponent,
+    UserPageComponent
   ],
   imports: [
     BrowserModule,

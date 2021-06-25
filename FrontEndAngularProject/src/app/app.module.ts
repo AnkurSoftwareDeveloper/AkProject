@@ -25,6 +25,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './_helpers';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { SearchPageComponent } from './search-page/search-page.component';
+import { MyaccountComponent } from './myaccount/myaccount.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { SearchPageComponent } from './search-page/search-page.component';
     MyorderComponent,
     ChangepasswordComponent,
     ForgotpasswordComponent,
-    SearchPageComponent
+    SearchPageComponent,
+    MyaccountComponent
   ],
   imports: [
     BrowserModule,

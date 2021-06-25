@@ -46,8 +46,8 @@ def User_detail(request, pk):
         return response.Response(res, status.HTTP_201_CREATED)
  
     elif request.method == 'POST': 
-        Users.first_name=request.POST.get('first_name')                    
-        Users.last_name=request.POST.get('last_name')
+        Users.first_name=request.data.get('first_name')                    
+        Users.last_name=request.data.get('last_name')
         Users.save()
         res = {
         "status":"success" , 

@@ -113,7 +113,7 @@ public getAddressByUser(postData: Object){
 }
 
 public getAddresssById(id:any) {
-  let endPoints = "/api/addressDetails/" + id;
+  let endPoints = "/api/addressdetails/" + id;
   return this.httpClient.get(environment.baseURL + endPoints);
 }
 
@@ -123,12 +123,12 @@ public addAddress(postData: Object) {
 }
 
 public updateAddress(postData: Object, id:any) {
-  let endPoints = "/api/addressDetails/" + id;
+  let endPoints = "/api/addressdetails/" + id +"/";
   return this.httpClient.put(environment.baseURL + endPoints, postData);
 }
 
 public deleteAddress(id:any) {
-  let endPoints = "/api/addressDetails/" + id;
+  let endPoints = "/api/addressdetails/" + id;
   return this.httpClient.delete(environment.baseURL + endPoints);
 }
 
@@ -154,8 +154,18 @@ public addOrderUpdate(postData: Object) {
 }
 
 ///////////////////////////////////////////
+public getUserById(id:any) {
+  let endPoints = "/api/accounts/userdetails/" + id;
+  return this.httpClient.get(environment.baseURL + endPoints);
+}
+
 public addUser(postData: Object) {
   let endPoints = "/api/accounts/register/"
+  return this.httpClient.post(environment.baseURL + endPoints, postData);
+}
+
+public updateProfile(postData: Object, id:any) {
+  let endPoints = "/api/accounts/userdetails/" + id +"/";
   return this.httpClient.post(environment.baseURL + endPoints, postData);
 }
 

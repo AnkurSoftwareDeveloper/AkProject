@@ -37,9 +37,9 @@ export class JwtInterceptor implements HttpInterceptor {
             // In this case we want to logout user and to redirect it to login page  
             console.log('on your way out')            
             this.authenticationService.logout();    
-            // this.router.navigate(['/']).then(() => {
-            //   window. location. reload();
-            //   });          
+            this.router.navigate(['/']).then(() => {
+              window. location. reload();
+              });          
             return throwError(error);
           }
           else if (error instanceof HttpErrorResponse && error.status === 403) {
@@ -47,9 +47,9 @@ export class JwtInterceptor implements HttpInterceptor {
           } else {
               console.log("throw error");
               this.authenticationService.logout();    
-              // this.router.navigate(['/']).then(() => {
-              // window. location. reload();
-              // });        
+              this.router.navigate(['/']).then(() => {
+              window. location. reload();
+              });        
               return throwError(error);
           }
         }));

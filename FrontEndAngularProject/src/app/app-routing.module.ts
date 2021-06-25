@@ -16,6 +16,7 @@ import { MyorderComponent } from './myorder/myorder.component';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { SearchPageComponent } from './search-page/search-page.component';
+import { MyaccountComponent } from './myaccount/myaccount.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'cart', component: CartPageComponent },
   { path: 'checkOut', component: CheckoutPageComponent, canActivate: [AuthGuard] },
   { path: 'myorder', component: MyorderComponent, canActivate: [AuthGuard] },
+  { path: 'myaccount', component: MyaccountComponent, canActivate: [AuthGuard] },
   { path: 'changepassword', component: ChangepasswordComponent, canActivate: [AuthGuard] },
   { path: 'forgotpassword', component: ForgotpasswordComponent },
   { path: 'searchPage', component: SearchPageComponent },
