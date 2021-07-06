@@ -13,11 +13,11 @@ export class DashboardPageComponent implements OnInit {
   allOrder: any[];
   trackAllItem: any[];
   pendingOrder: any=[];
-  allAddress: any[];
   allUser: any;
   userLen: number;
   allOrderLen: number;
   pendingOrderLen: number;
+  addressDet: any;
 
   constructor(private myservice: MyServiceService,private http: HttpClient,private route : ActivatedRoute) { }
 
@@ -26,15 +26,22 @@ export class DashboardPageComponent implements OnInit {
       this.allOrder = data;
       this.allOrderLen = data.length;
       console.log(this.allOrder);
+
+      this.myservice.getOrderDetails().subscribe((data: any[])=>{
+        this.trackAllItem = data;
+        console.log(this.trackAllItem);
+
+        for (let data of this.allOrder) {
+          if(this.checkstatus(data.order_id)!==2 && this.checkstatus(data.order_id)!==3)
+          {
+            this.pendingOrder.push(data);
+            this.pendingOrderLen=this.pendingOrderLen+1;
+          }
+        }
+        console.log("pendingOrder",this.pendingOrder);
+      })  
     })  
-    this.myservice.getOrderDetails().subscribe((data: any[])=>{
-      this.trackAllItem = data;
-      console.log(this.trackAllItem);
-    })  
-    this.myservice.getAllAddress().subscribe((data: any[])=>{
-      this.allAddress = data;
-      console.log(this.allAddress);
-    })  
+    
     this.myservice.getAllUser().subscribe((data: any[])=>{
       this.allUser = data;
       this.userLen=data.length;
@@ -51,16 +58,12 @@ export class DashboardPageComponent implements OnInit {
     }
   }
   
-  addressDetail(addid: any){
-    for (var data of this.allAddress) {
-      if(data.address_id==addid){
-        return data
-      }
-    }
+  addressDetail(address: any){
+    this.addressDet=JSON.parse(address);
+    return this.addressDet;
   }
 
   checkstatus(ordId: any){
-    let status
     for (var data of this.trackAllItem) {
       if(data.order_id==ordId){
         if(data.status=="Your order has been placed")
@@ -75,17 +78,5 @@ export class DashboardPageComponent implements OnInit {
     }
   }
 
-  ngAfterViewInit(){
-    setTimeout(() => {
-      for (var data of this.allOrder) {
-        if(this.checkstatus(data.order_id)!==2 && this.checkstatus(data.order_id)!==3)
-        {
-          this.pendingOrder.push(data);
-          this.pendingOrderLen=this.pendingOrderLen+1;
-        }
-      }
-      console.log("pendingOrder",this.pendingOrder);
-  }, 50);
-  }
-
+  
 }

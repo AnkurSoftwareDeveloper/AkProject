@@ -16,7 +16,7 @@ export class OrderdetailsPageComponent implements OnInit {
   orderItemQunt: any;
   changeStatus: FormGroup;
   trackAllItem: any[];
-  getAddressById: any;
+  AddressDet: any;
   pincode: any[];
   getUserById: any;
 
@@ -32,11 +32,8 @@ export class OrderdetailsPageComponent implements OnInit {
     this.myservice.getMyOrdertById(this.orderId).subscribe((data)=>{
       this.getOrdersById = data;
       this.orderItem=JSON.parse(this.getOrdersById.itemsJson);
+      this.AddressDet=JSON.parse(this.getOrdersById.address);
       console.log("getMyOrdertById", this.getOrdersById, this.orderItem);
-          this.myservice.getAddressById(this.getOrdersById.address).subscribe((data)=>{
-            this.getAddressById = data;
-            console.log("getAddressById", this.getAddressById);
-          })  
 
           this.myservice.getUserById(this.getOrdersById.user_id).subscribe((data)=>{
             this.getUserById = data;

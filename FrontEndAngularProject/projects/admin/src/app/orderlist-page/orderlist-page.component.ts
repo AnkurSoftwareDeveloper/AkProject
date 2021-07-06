@@ -11,8 +11,8 @@ import { MyServiceService } from 'projects/admin/src/app/services/my-service.ser
 export class OrderlistPageComponent implements OnInit {
   allOrder: any[];
   trackAllItem: any[];
-  allAddress: any[];
   allUser: any[];
+  addressDet: any;
 
   constructor(private myservice: MyServiceService,private http: HttpClient,private route : ActivatedRoute) { }
 
@@ -24,10 +24,6 @@ export class OrderlistPageComponent implements OnInit {
     this.myservice.getOrderDetails().subscribe((data: any[])=>{
       this.trackAllItem = data;
       console.log(this.trackAllItem);
-    })  
-    this.myservice.getAllAddress().subscribe((data: any[])=>{
-      this.allAddress = data;
-      console.log(this.allAddress);
     })  
     this.myservice.getAllUser().subscribe((data: any[])=>{
       this.allUser = data;
@@ -43,16 +39,12 @@ export class OrderlistPageComponent implements OnInit {
     }
   }
 
-  addressDetail(addid: any){
-    for (var data of this.allAddress) {
-      if(data.address_id==addid){
-        return data
-      }
-    }
+  addressDetail(address: any){
+    this.addressDet=JSON.parse(address);
+    return this.addressDet;
   }
 
   checkstatus(ordId: any){
-    let status
     for (var data of this.trackAllItem) {
       if(data.order_id==ordId){
         if(data.status=="Your order has been placed")

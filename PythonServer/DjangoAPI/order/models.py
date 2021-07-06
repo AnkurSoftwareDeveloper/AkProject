@@ -28,7 +28,7 @@ class Order(models.Model):
     itemsJson= models.CharField(max_length=5000)
     itemsQuntJson= models.CharField(max_length=500)
     amount=models.IntegerField(default=0)
-    address=models.ForeignKey(Address , on_delete=models.PROTECT)
+    address=models.CharField(max_length=5000)
     paymentStatus=models.CharField(max_length=100)
 
 class OrderUpdate(models.Model):

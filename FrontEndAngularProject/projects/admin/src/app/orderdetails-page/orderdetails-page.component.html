@@ -41,7 +41,7 @@
                   <div class="text">
                     <h4 class="mb-1"><b>Customer</b></h4> 
                     <p class="mb-1">
-                        {{getAddressById.name}} <br> {{getUserById.email}} <br> +91{{getAddressById.phone}}
+                        {{AddressDet.name}} <br> {{getUserById.email}} <br> +91{{AddressDet.phone}}
                     </p>
                   </div>
                 </article> 
@@ -67,7 +67,7 @@
                   <div class="text">
                     <h4 class="mb-1"><b>Deliver to</b></h4> 
                     <p class="mb-1">
-                        {{getAddressById.address}}<br>City: {{getAddressById.city}}, {{getAddressById.state}}<br> {{pin(getAddressById.pin_code)}}
+                        {{AddressDet.address}}<br>City: {{AddressDet.city}}, {{AddressDet.state}}<br> {{pin(AddressDet.pin_code)}}
                     </p>
                   </div>
                 </article> 
@@ -116,7 +116,7 @@
                                 <dt class="text-muted">Status:</dt> 
                                 <dd>  
                                   <span *ngIf="getOrdersById.paymentStatus=='Cash on Delivery'" class="badge rounded-pill alert-danger text-error">{{getOrdersById.paymentStatus}}</span>
-                                  <span *ngIf="getOrdersById.paymentStatus=='UPI'" class="badge rounded-pill alert-success text-success">{{getOrdersById.paymentStatus}}</span> 
+                                  <span *ngIf="getOrdersById.paymentStatus=='Online Payment'" class="badge rounded-pill alert-success text-success">{{getOrdersById.paymentStatus}}</span> 
                                 </dd> 
                               </dl>
                           </article>
@@ -130,7 +130,8 @@
                 <div class="box shadow-sm bg-light">
                    <h4><b>Payment info</b></h4>
                    <p> 
-                    <img src="images/card-brands/2.png" class="border" height="20"> Master Card **** **** 4768  <br>
+                    <!-- <img src="images/card-brands/2.png" class="border" height="20"> -->
+                     Master Card **** **** 4768  <br>
                     Business name: Grand Market LLC <br>
                     Phone: +1 (800) 555-154-52
                    </p>

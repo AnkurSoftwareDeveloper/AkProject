@@ -105,7 +105,12 @@ export class CheckoutPageComponent implements OnInit {
   }
 
   onAddChange(addRadio: any){
-    this.radioAddData=addRadio;
+    for (var item of this.userAddress) {
+      if(item.address_id==addRadio){
+          this.radioAddData=item;
+      }
+    }
+    
   }
   onPayChange(payRadio: any){
     this.radioPayData=payRadio;
@@ -117,7 +122,7 @@ export class CheckoutPageComponent implements OnInit {
       itemsQuntJson : JSON.stringify(this.cart),
       amount : this.totalPrice,
       user_id : this.login_Id,
-      address : this.radioAddData,
+      address : JSON.stringify(this.radioAddData),
       paymentStatus : this.radioPayData
     }
 
