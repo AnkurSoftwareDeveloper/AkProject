@@ -37,7 +37,7 @@
                                         <div class="snipcart-item block">
                                             <div class="snipcart-thumb" style="text-align: center;">
                                                 <a [routerLink]="['/productDescription', pro.product_id]">
-                                                    <img src="http://127.0.0.1:8000{{pro.image}}" alt=" " style="height: 10em; width: 10em;" class="img-responsive" />
+                                                    <img src="{{envURL}}{{pro.image}}" alt=" " style="height: 10em; width: 10em;" class="img-responsive" />
                                                 </a>
                                                 <p>{{pro.product_name}}</p>
                                                  <span>{{pro.quantity}}</span>

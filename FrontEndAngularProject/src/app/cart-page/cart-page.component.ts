@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MyServiceService } from '../services/my-service.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-cart-page',
@@ -12,10 +13,12 @@ export class CartPageComponent implements OnInit {
   cart: {};
   getProductsById:any = [];
   totalPrice:number= 0;
+  envURL: any;
 
   constructor(private myservice: MyServiceService,private http: HttpClient,private route : ActivatedRoute,
     private router: Router) {
     this.cart = JSON.parse(localStorage.getItem('cart'));
+    this.envURL =environment.baseURL;
     
    }
 

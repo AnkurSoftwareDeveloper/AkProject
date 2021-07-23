@@ -19,9 +19,12 @@ export class MyorderComponent implements OnInit {
   orderItemQunt: any;
   trackAllItem: any[];
   cancelOrderButt: boolean;
+  envURL: any;
 
   constructor(private myservice: MyServiceService, private http: HttpClient,private customDatePipe: DatePipe) {
     this.login_Id=(JSON.parse(localStorage.getItem('currentUser'))).user_id;
+
+    this.envURL =environment.baseURL;
    }
 
   ngOnInit(): void {

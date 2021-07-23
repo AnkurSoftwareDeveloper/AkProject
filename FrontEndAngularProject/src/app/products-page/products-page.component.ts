@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MyServiceService } from '../services/my-service.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-products-page',
@@ -19,8 +20,11 @@ export class ProductsPageComponent implements OnInit {
   category: any[];
   subCategory: any[];
   stockAlert: any[];
+  envURL: any;
   
   constructor(private myservice: MyServiceService, private route : ActivatedRoute) { 
+    this.envURL =environment.baseURL;
+    
     this.route.params.subscribe(params => {
       this.categoryId = params['cat'];
       this.subCategoryId = params['subcat'];

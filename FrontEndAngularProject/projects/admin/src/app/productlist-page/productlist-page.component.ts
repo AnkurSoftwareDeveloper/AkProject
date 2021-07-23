@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MyServiceService } from 'projects/admin/src/app/services/my-service.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-productlist-page',
@@ -14,7 +15,10 @@ export class ProductlistPageComponent implements OnInit {
   category: any[];
   subCategory: any[];
   stockAlert: any[];
-  constructor(private myservice: MyServiceService,private http: HttpClient,private route : ActivatedRoute) { }
+  envURL:any;
+  constructor(private myservice: MyServiceService,private http: HttpClient,private route : ActivatedRoute) {
+    this.envURL =environment.baseURL;
+   }
 
   ngOnInit(): void {
     this.myservice.getProducts().subscribe((data: any[])=>{

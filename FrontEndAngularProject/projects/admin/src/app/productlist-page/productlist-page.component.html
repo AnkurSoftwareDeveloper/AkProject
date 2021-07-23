@@ -24,7 +24,7 @@
                 <tr *ngFor="let pro of products">
                     <td>{{pro.product_id}}</td>
                     <td class="hidden-xs">
-                            <img src="http://127.0.0.1:8000{{pro.image}}" alt="Age Of Wisdom Tan Graphic Tee" title="" width="47" height="47">
+                            <img src="{{envURL}}{{pro.image}}" alt="Age Of Wisdom Tan Graphic Tee" title="" width="47" height="47">
                     </td>
                     <td>{{pro.product_name}}</td>
                     <td>{{getCategoryName(pro.category)}}</td>

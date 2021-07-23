@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as $ from 'jquery';
 import { MyServiceService } from '../services/my-service.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-home-page',
@@ -14,9 +15,11 @@ export class HomePageComponent implements OnInit {
   slides: any = [[]];
   selectedIdx : number =0;
   cart: {};
+  envURL: any;
 
   constructor(private myservice: MyServiceService, private route : ActivatedRoute) { 
-
+    this.envURL =environment.baseURL;
+    
     if(localStorage.getItem('cart') == null)
     {
      this.cart={};

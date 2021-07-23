@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MyServiceService } from '../services/my-service.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-product-description',
@@ -14,9 +15,11 @@ export class ProductDescriptionComponent implements OnInit {
   products: any[];
   slides: any = [[]];
   selectedIdx : number =0;
+  envURL: any;
 
   constructor(private myservice: MyServiceService, private route : ActivatedRoute) {
-
+    this.envURL =environment.baseURL;
+    
     this.route.params.subscribe(params => {
       this.productId = params['prod'];
         console.log(this.productId); 
