@@ -1,6 +1,6 @@
 <div class="w3l_banner_nav_right" style="padding: 25px;">
     <div class="">
-        <h3>Step 1 - My Cart Checkout - Review Your Cart Items</h3>
+        <h3 class="heading">Step 1 - My Cart Checkout - Review Your Cart Items</h3>
         <div id="items">
             <ul class="list-group">
                 <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let pro of getProductsById">
@@ -13,17 +13,17 @@
         Enter your details below & place your order. Thanks for using My Awesome Cart!</div>
     </div>
     <div class="">
-        <h3>Step 2 - Delivery Address :</h3>
+        <h3 class="heading">Step 2 - Delivery Address</h3>
             <div class="row" *ngFor="let useradd of userAddress">
                 <div class="panel panel-default" style="display: flex; padding-left: 1em;">
                     <input type="radio" class="custom-control-input" (change)="onAddChange($event.target.value)" 
                     id="{{useradd.address_id}}" name="radioAddData" value="{{useradd.address_id}}" style="margin-top: 37px;">
                     <label class="custom-control-label panel-body card-input" for="{{useradd.address_id}}" style="width: 100%;">
                         <span >
-                            {{useradd.name}} {{useradd.phone}}
+                            {{useradd.name}} - {{useradd.phone}}
                         </span><br>
                         <span >
-                            {{useradd.address}} {{useradd.city}} {{useradd.state}} - {{pin(useradd.pin_code)}}
+                            {{useradd.address}}, {{useradd.city}}, {{useradd.state}} - {{pin(useradd.pin_code)}}
                         </span>
                     </label>
                 </div>
@@ -59,7 +59,7 @@
                                         <label for="pin_code">Pin Code</label>
                                         <!-- <input type="text" class="form-control" id="inputZip"> -->
                                         <select id="pin_code" name="pin_code" formControlName="pin_code" class="form-control">
-                                            <option>Select option</option>
+                                            <option value="">Select Pin Code</option>
                                             <option *ngFor="let pin of pincode" value="{{pin.pinCode_id}}">{{pin.pin_code}}</option>
                                         </select>
                                     </div>
@@ -82,14 +82,14 @@
         
     </div>
     <div class="">
-        <h3>Step 3 - Payment Options</h3>
+        <h3 class="heading">Step 3 - Payment Options</h3>
         <div id="items">
             <input type="radio" class="" name="payRadio" (change)="onPayChange($event.target.value)" readonly="" id="COD" value="Cash on Delivery">
-            <label class="">Cash on Delivery</label>
+            <label class="pay">Cash on Delivery</label>
         </div>
         <div id="items">
             <input type="radio" class="" name="payRadio" (change)="onPayChange($event.target.value)" readonly="" id="UPI" value="Online Payment">
-            <label class="">Online Payment</label>
+            <label class="pay">Online Payment</label>
         </div>
     </div>
     <button type="submit" (click)="checkOutSubmit()" class="btn btn-primary">Confirm Order</button>

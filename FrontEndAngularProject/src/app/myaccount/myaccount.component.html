@@ -1,6 +1,6 @@
 <div class="w3l_banner_nav_right" style="padding: 25px;">
     <div class="">
-        <h3>Profile Details:</h3>
+        <h3 class="heading">Profile Details</h3>
         <form [formGroup]="editProfileForm" (ngSubmit)="editProfileSubmit()">
             <div class="row">
               <div class="col-md-5">
@@ -25,7 +25,7 @@
         </div>
     </div>
     <div style="padding-top: 2em;">
-        <h3>Address Details:</h3>
+        <h3 class="heading">Address Details</h3>
             <div class="row" *ngFor="let useradd of userAddress">
                 <div class="panel panel-default" style="display: flex; padding-left: 1em;">
                     <div class="custom-control-label panel-body card-input" style="width: 100%;">
@@ -61,7 +61,7 @@
                                         <label for="pin_code">Pin Code</label>
                                         <!-- <input type="text" class="form-control" id="inputZip"> -->
                                         <select id="pin_code" name="pin_code" [(ngModel)]="useradd.pin_code" formControlName="pin_code" class="form-control">
-                                            <option>Select option</option>
+                                            <option value="">Select pin Code</option>
                                             <option *ngFor="let pin of pincode" value="{{pin.pinCode_id}}">{{pin.pin_code}}</option>
                                         </select>
                                     </div>
@@ -112,7 +112,7 @@
                                         <label for="pin_code">Pin Code</label>
                                         <!-- <input type="text" class="form-control" id="inputZip"> -->
                                         <select id="pin_code" name="pin_code" formControlName="pin_code" class="form-control">
-                                            <option>Select option</option>
+                                            <option value="">Select pin Code</option>
                                             <option *ngFor="let pin of pincode" value="{{pin.pinCode_id}}">{{pin.pin_code}}</option>
                                         </select>
                                     </div>

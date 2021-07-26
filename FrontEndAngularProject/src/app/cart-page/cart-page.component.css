@@ -23,6 +23,7 @@ background:#ddd;
 /* TABLES */
 .table {
     border-collapse: separate;
+	text-align: center;
 }
 .table-hover > tbody > tr:hover > td,
 .table-hover > tbody > tr:hover > th {

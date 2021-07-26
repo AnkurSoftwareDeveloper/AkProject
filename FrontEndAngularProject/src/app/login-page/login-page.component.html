@@ -13,37 +13,35 @@
 <!-- login -->
   <div class="w3_login">
     <h3>Sign In & Sign Up</h3>
-    <div class="w3_login_module">
       <div class="module form-module">
         <div class="toggle"><i class="fa fa-times fa-pencil"></i>
         <div class="tooltip">Click Me</div>
         </div>
         <div class="form">
-        <h2>Login to your account</h2>
+        <h2 style="text-align: center; padding: 1em;">Login to your account</h2>
         <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
-          <input type="text" name="Username" formControlName="username" placeholder="Username / Email" required=" ">
+          <input type="text" name="Username" formControlName="username" placeholder="User name / Email" required=" ">
           <input type="password" name="Password" formControlName="password" placeholder="Password" required=" ">
           <input type="submit" value="Login">
           <div *ngIf="error" class="alert alert-danger">{{error}}</div>
         </form>
         </div>
         <div class="form">
-        <h2>Create an account</h2>
+        <h2 style="text-align: center; padding: 1em;">Create an account</h2>
         <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-          <input type="text" name="Username" formControlName="username" placeholder="Username" required=" ">
+          <input type="text" name="Username" formControlName="username" placeholder="User name" required=" ">
           <input type="password" name="Password" formControlName="password" placeholder="Password" required=" ">
-          <input type="password" name="Password2" formControlName="password2" placeholder="ReType Password" required=" ">
+          <input type="password" name="Password2" formControlName="password2" placeholder="Re-Type Password" required=" ">
           <input type="email" name="Email" formControlName="email" placeholder="Email Address" required=" ">
           <input type="submit" value="Register">
           <div *ngIf="error" class="alert alert-danger">{{error}}</div>
         </form>
         </div>
         <div class="cta">
-          <a href="http://localhost:8000/api/accounts/passwordreset/" target="_blank" rel="noopener noreferrer">
+          <a href="{{envURL}}/api/accounts/passwordreset/" target="_blank" rel="noopener noreferrer">
           Forgot your password?</a>
         </div>
       </div>
-    </div>
   </div>
 <!-- //login -->
   </div>

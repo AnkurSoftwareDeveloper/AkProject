@@ -10,7 +10,7 @@
                          <div class="form-group">
                               <label class="control-label" for="category_id">CATEGORY</label>
                                 <select id="category_id" name="category_id" formControlName="category_id" class="form-control">
-                                  <option selected disabled hidden>Select option</option>
+                                    <option value="">Select Category</option>
                                   <option *ngFor="let cat of category" value="{{cat.category_id}}">{{cat.category_name}}</option>
                                 </select>
                             </div>

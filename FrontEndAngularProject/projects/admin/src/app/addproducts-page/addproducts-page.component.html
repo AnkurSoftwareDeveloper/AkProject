@@ -27,7 +27,7 @@
       <label class="col-md-4 control-label" for="category">PRODUCT CATEGORY</label>
       <div class="col-md-4">
         <select id="category" name="category" formControlName="category" class="form-control">
-          <option>Select option</option>
+          <option value="">Select Category</option>
           <option *ngFor="let cat of category" value="{{cat.category_id}}">{{cat.category_name}}</option>
         </select>
       </div>
@@ -38,7 +38,7 @@
         <label class="col-md-4 control-label" for="subcategory">PRODUCT SUBCATEGORY</label>
         <div class="col-md-4">
           <select id="subcategory" name="subcategory" formControlName="subcategory" class="form-control">
-            <option>Select option</option>
+            <option value="">Select SubCategory</option>
           <option *ngFor="let subcat of subCategory" value="{{subcat.subCategory_id}}">{{subcat.subCategory_name}}</option>
           </select>
         </div>
@@ -76,7 +76,7 @@
       <label class="col-md-4 control-label" for="stockalert">STOCK ALERT</label>
       <div class="col-md-4">
         <select id="stockalert" name="stockalert" formControlName="stockalert" class="form-control">
-          <option>Select option</option>
+          <option value="">Select Stockalert</option>
           <option *ngFor="let stock of stockAlert" value="{{stock.stockalert_id}}">{{stock.stockalert_name}}</option>
         </select>
       </div>

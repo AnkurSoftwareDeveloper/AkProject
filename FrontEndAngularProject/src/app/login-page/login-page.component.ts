@@ -18,16 +18,13 @@ export class LoginPageComponent implements OnInit {
   returnUrl: string;
   error = '';
   loginForm: FormGroup;
+  profileForm: FormGroup;
+  envURL: any;
 
   constructor(private myservice: MyServiceService, private formBuilder: FormBuilder,private http: HttpClient,private authenticationService: AuthService,private route: ActivatedRoute,
-    private router: Router) { }
-
-    profileForm = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
-    password2: new FormControl(''),
-    email: new FormControl(''),
-  });
+    private router: Router) {
+      this.envURL =environment.baseURL;
+     }
 
 ngOnInit(){
   $('.toggle').click(function(){
@@ -42,6 +39,12 @@ ngOnInit(){
     }, "slow");
   });
 
+  this.profileForm = this.formBuilder.group({
+    username: ['', Validators.required],
+    password: ['', Validators.required],
+    password2: ['', Validators.required],
+    email: ['', Validators.required]
+  });
 
   this.loginForm = this.formBuilder.group({
     username: ['', Validators.required],

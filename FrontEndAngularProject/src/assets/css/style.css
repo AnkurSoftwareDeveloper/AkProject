@@ -50,7 +50,7 @@ body a:hover {
 /*-- header --*/
 
 .fixed {
-    position: fixed;
+    position: sticky;
     top: 0;
     width: 100%;
     margin: 0 auto;
@@ -4115,7 +4115,7 @@ ul.wmuSliderPagination {
         max-height: 400px !important;
     }
     .fixed {
-        position: relative;
+        position: sticky;
     }
     .w3l_search {
         margin: 1em 0 1em 6em;

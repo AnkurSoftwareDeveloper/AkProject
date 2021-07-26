@@ -4,7 +4,7 @@
     <!-- Cart -->
     <div class="col-md-12">
         <div class="col-lg-12 col-sm-12">
-            <span class="title">SHOPPING CART</span>
+            <h2 class="title" style="padding: 1em; text-align: center;">SHOPPING CART</h2>
         </div>
         <div class="col-lg-12 col-sm-12 hero-feature">
             <div class="table-responsive">
@@ -13,7 +13,7 @@
                         <tr>
                             <td class="hidden-xs">Image</td>
                             <td>Product Name</td>
-                            <td class="td-qty">Quantity</td>
+                            <td>Quantity</td>
                             <td>Unit Price</td>
                             <td>Sub Total</td>
                             <td><a class="btn btn-sm btn-outline-danger" (click)="clearCart()">Empty Cart</a></td>
@@ -29,7 +29,7 @@
                             <td><a [routerLink]="['/productDescription', pro.product_id]">{{pro.product_name}}<span>{{pro.quantity}}</span></a>
                             </td>
                             <td>
-                                <div class="input-group bootstrap-touchspin">
+                                <div class="input-group bootstrap-touchspin" style="width: 120px;display: inline-table;">
                                     <span class="input-group-btn">
                                         <button class="btn btn-default bootstrap-touchspin-down" (click)="minusCart(pro.product_id)" type="button">-</button>
                                     </span>

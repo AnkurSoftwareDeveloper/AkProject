@@ -5,4 +5,10 @@
   .hide-cursor{
     cursor: auto;
   }
+  .heading{
+    padding-bottom: 1em;
+  }
+  .pay{
+    margin-left: 1em;
+  }
   
