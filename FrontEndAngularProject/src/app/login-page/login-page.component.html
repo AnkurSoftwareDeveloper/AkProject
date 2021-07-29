@@ -19,22 +19,22 @@
         </div>
         <div class="form">
         <h2 style="text-align: center; padding: 1em;">Login to your account</h2>
-        <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+        <form [formGroup]="loginForm" (ngSubmit)="loginValidation()">
           <input type="text" name="Username" formControlName="username" placeholder="User name / Email" required=" ">
           <input type="password" name="Password" formControlName="password" placeholder="Password" required=" ">
           <input type="submit" value="Login">
-          <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+          <div *ngIf="loginError" class="alert alert-danger">{{loginError}}</div>
         </form>
         </div>
         <div class="form">
         <h2 style="text-align: center; padding: 1em;">Create an account</h2>
-        <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="profileForm" (ngSubmit)="profileValidation()">
           <input type="text" name="Username" formControlName="username" placeholder="User name" required=" ">
           <input type="password" name="Password" formControlName="password" placeholder="Password" required=" ">
           <input type="password" name="Password2" formControlName="password2" placeholder="Re-Type Password" required=" ">
           <input type="email" name="Email" formControlName="email" placeholder="Email Address" required=" ">
           <input type="submit" value="Register">
-          <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+          <div *ngIf="profileError" class="alert alert-danger">{{profileError}}</div>
         </form>
         </div>
         <div class="cta">

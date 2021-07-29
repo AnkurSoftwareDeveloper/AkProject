@@ -10,6 +10,12 @@ body{margin-top:20px;
 background:#ddd;
 }
 
+.remove_cart{
+	cursor: pointer;
+	color: red;
+	font-size: large;
+}
+
 .link-p {
     display: block;
     min-height: 250px;

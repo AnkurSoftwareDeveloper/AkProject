@@ -21,6 +21,8 @@ export class CheckoutPageComponent implements OnInit {
   userAddress: any;
   radioAddData: any;
   radioPayData: any;
+  addError: string;
+  orderError: string;
   
   constructor(private formBuilder: FormBuilder, private myservice: MyServiceService,private http: HttpClient,private route : ActivatedRoute,
     private router: Router) { 
@@ -70,15 +72,19 @@ export class CheckoutPageComponent implements OnInit {
     }
 
     this.addressForm = this.formBuilder.group({
-      user_id: ['', Validators.required],
-      name: ['', Validators.required],
-      address: ['', Validators.required],
-      address2: ['', Validators.required],
-      pin_code: ['', Validators.required],
-      city: ['', Validators.required],
-      state: ['', Validators.required],
-      phone: ['', Validators.required],
+      user_id: ['', [Validators.required]],
+      name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+      phone: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
+      address: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
+      address2: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
+      pin_code: ['', [Validators.required]],
+      city: ['', [Validators.required]],
+      state: ['', [Validators.required]],
     });
+
+    this.addressForm.valueChanges.subscribe(res => {
+      this.addError='';
+     })
   }
 
   pin(pinid: any){
@@ -90,11 +96,56 @@ export class CheckoutPageComponent implements OnInit {
 
   get f() { return this.addressForm.controls; }
 
-  addressSubmit(){
+  addValidation(){
+    if(this.f.name.hasError('required')){
+      this.addError = "name required";
+      return
+    }
+    if(this.f.name.hasError('minlength') || this.f.name.hasError('maxlength')){
+      this.addError = "Your name must contain between 2 to 50 characters.";
+      return
+    }
+    if(this.f.phone.hasError('required')){
+      this.addError = "phone number required";
+      return
+    }
+    if(this.f.phone.hasError('pattern')){
+      this.addError = "Invalid phone number";
+      return
+    }
+    if(this.f.address.hasError('required')){
+      this.addError = "address required";
+      return
+    }
+    if(this.f.address.hasError('minlength') || this.f.address.hasError('maxlength')){
+      this.addError = "Your address must contain between 3 to 200 characters.";
+      return
+    }
+    if(this.f.address2.hasError('required')){
+      this.addError = "address required";
+      return
+    }
+    if(this.f.address2.hasError('minlength') || this.f.address2.hasError('maxlength')){
+      this.addError = "Your address line 2 must contain between 3 to 200 characters.";
+      return
+    }
+    if(this.f.pin_code.hasError('required')){
+      this.addError = "pin_code required";
+      return
+    }
+
     this.addressForm.controls['city'].setValue("Patna");
     this.addressForm.controls['state'].setValue("Bihar");
     this.addressForm.controls['address'].setValue(this.f.address.value +" "+ this.f.address2.value);
     this.addressForm.controls['user_id'].setValue(this.login_Id);
+    
+    if(this.addressForm.valid)
+    {
+      this.addressSubmit();
+    }
+  }
+
+  addressSubmit(){
 
     console.log(this.addressForm.value);
 
@@ -105,6 +156,7 @@ export class CheckoutPageComponent implements OnInit {
   }
 
   onAddChange(addRadio: any){
+    this.orderError='';
     for (var item of this.userAddress) {
       if(item.address_id==addRadio){
           this.radioAddData=item;
@@ -114,8 +166,23 @@ export class CheckoutPageComponent implements OnInit {
   }
   onPayChange(payRadio: any){
     this.radioPayData=payRadio;
+    this.orderError='';
   }
   
+  orderValidation(){
+    if(this.radioAddData==null || this.radioAddData==undefined || this.radioAddData==""){
+      this.orderError="Please add Address";
+      return
+    }
+
+    if(this.radioPayData==null || this.radioPayData==undefined || this.radioPayData==""){
+      this.orderError="Please select Payment option";
+      return
+    }
+
+    this.checkOutSubmit();
+  }
+
   checkOutSubmit(){
     let checkOut={
       itemsJson : JSON.stringify(this.getProductsById),

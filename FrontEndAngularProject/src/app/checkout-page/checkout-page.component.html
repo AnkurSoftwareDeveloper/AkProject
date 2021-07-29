@@ -34,7 +34,7 @@
                     <label class="panel-body card-input" style="width: 100%;">
                         <span > Add a new Address</span>
                         <div *ngIf="expanded == true" class="hide-cursor">
-                            <form [formGroup]="addressForm" (ngSubmit)="addressSubmit()">
+                            <form [formGroup]="addressForm" (ngSubmit)="addValidation()">
                                 <input type="hidden" class="form-control" id="user_id" placeholder="user_id" formControlName="user_id">
                                 <div class="form-row">
                                     <div class="form-group">
@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="Phone">Phone Number</label>
-                                    <input type="tel" class="form-control" id="phone" formControlName="phone">
+                                    <input type="number" class="form-control" id="phone" formControlName="phone">
                                 </div>
                                 <div class="form-group">
                                     <label for="address">Address</label>
@@ -74,6 +74,7 @@
                                 </div>
                                 
                                 <button type="submit" class="btn btn-primary">Add Address</button>
+                                <div *ngIf="addError" class="alert alert-danger" style="display: inline;">{{addError}}</div>
                             </form>
                         </div>
                     </label>
@@ -92,5 +93,6 @@
             <label class="pay">Online Payment</label>
         </div>
     </div>
-    <button type="submit" (click)="checkOutSubmit()" class="btn btn-primary">Confirm Order</button>
+    <button type="submit" (click)="orderValidation()" class="btn btn-primary">Confirm Order</button>
+    <div *ngIf="orderError" class="alert alert-danger" style="display: inline;">{{orderError}}</div>
 </div>

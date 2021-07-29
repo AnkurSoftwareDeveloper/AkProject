@@ -16,7 +16,8 @@ import { MyServiceService } from '../services/my-service.service';
 export class LoginPageComponent implements OnInit {
 
   returnUrl: string;
-  error = '';
+  loginError: any;
+  profileError: any;
   loginForm: FormGroup;
   profileForm: FormGroup;
   envURL: any;
@@ -40,11 +41,12 @@ ngOnInit(){
   });
 
   this.profileForm = this.formBuilder.group({
-    username: ['', Validators.required],
-    password: ['', Validators.required],
-    password2: ['', Validators.required],
-    email: ['', Validators.required]
+    username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(150)]],
+    password: ['', [Validators.required,Validators.minLength(8),Validators.maxLength(150)]],
+    password2: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]]
   });
+  
 
   this.loginForm = this.formBuilder.group({
     username: ['', Validators.required],
@@ -56,16 +58,79 @@ ngOnInit(){
 
    // get return url from route parameters or default to '/'
    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
+   this.profileForm.valueChanges.subscribe(res => {
+    // console.log("You entered a value");
+    this.profileError='';
+    // Here I want to show a message ("A field has been touched") when any field of the form gets touched
+   })
+   this.loginForm.valueChanges.subscribe(res => {
+    this.loginError='';
+   })
 }
+
   // convenience getter for easy access to form fields
-  get f() { return this.loginForm.controls; }
+  get flogin() { return this.loginForm.controls; }
+  get fprofile() { return this.profileForm.controls; }
+
+  profileValidation(){
+    if(this.fprofile.username.hasError('required')){
+      this.profileError = "username required";
+      return
+    }
+    if(this.fprofile.username.hasError('minlength') || this.fprofile.username.hasError('maxlength')){
+      this.profileError = "Your username must contain between 3 to 150 characters.";
+      return
+    }
+    if(this.fprofile.password.hasError('required')){
+      this.profileError = "password required";
+      return
+    }
+    if(this.fprofile.password.hasError('minlength') || this.fprofile.password.hasError('maxlength')){
+      this.profileError = "Your password must contain at least 8 characters.";
+      return
+    }
+    if(this.fprofile.password2.hasError('required')){
+      this.profileError = "confirm password required";
+      return
+    }
+    if(this.fprofile.password.value!=this.fprofile.password2.value){
+      this.profileError = "password not matched";
+      return
+    }
+    if(this.fprofile.email.hasError('required')){
+      this.profileError = "email required";
+      return
+    }
+    if(this.fprofile.email.hasError('pattern')){
+      this.profileError = "Invalid Email";
+      return
+    }
+
+    if(this.profileForm.valid)
+    {
+      this.onSubmit();
+    }
+  }
+
+  loginValidation(){
+    if(this.flogin.username.hasError('required')){
+      this.loginError = "username / email required";
+      return
+    }
+    if(this.flogin.password.hasError('required')){
+      this.loginError = "password required";
+      return
+    }
+
+    if(this.loginForm.valid)
+    {
+      this.onLoginSubmit();
+    }
+  }
 
   onSubmit() {
-    // TODO: Use EventEmitter with form value
     console.log(this.profileForm.value);
-    // this.http.post(environment.baseURL + '/api/accounts/register/', this.profileForm.value).subscribe(
-    //   (response) => console.log(response),
-    //   (error) => console.log(error));
 
       this.myservice.addUser(this.profileForm.value).subscribe((data: any[])=>{
         console.log("addUser", data);
@@ -73,17 +138,23 @@ ngOnInit(){
           window. location. reload();
           });
         alert("You are successfully Register please login");
+      },error => {
+        console.log('oops', error);
+        if(error.error.username)
+        this.profileError = error.error.username;
+        if(error.error.password)
+        this.profileError = error.error.password;
+        if(error.error.email)
+        this.profileError = error.error.email;
+        if(error.error.non_field_errors)
+        this.profileError = error.error.non_field_errors;
       })  
 
   }
 
   onLoginSubmit(){
     console.log(this.loginForm.value);
-    // this.http.post(environment.baseURL + 'api/accounts/token/', this.loginForm.value).subscribe(
-    //   (response) => console.log(response),
-    //   (error) => console.log(error));
-
-    this.authenticationService.login(this.f.username.value, this.f.password.value)
+    this.authenticationService.login(this.flogin.username.value, this.flogin.password.value)
     .pipe(first())
     .subscribe(
         data => {
@@ -94,7 +165,7 @@ ngOnInit(){
         },
         error => {
           console.log(error);
-            this.error = error.error.detail;
+            this.loginError = error.error.detail;
             // this.loading = false;
         });
   }
