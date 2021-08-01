@@ -93,6 +93,9 @@
             <label class="pay">Online Payment</label>
         </div>
     </div>
-    <button type="submit" (click)="orderValidation()" class="btn btn-primary">Confirm Order</button>
+    <button type="button" class="btn btn-primary" style="float: left;" (click)="back()">
+        <i class="fa fa-arrow-circle-left"></i> Back
+    </button>
+    <button type="submit" (click)="orderValidation()" style="float: right;" class="btn btn-primary">Confirm Order</button>
     <div *ngIf="orderError" class="alert alert-danger" style="display: inline;">{{orderError}}</div>
 </div>

@@ -1,13 +1,10 @@
 from rest_framework import serializers
-from GroceryApp.models import ContactForm
+from contactForm.models import ContactForm
 
 class ContactFormSerializer(serializers.ModelSerializer):
 
    class Meta:
         model = ContactForm
-        fields = ('fullname',
-                  'email',
-                  'contact',
-                  'message')
+        fields = '__all__' 
          
         # fields ='_all_'

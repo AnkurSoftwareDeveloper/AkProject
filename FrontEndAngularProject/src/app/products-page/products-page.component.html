@@ -44,7 +44,7 @@
                                                 <h4 style="padding-top: 0.6em;">₹{{pro.discount_price}} <span>₹{{pro.price}}</span></h4>
                                             </div>
                                             <div class="snipcart-details">
-                                                <div *ngIf="cart[pro.product_id]"
+                                                <div *ngIf="cart[pro.product_id] && pro.stockalert==1"
                                                     class="input-group bootstrap-touchspin">
                                                     <span class="input-group-btn">
                                                         <button class="btn btn-default bootstrap-touchspin-down"
@@ -61,9 +61,10 @@
                                                             type="button">+</button>
                                                     </span>
                                                 </div>
-                                                <input *ngIf="!cart[pro.product_id]"
+                                                <input *ngIf="!cart[pro.product_id] && pro.stockalert==1"
                                                     (click)="addCart(pro.product_id)" type="submit" name="submit"
                                                     value="Add to cart" class="button" />
+                                                <h5 *ngIf="pro.stockalert==2" style="color: red;">Out Of Stock</h5>
                                             </div>
                                         </div>
                                     </figure>

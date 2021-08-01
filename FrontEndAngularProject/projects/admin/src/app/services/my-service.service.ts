@@ -172,4 +172,31 @@ public getpinCode(){
   let endPoints="/api/pinCode/"
   return this.httpClient.get(environment.baseURL+endPoints);
 }
+
+//////////////////////////////////////////
+public getContact(){
+  let endPoints="/api/contactForm/"
+  return this.httpClient.get(environment.baseURL+endPoints);
+}
+
+public getContactById(id:any) {
+  let endPoints = "/api/contactFormDetails/" + id;
+  return this.httpClient.get(environment.baseURL + endPoints);
+}
+
+public addContact(postData: Object) {
+  let endPoints = "/api/contactForm/"
+  return this.httpClient.post(environment.baseURL + endPoints, postData);
+}
+
+public updateContact(postData: Object, id:any) {
+  let endPoints = "/api/contactFormDetails/" + id;
+  return this.httpClient.put(environment.baseURL + endPoints, postData);
+}
+
+public deleteContact(id:any) {
+  let endPoints = "/api/contactFormDetails/" + id;
+  return this.httpClient.delete(environment.baseURL + endPoints);
+}
+
 }

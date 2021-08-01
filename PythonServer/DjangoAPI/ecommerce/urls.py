@@ -20,9 +20,9 @@ urlpatterns = [
     path('' , include('home.urls')),
     path('admin/', admin.site.urls),
     path('api/', include('products.urls')),
-    path('api/', include('GroceryApp.urls')),
     path('api/accounts/' , include('accounts.urls')),
-    path('api/' , include('order.urls'))
+    path('api/' , include('order.urls')),
+    path('api/' , include('contactForm.urls'))
 ]
 
 from django.conf import settings

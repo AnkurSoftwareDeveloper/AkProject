@@ -23,6 +23,7 @@ export class CheckoutPageComponent implements OnInit {
   radioPayData: any;
   addError: string;
   orderError: string;
+  cartItem: any;
   
   constructor(private formBuilder: FormBuilder, private myservice: MyServiceService,private http: HttpClient,private route : ActivatedRoute,
     private router: Router) { 
@@ -66,7 +67,13 @@ export class CheckoutPageComponent implements OnInit {
     for (var item in this.cart) {
       console.log("cartitem", item);
       this.myservice.getProductsById(item).subscribe((data)=>{
-      this.getProductsById.push(data);
+        this.cartItem=data;
+        if(this.cartItem.stockalert==2){
+          this.removeCartItem(this.cartItem.product_id);
+        }
+        else{
+          this.getProductsById.push(data);
+        }
       console.log("getProductsById", this.getProductsById);
       })  
     }
@@ -85,6 +92,15 @@ export class CheckoutPageComponent implements OnInit {
     this.addressForm.valueChanges.subscribe(res => {
       this.addError='';
      })
+  }
+
+  removeCartItem(cartId:any){
+    console.log(cartId);
+    delete this.cart[cartId];
+    localStorage.setItem('cart', JSON.stringify(this.cart));
+    window.location.reload();
+    console.log(this.cart);
+    
   }
 
   pin(pinid: any){
@@ -206,6 +222,13 @@ export class CheckoutPageComponent implements OnInit {
         });
       alert("Your order is successfully placed Thanks...");
     })  
+  }
+
+  back(){
+    this.router.navigate(['/cart'])
+    .then(() => {
+      window.location.reload();
+    });
   }
 
 }

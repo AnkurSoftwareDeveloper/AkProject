@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class GroceryappConfig(AppConfig):
+class ContactformConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'GroceryApp'
+    name = 'contactForm'

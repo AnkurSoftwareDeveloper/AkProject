@@ -19,7 +19,11 @@ export class AppComponent {
     private authenticationService: AuthService, private router: Router,) {
 
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-
+      if(this.currentUser){
+        let login_credential = JSON.parse(localStorage.getItem('currentUser'));
+        this.login_name=login_credential.username;
+        console.log(this.login_name);
+      }
     
    }
   

@@ -29,6 +29,12 @@ export class AppComponent {
   constructor(private myservice: MyServiceService,private http: HttpClient,private route : ActivatedRoute,
     private authenticationService: AuthService, private router: Router,) {
 
+      if(this.currentUser){
+        let login_credential = JSON.parse(localStorage.getItem('currentUser'));
+        this.login_name=login_credential.username;
+        console.log(this.login_name);
+      }  
+
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
 
     setInterval(() => {

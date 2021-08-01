@@ -14,6 +14,7 @@ export class CartPageComponent implements OnInit {
   getProductsById:any = [];
   totalPrice:number= 0;
   envURL: any;
+  cartItem: any;
 
   constructor(private myservice: MyServiceService,private http: HttpClient,private route : ActivatedRoute,
     private router: Router) {
@@ -26,7 +27,14 @@ export class CartPageComponent implements OnInit {
     for (var item in this.cart) {
         console.log("cartitem", item);
         this.myservice.getProductsById(item).subscribe((data)=>{
-        this.getProductsById.push(data);
+        this.cartItem=data;
+          if(this.cartItem.stockalert==2){
+            this.removeCartItem(this.cartItem.product_id);
+          }
+          else{
+            this.getProductsById.push(data);
+          }
+        
         console.log("getProductsById", this.getProductsById);
         })  
       }

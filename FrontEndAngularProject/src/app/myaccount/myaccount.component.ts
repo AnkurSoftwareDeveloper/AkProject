@@ -31,6 +31,11 @@ export class MyaccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.expanded = false
+
+    this.myservice.getUserById(this.login_Id).subscribe((data)=>{
+      this.getUserById = data;
+      console.log("getUserById", this.getUserById);
+    })  
     
     this.myservice.getpinCode().subscribe((data: any[])=>{
       this.pincode = data;
@@ -44,11 +49,6 @@ export class MyaccountComponent implements OnInit {
     this.myservice.getAddressByUser(loginId).subscribe((data)=>{
       this.userAddress= data;
       console.log("userAddress", this.userAddress);
-      })  
-
-      this.myservice.getUserById(this.login_Id).subscribe((data)=>{
-        this.getUserById = data;
-        console.log("getUserById", this.getUserById);
       })  
 
       this.addressForm = this.formBuilder.group({

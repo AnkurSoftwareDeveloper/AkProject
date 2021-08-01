@@ -5,11 +5,11 @@
             <div class="row">
               <div class="col-md-5">
                 <input type="text" class="form-control" [(ngModel)]="getUserById.first_name"
-                 id="first_name" formControlName="first_name" [readonly] ="toggleButton">
+                 id="first_name" formControlName="first_name" placeholder="first name" [readonly] ="toggleButton">
               </div>
               <div class="col-md-5">
                 <input type="text" class="form-control" [(ngModel)]="getUserById.last_name"
-                 id="last_name" formControlName="last_name" [readonly] ="toggleButton">
+                 id="last_name" formControlName="last_name" placeholder="last name" [readonly] ="toggleButton">
               </div>
               <div class="col-md-2">
                 <a *ngIf="toggleButton" (click)="toggleButton=false" style="cursor: pointer;">Edit</a>

@@ -20,6 +20,7 @@ import {NgxPrintModule} from 'ngx-print';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './_helpers';
 import { UserPageComponent } from './user-page/user-page.component';
+import { ContactPageComponent } from './contact-page/contact-page.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { UserPageComponent } from './user-page/user-page.component';
     LoginPageComponent,
     OrderlistPageComponent,
     OrderdetailsPageComponent,
-    UserPageComponent
+    UserPageComponent,
+    ContactPageComponent
   ],
   imports: [
     BrowserModule,

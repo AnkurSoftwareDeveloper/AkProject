@@ -29,19 +29,20 @@
                 </ul>
             </div>
             <div class="col-md-8 agileinfo_mail_grid_right">
-                <form action="#" method="post">
+                <form [formGroup]="contactForm" (ngSubmit)="contactValidation()">
                     <div class="col-md-6 wthree_contact_left_grid">
-                        <input type="text" name="Name" value="Name*" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name*';}" required="">
-                        <input type="email" name="Email" value="Email*" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email*';}" required="">
+                        <input type="text" name="fullname" value="Name*" formControlName="fullname" placeholder="Name*" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name*';}" required="">
+                        <input type="email" name="email" value="Email*" formControlName="email" placeholder="Email*" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email*';}" required="">
                     </div>
                     <div class="col-md-6 wthree_contact_left_grid">
-                        <input type="text" name="Telephone" value="Telephone*" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Telephone*';}" required="">
-                        <input type="text" name="Subject" value="Subject*" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Subject*';}" required="">
+                        <input type="text" name="phone" value="Telephone*" formControlName="phone" placeholder="Telephone*" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Telephone*';}" required="">
+                        <input type="text" name="subject" value="Subject*" formControlName="subject" placeholder="Subject*" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Subject*';}" required="">
                     </div>
                     <div class="clearfix"> </div>
-                    <textarea  name="Message" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Message...</textarea>
+                    <textarea  name="message" formControlName="message" placeholder="Message...*" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Message...</textarea>
                     <input type="submit" value="Submit">
                     <input type="reset" value="Clear">
+                    <div *ngIf="Error" class="alert alert-danger" style="margin: 0 1em;">{{Error}}</div>
                 </form>
             </div>
             <div class="clearfix"> </div>
@@ -54,6 +55,6 @@
 <!-- //banner -->
 <!-- map -->
 <div class="map">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d96748.15352429623!2d-74.25419879353115!3d40.731667701988506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sshopping+mall+in+New+York%2C+NY%2C+United+States!5e0!3m2!1sen!2sin!4v1467205237951" style="border:0"></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3601.79355694548!2d84.95384921433343!3d25.478568026481177!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f2adf9fab32d5d%3A0x75b19538bd9f7207!2sLakh%20market!5e0!3m2!1sen!2sin!4v1627661165249!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 </div>
 <!-- //map -->

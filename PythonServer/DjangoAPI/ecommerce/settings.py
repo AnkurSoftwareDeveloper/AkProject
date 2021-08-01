@@ -43,8 +43,7 @@ INSTALLED_APPS = [
     'home',
     'products',
     'accounts',
-    'carts',
-    'GroceryApp',
+    'contactForm',
     'order'
 ]
 
