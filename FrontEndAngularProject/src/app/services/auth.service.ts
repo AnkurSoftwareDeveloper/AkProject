@@ -61,7 +61,8 @@ refreshToken() {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
                     currentUser = jwt_decode(response.access)
                     currentUser.token = response.access
-                    currentUser.refreshToken = response.refresh
+                    currentUser.refreshToken = this.currentUserValue.refreshToken
+                    currentUser.username = this.currentUserValue.username
                     localStorage.setItem('currentUser', JSON.stringify(currentUser));
                     console.log(currentUser)
                     this.currentUserSubject.next(currentUser);

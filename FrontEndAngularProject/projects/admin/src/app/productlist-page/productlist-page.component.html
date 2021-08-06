@@ -24,7 +24,7 @@
                 <tr *ngFor="let pro of products">
                     <td>{{pro.product_id}}</td>
                     <td class="hidden-xs">
-                            <img src="{{envURL}}{{pro.image}}" alt="Age Of Wisdom Tan Graphic Tee" title="" width="47" height="47">
+                            <img src="{{envURL}}{{pro.image}}" alt="Not display" title="" width="47" height="47">
                     </td>
                     <td>{{pro.product_name}}</td>
                     <td>{{getCategoryName(pro.category)}}</td>
@@ -34,7 +34,7 @@
                     <td class="price">₹{{pro.discount_price}}</td>
                     <td>{{getStockAlertName(pro.stockalert)}}</td>
                     <td class="text-center">
-                        <a class='btn btn-info btn-xs' (click)="editProduct(pro.product_id)"><span class="glyphicon glyphicon-edit"></span> Edit</a> 
+                        <a class='btn btn-info btn-xs' [routerLink]="['/editproduct', pro.product_id]"><span class="glyphicon glyphicon-edit"></span> Edit</a> 
                         <a class="btn btn-danger btn-xs" (click)="delProduct(pro.product_id)"><span class="glyphicon glyphicon-remove"></span> Del</a>
                     </td>
                 </tr>

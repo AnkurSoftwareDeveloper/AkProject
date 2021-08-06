@@ -1,0 +1,107 @@
+<form class="form-horizontal" method="post" [formGroup]="editproduct" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+    <fieldset>
+    
+    <!-- Form Name -->
+    <legend>EDIT PRODUCTS</legend>
+  
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="product_name">PRODUCT NAME</label>  
+      <div class="col-md-4">
+      <input id="product_name" name="product_name" formControlName="product_name" placeholder="PRODUCT NAME" class="form-control input-md" required="" type="text">
+        
+      </div>
+    </div>
+    
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="description">PRODUCT DESCRIPTION </label>  
+      <div class="col-md-4">
+      <input id="description" name="description" formControlName="description" placeholder="PRODUCT DESCRIPTION" class="form-control input-md" required="" type="text">
+        
+      </div>
+    </div>
+    
+    <!-- Select Basic -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="category">PRODUCT CATEGORY</label>
+      <div class="col-md-4">
+        <select id="category" name="category" formControlName="category" class="form-control">
+          <option value="">Select Category</option>
+          <option *ngFor="let cat of category" value="{{cat.category_id}}">{{cat.category_name}}</option>
+        </select>
+      </div>
+    </div>
+
+     <!-- Select Basic -->
+     <div class="form-group">
+        <label class="col-md-4 control-label" for="subcategory">PRODUCT SUBCATEGORY</label>
+        <div class="col-md-4">
+          <select id="subcategory" name="subcategory" formControlName="subcategory" class="form-control">
+            <option value="">Select SubCategory</option>
+          <option *ngFor="let subcat of subCategory" value="{{subcat.subCategory_id}}">{{subcat.subCategory_name}}</option>
+          </select>
+        </div>
+      </div>
+    
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="quantity">QUANTITY</label>  
+      <div class="col-md-4">
+      <input id="quantity" name="quantity" formControlName="quantity" placeholder="AVAILABLE QUANTITY" class="form-control input-md" required="" type="text">
+        
+      </div>
+    </div>
+    
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="price">PRICE</label>  
+      <div class="col-md-4">
+      <input id="price" name="price" formControlName="price" placeholder="PRODUCT WEIGHT" class="form-control input-md" required="" type="text">
+        
+      </div>
+    </div>
+    
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="discount_price">DISCOUNT PRICE</label>  
+      <div class="col-md-4">
+      <input id="discount_price" name="discount_price" formControlName="discount_price" placeholder="PERCENTAGE DISCOUNT" class="form-control input-md" required="" type="text">
+        
+      </div>
+    </div>
+    
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="stockalert">STOCK ALERT</label>
+      <div class="col-md-4">
+        <select id="stockalert" name="stockalert" formControlName="stockalert" class="form-control">
+          <option value="">Select Stockalert</option>
+          <option *ngFor="let stock of stockAlert" value="{{stock.stockalert_id}}">{{stock.stockalert_name}}</option>
+        </select>
+      </div>
+    </div>
+  
+     <!-- File Button --> 
+     <div class="form-group">
+        <label class="col-md-4 control-label" for="image">CURRENTLY IMAGE</label>
+        <div class="col-md-4">
+            <img src="{{envURL}}{{this.getProductsById.image}}" alt="Not display" title="" width="90" height="70">
+            <a (click)="toggleButton=true" style="cursor: pointer;margin: 6em;">Edit</a>
+        </div>
+    </div>
+
+    <div class="form-group"  *ngIf="toggleButton">
+      <label class="col-md-4 control-label" for="image">IMAGE</label>
+      <div class="col-md-4">
+        <input id="image" name="image" (change)="onChange($event)" accept="image/*" class="input-file" type="file">
+      </div>
+    </div>
+    
+    <!-- Button -->
+    <div class="form-group" style="text-align: center;">
+        <button id="singlebutton" name="singlebutton" type="submit" class="btn btn-primary">Update Product</button>
+      </div>
+    
+    </fieldset>
+    </form>

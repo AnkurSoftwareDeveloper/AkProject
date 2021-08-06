@@ -11,10 +11,12 @@ import { OrderlistPageComponent } from './orderlist-page/orderlist-page.componen
 import { OrderdetailsPageComponent } from './orderdetails-page/orderdetails-page.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
+import { EditproductPageComponent } from './editproduct-page/editproduct-page.component';
 
 const routes: Routes = [
   {path: '', component: DashboardPageComponent, canActivate: [AuthGuard]},
   {path: 'addproducts', component: AddproductsPageComponent, canActivate: [AuthGuard]},
+  {path: 'editproduct/:pro', component: EditproductPageComponent, canActivate: [AuthGuard]},
   {path: 'productlist', component: ProductlistPageComponent, canActivate: [AuthGuard]},
   {path: 'category', component: CategoryPageComponent, canActivate: [AuthGuard]},
   {path: 'subcategory', component: SubcategoryPageComponent, canActivate: [AuthGuard]},

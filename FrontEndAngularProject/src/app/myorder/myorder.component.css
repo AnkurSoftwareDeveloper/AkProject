@@ -6,27 +6,14 @@
 }
 .align-items-center {
     text-align: center !important;
+    margin-top: 2%;
 }
-.itemside {
+.itemside >li{
     position: relative;
-    display: flex;
+    display: inline-block;
+    list-style: none;
     /* width: 100%; */
 }
-a.itemside {
-    color: initial;
-    text-decoration: none;
-}
-.itemside .left {
-    position: relative;
-    flex-shrink: 0;
-}
-.itemside .info {
-    padding-right: 7px;
-}
-.imgsize{
-    max-width: 40%;
-}
-
 .badge {
     display: inline-block;
     padding: .45em .85em;

@@ -695,6 +695,7 @@ h3.title:after,
     position: absolute;
     top: 0%;
     left: 0%;
+    z-index: 1;
 }
 
 .agile_top_brand_left_grid1 {

@@ -6,22 +6,19 @@
                 <div class="col-md-2 align-items-center">
                     <b>OD00{{myord.order_id}}</b>
                 </div>
-                <div class="col-md-6">
-                    <ul class="row" style="margin: 0px;" *ngFor="let myordItem of convertItemsJson(myord.itemsJson)">
-                        <li style="display: inline-block; margin: 0px;">
-                            <a class="itemside" href="#">
-                                <div class="left">
-                                    <img src="{{envURL}}{{myordItem.image}}" class="img-sm imgsize" alt="Item">
-                                </div>
-                                <div class="info">
-                                    <h6>{{myordItem.product_name}}</h6>
-                                </div>
-                            </a>
+                <div class="col-md-5">
+                    <ul class="row itemside" style="margin: 0px;" *ngFor="let myordItem of convertItemsJson(myord.itemsJson)">
+                        <li>
+                            <img src="{{envURL}}{{myordItem.image}}" class="img-sm" alt="Not display" title="" width="80" height="70">
                         </li>
-                        <li style="float: right; list-style: none;"> 
-                            <span>₹{{myordItem.discount_price}} * {{convertQuntJson(myord.itemsQuntJson,myordItem.product_id)}}</span>
+                        <li style="padding-left: 1em; width: 50%;">{{myordItem.product_name}}</li>
+                        <li> 
+                            ₹{{myordItem.discount_price}} x {{convertQuntJson(myord.itemsQuntJson,myordItem.product_id)}}
                         </li>
                     </ul> 
+                </div>
+                <div class="col-md-1 align-items-center">
+                    <b>₹{{myord.amount}}</b>
                 </div>
                 <div class="col-md-2 align-items-center">
                     <span *ngIf="checkstatus(myord.order_id)<=3" class="badge rounded-pill alert-warning">Pending</span>
@@ -30,7 +27,7 @@
                     <br><br>
                     <p>{{OrderTime(myord.order_id) | date:'mediumDate'}}</p>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 align-items-center">
                     <button *ngIf="cancelOrderButt" (click)="cancelorder(myord.order_id)" class="btn btn-danger btn-block">Cancel order</button><br>
                     <button (click)="trackorder(myord.order_id)" class="btn btn-success btn-block">Track order</button>
                 </div>

@@ -21,6 +21,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './_helpers';
 import { UserPageComponent } from './user-page/user-page.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
+import { EditproductPageComponent } from './editproduct-page/editproduct-page.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ContactPageComponent } from './contact-page/contact-page.component';
     OrderlistPageComponent,
     OrderdetailsPageComponent,
     UserPageComponent,
-    ContactPageComponent
+    ContactPageComponent,
+    EditproductPageComponent
   ],
   imports: [
     BrowserModule,

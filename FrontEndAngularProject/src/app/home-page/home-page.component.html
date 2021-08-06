@@ -109,7 +109,7 @@
                                                     <input *ngIf="!cart[card.product_id]  && card.stockalert==1"
                                                         (click)="addCart(card.product_id)" type="submit" name="submit"
                                                         value="Add to cart" class="button" />
-                                                    <h5 *ngIf="card.stockalert==2" style="color: red;">Out Of Stock</h5>
+                                                    <h5 *ngIf="card.stockalert==2" style="color: red;padding: 8px;">Out Of Stock</h5>
                                                 </div>
                                             </div>
                                         </figure>

@@ -110,6 +110,7 @@ def Product_list(request):
             return JsonResponse(serializer.data, status=status.HTTP_201_CREATED) 
         return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['GET','PUT','DELETE'])
 @csrf_exempt 
 def Product_detail(request, pk):
     try: 
@@ -122,8 +123,8 @@ def Product_detail(request, pk):
         return JsonResponse(serializer.data) 
  
     elif request.method == 'PUT': 
-        Product_data = JSONParser().parse(request) 
-        serializer = ProductSerializer(Products, data=Product_data) 
+        # Product_data = JSONParser().parse(request) 
+        serializer = ProductSerializer(Products, data=request.data, context={'request': request}) 
         if serializer.is_valid(): 
            serializer.save() 
            return JsonResponse(serializer.data) 

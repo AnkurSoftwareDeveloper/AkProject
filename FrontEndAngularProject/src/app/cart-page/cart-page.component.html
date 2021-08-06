@@ -51,8 +51,8 @@
                         </tr>
                         <tr>
                             <td colspan="4" align="right">Total</td>
-                            <td class="total" colspan="2"><b>₹ {{totalPrice}}</b>
-                            </td>
+                            <td *ngIf="totalPrice>200 || totalPrice==0" class="total" colspan="2"><b>₹ {{totalPrice}}</b></td>
+                            <td *ngIf="totalPrice<200 && totalPrice>0" class="total" colspan="2"><b>₹ {{totalPrice}} + ₹40</b></td>
                         </tr>
                     </tbody>
                 </table>

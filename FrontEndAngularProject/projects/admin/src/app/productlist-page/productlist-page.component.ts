@@ -72,10 +72,6 @@ export class ProductlistPageComponent implements OnInit {
     }
   }
 
-  editProduct(id: any){
-    alert("Edit");
-  }
-
   delProduct(id: any){
     var result = confirm("Want to delete?");
     if (result) {       

@@ -52,6 +52,7 @@ export class AddproductsPageComponent implements OnInit {
   }
 
   onChange(event) {
+    console.log(event)
     let me = this;
       if (event.target.files.length > 0) {
         const file = event.target.files[0];

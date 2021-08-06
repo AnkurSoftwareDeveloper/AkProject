@@ -30,6 +30,11 @@ export class CheckoutPageComponent implements OnInit {
 
       this.cart = JSON.parse(localStorage.getItem('cart'));
       this.login_Id=(JSON.parse(localStorage.getItem('currentUser'))).user_id;
+      
+      if(Object.keys(this.cart).length == 0){
+        alert("Your cart is empty");
+        this.router.navigate(['/cart']);
+      }
     }
 
     ngAfterContentChecked(){
