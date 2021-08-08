@@ -1,3 +1,4 @@
+<h2 style="text-align: center;"><b>Orders</b></h2>
 <div class="well">
     <div class="table-responsive">
         <table class="table table-bordered tbl-cart">
@@ -19,7 +20,8 @@
                     <td>{{addressDetail(allord.address).name}}</td>
                     <td>{{userDetail(allord.user_id).email}}</td>
                     <td>{{addressDetail(allord.address).phone}}</td>
-                    <td>₹{{allord.amount}}</td>
+                    <td *ngIf="allord.amount>=200 || allord.amount==0">₹{{allord.amount}}</td>
+                    <td *ngIf="allord.amount<200 && allord.amount>0">₹{{allord.amount +40}}*</td>
                     <td>{{allord.paymentStatus}}</td>
                     <td>
                     <span *ngIf="checkstatus(allord.order_id)==1" class="badge rounded-pill alert-warning">Pending</span>

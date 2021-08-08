@@ -26,9 +26,9 @@
                                     <img src="{{envURL}}{{pro.image}}" alt="Age Of Wisdom Tan Graphic Tee" title="" width="47" height="47">
                                 </a>
                             </td>
-                            <td><a [routerLink]="['/productDescription', pro.product_id]">{{pro.product_name}}<span>{{pro.quantity}}</span></a>
+                            <td data-th="Product Name"><a [routerLink]="['/productDescription', pro.product_id]">{{pro.product_name}}<span style="padding-left: 1em;">{{pro.quantity}}</span></a>
                             </td>
-                            <td>
+                            <td data-th="Quantity">
                                 <div class="input-group bootstrap-touchspin" style="width: 120px;display: inline-table;">
                                     <span class="input-group-btn">
                                         <button class="btn btn-default bootstrap-touchspin-down" (click)="minusCart(pro.product_id)" type="button">-</button>
@@ -41,27 +41,29 @@
                                     </span>
                                 </div>
                             </td>
-                            <td class="price">₹{{pro.discount_price}}</td>
-                            <td>₹ {{calculate(pro.discount_price,cart[pro.product_id])}}</td>
-                            <td class="text-center">
+                            <td data-th="Unit Price" class="price">₹{{pro.discount_price}}</td>
+                            <td data-th="Sub Total">₹{{calculate(pro.discount_price,cart[pro.product_id])}}</td>
+                            <td data-th="Action" class="text-center">
                                 <a class="remove_cart" rel="2" (click)="removeCartItem(pro.product_id)">
                                     <i class="fa fa-trash-o"></i>
                                 </a>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="4" align="right">Total</td>
-                            <td *ngIf="totalPrice>200 || totalPrice==0" class="total" colspan="2"><b>₹ {{totalPrice}}</b></td>
-                            <td *ngIf="totalPrice<200 && totalPrice>0" class="total" colspan="2"><b>₹ {{totalPrice}} + ₹40</b></td>
+                            <td colspan="4" align="right" class="tot">Total</td>
+                            <td data-th="Total" *ngIf="totalPrice>=200 || totalPrice==0" class="total" colspan="2"><b>₹{{totalPrice}}</b></td>
+                            <td data-th="Total" *ngIf="totalPrice<200 && totalPrice>0" class="total" colspan="2"><b>₹{{totalPrice}} + ₹40 * = ₹{{totalPrice + 40}} </b></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+            <div *ngIf="totalPrice<200 && totalPrice>0">* If your cart less than ₹200  Delevery charged ₹40.</div>
+                <br>
             <div class="btns-cart">
                 <button type="button" class="btn btn-primary" style="float: left;" (click)="continueShopping()">
                     <i class="fa fa-arrow-circle-left"></i> Continue Shopping
                 </button>
-                <button type="button" class="btn btn-primary" style="float: right;" (click)="Checkout()">Checkout 
+                <button type="button" class="btn btn-primary" style="float: right;" (click)="Checkout()">Place Order 
                     <i class="fa fa-arrow-circle-right"></i>
                 </button>
             </div>

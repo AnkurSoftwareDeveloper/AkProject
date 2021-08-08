@@ -30,6 +30,7 @@ export class JwtInterceptor implements HttpInterceptor {
       } 
       
       return next.handle(request).pipe(catchError(error => {
+        console.log(error)
 
           if ( error instanceof HttpErrorResponse && (error.status === 401 || error.status === 403)
             && request.url === `${environment.baseURL}/${environment.jwtRefresh}`) {
@@ -42,14 +43,14 @@ export class JwtInterceptor implements HttpInterceptor {
               });          
             return throwError(error);
           }
-          else if (error instanceof HttpErrorResponse && (error.status === 403 || error.status === 401)) {
+          else if (error instanceof HttpErrorResponse && (error.status === 403 || error.error.code == "token_not_valid")) {
               return this.handle403Error(request, next);
           } else {
               console.log("throw error",error);
               this.authenticationService.logout();    
-              this.router.navigate(['/']).then(() => {
-              window. location. reload();
-              });        
+              // this.router.navigate(['/']).then(() => {
+              // window. location. reload();
+              // });        
               return throwError(error);
           }
         }));

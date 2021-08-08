@@ -131,9 +131,7 @@ export class MyaccountComponent implements OnInit {
         (error) => console.log(error)); 
       alert('Deleted');
       window. location. reload();
-    } else {
-      alert('Not deleted');
-    }
+    } 
   }
 
   get feditAdd() { return this.editAddressForm.controls; }

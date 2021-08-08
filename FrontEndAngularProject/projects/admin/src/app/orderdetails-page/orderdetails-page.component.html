@@ -75,7 +75,7 @@
             </div> <!-- row // -->
 
             <div class="row">
-              <div class="col-lg-8">
+              <div class="col-lg-12">
                 <div class="table-responsive">
                 <table class="table border table-hover table-lg">
                   <thead>
@@ -106,11 +106,17 @@
                             <dl class="dlist"> 
                                 <dt>Subtotal: </dt> <dd> ₹{{getOrdersById.amount}}</dd> 
                               </dl>
-                              <dl class="dlist"> 
-                                <dt>Shipping cost:</dt> <dd>₹50</dd> 
+                              <dl *ngIf="getOrdersById.amount<200 && getOrdersById.amount>0" class="dlist"> 
+                                <dt>Shipping cost: </dt> <dd> ₹40</dd> 
                               </dl>
-                              <dl class="dlist"> 
-                                <dt>Grand total:</dt> <dd> <b class="h5">₹{{getOrdersById.amount + 50}}</b> </dd> 
+                              <dl *ngIf="getOrdersById.amount>=200 || getOrdersById.amount==0" class="dlist"> 
+                                <dt>Shipping cost: </dt> <dd> ₹0</dd> 
+                              </dl>
+                              <dl *ngIf="getOrdersById.amount<200 && getOrdersById.amount>0" class="dlist"> 
+                                <dt>Grand total:</dt> <dd> <b class="h5"> ₹{{getOrdersById.amount + 40}}</b> </dd> 
+                              </dl>
+                              <dl *ngIf="getOrdersById.amount>=200 || getOrdersById.amount==0" class="dlist"> 
+                                <dt>Grand total:</dt> <dd> <b class="h5"> ₹{{getOrdersById.amount}}</b> </dd> 
                               </dl>
                               <dl class="dlist"> 
                                 <dt class="text-muted">Status:</dt> 
@@ -125,25 +131,7 @@
                   </tbody>
                 </table>
                 </div> <!-- table-responsive// -->
-              </div>  <!-- col// -->
-              <div class="col-lg-4">
-                <div class="box shadow-sm bg-light">
-                   <h4><b>Payment info</b></h4>
-                   <p> 
-                    <!-- <img src="images/card-brands/2.png" class="border" height="20"> -->
-                     Master Card **** **** 4768  <br>
-                    Business name: Grand Market LLC <br>
-                    Phone: +1 (800) 555-154-52
-                   </p>
-                </div>
-                <div class="h-25 pt-4">
-                  <div class="mb-3">
-                    <label>Notes</label>
-                    <textarea class="form-control" name="notes" id="notes" placeholder="Type some note"></textarea>
-                  </div>
-                  <button class="btn btn-primary">Save note</button>
-                </div>
-              </div> <!-- col// -->
+              </div> 
 
             </div>
           </div> <!-- card-body end// -->

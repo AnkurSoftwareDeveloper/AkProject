@@ -180,3 +180,22 @@ background:#ddd;
 .table-stats .table-line-plus .status-social-icon {
 	color: #a75d54;
 }
+
+@media only screen and (max-width: 40em) {
+    thead th:not(:first-child) {
+        display: none;
+    }
+
+    td, th {
+        display: block;
+    }
+
+    td[data-th]:before  {
+        content: attr(data-th);
+		float: left;
+    }
+	.tot{
+		display: none;
+	}
+	
+}

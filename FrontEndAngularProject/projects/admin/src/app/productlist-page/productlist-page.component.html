@@ -1,9 +1,10 @@
-<div class="btn-toolbar">
-    <button class="btn btn-primary">New Product</button>
-    <button class="btn">Import</button>
-    <button class="btn">Export</button>
+<div class="btn-toolbar" style="float: right; margin: 1em;">
+    <button class="btn btn-primary"  [routerLink]="['/addproducts']" style="margin-right: 1em;">Add Product</button>
+    <button [useExistingCss]="true" printSectionId="print-section" ngxPrint><i class="fa fa-print"></i></button>
 </div>
-<div class="well">
+<h2 style="text-align: center;"><b>Products</b></h2>
+<br>
+<div class="well" id="print-section">
     <div class="table-responsive">
         <table class="table table-bordered tbl-cart">
             <thead>
@@ -34,7 +35,7 @@
                     <td class="price">₹{{pro.discount_price}}</td>
                     <td>{{getStockAlertName(pro.stockalert)}}</td>
                     <td class="text-center">
-                        <a class='btn btn-info btn-xs' [routerLink]="['/editproduct', pro.product_id]"><span class="glyphicon glyphicon-edit"></span> Edit</a> 
+                        <a class='btn btn-info btn-xs' (click)="editProduct(pro.product_id)"><span class="glyphicon glyphicon-edit"></span> Edit</a> 
                         <a class="btn btn-danger btn-xs" (click)="delProduct(pro.product_id)"><span class="glyphicon glyphicon-remove"></span> Del</a>
                     </td>
                 </tr>

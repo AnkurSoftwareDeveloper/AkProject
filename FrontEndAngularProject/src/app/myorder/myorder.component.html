@@ -17,8 +17,11 @@
                         </li>
                     </ul> 
                 </div>
-                <div class="col-md-1 align-items-center">
+                <div *ngIf="myord.amount>=200 || myord.amount==0" class="col-md-1 align-items-center">
                     <b>₹{{myord.amount}}</b>
+                </div>
+                <div *ngIf="myord.amount<200 && myord.amount>0" class="col-md-1 align-items-center">
+                    <b>₹{{myord.amount + 40}}*</b>
                 </div>
                 <div class="col-md-2 align-items-center">
                     <span *ngIf="checkstatus(myord.order_id)<=3" class="badge rounded-pill alert-warning">Pending</span>

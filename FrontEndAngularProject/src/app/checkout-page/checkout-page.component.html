@@ -9,8 +9,10 @@
                 </li>
             </ul>
         </div>
-        <div style="padding: 25px;" class="text-center">Your Cart Total Is <b>₹ {{totalPrice}}</b>
-        Enter your details below & place your order. Thanks for using My Awesome Cart!</div>
+        <div *ngIf="totalPrice>=200 || totalPrice==0" style="padding: 25px;" class="text-center">Your Cart Total Is <b>₹{{totalPrice}}</b>
+        Enter your details below & place your order. Thanks for Shopping!</div>
+        <div *ngIf="totalPrice<200 && totalPrice>0" style="padding: 25px;" class="text-center">Your Cart Total Is <b>₹{{totalPrice + 40}}</b>
+            Enter your details below & place your order. Thanks for Shopping!</div>
     </div>
     <div class="">
         <h3 class="heading">Step 2 - Delivery Address</h3>

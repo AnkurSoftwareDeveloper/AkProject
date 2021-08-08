@@ -14,6 +14,7 @@ export class CategoryPageComponent implements OnInit {
   category: any[];
   categoryForm: FormGroup;
   isAddMode: boolean;
+  Error: any;
 
   constructor(private formBuilder: FormBuilder,private myservice: MyServiceService,private http: HttpClient,private route : ActivatedRoute) { }
 
@@ -27,9 +28,16 @@ export class CategoryPageComponent implements OnInit {
       category_name: ['', Validators.required],
 
     });
+    this.categoryForm.valueChanges.subscribe(res => {
+      this.Error='';
+     })
   }
 
   onSubmit(){
+    if(this.categoryForm.controls.category_name.hasError('required')){
+      this.Error = "category name required";
+      return
+    }
       if (!this.isAddMode) {
           this.createCategory();
       } else {
@@ -57,6 +65,7 @@ export class CategoryPageComponent implements OnInit {
 
     this.isAddMode=undefined;
     this.categoryForm.reset();
+    window. location. reload();
   }
 
   getCategoryName(id: any){

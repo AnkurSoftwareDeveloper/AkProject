@@ -4,11 +4,11 @@ from django.http.response import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser 
 from rest_framework import status
-from rest_framework.decorators import api_view
 
 from .serializers import *
 from .models import *
-
+from rest_framework.permissions import IsAdminUser, IsAuthenticated, IsAuthenticatedOrReadOnly, AllowAny
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.views import APIView
 from rest_framework.response import Response 
 from rest_framework.permissions import IsAuthenticated
@@ -95,6 +95,7 @@ def SubCategory_detail(request, pk):
 
 # products ///////////////////////////////////////
 @api_view(['GET','POST'])
+# @permission_classes((IsAuthenticated, ))
 @csrf_exempt
 def Product_list(request):
     if request.method == 'GET':

@@ -15,9 +15,9 @@ export class SubcategoryPageComponent implements OnInit {
   subCategory: any[];
   subCategoryForm: FormGroup;
   isAddMode: boolean;
-
-  constructor(private formBuilder: FormBuilder,private myservice: MyServiceService,private http: HttpClient,private route : ActivatedRoute) {
-    
+  Error: any;
+  constructor(private formBuilder: FormBuilder,private myservice: MyServiceService,private http: HttpClient,
+    private route : ActivatedRoute) {
    
   }
 
@@ -38,9 +38,20 @@ export class SubcategoryPageComponent implements OnInit {
       subCategory_name: ['', Validators.required],
 
     });
+    this.subCategoryForm.valueChanges.subscribe(res => {
+      this.Error='';
+     })
   }
 
   onSubmit(){
+    if(this.subCategoryForm.controls.category_id.hasError('required')){
+      this.Error = "Category name required";
+      return
+    }
+    if(this.subCategoryForm.controls.subCategory_name.hasError('required')){
+      this.Error = "SubCategory name required";
+      return
+    }
       if (!this.isAddMode) {
           this.createSubCategory();
       } else {
@@ -68,6 +79,7 @@ export class SubcategoryPageComponent implements OnInit {
 
     this.isAddMode=undefined;
     this.subCategoryForm.reset();
+    window. location. reload();
   }
 
   getCategoryName(id: any){
@@ -98,9 +110,7 @@ export class SubcategoryPageComponent implements OnInit {
         (response) => console.log(response),
         (error) => console.log(error)); 
       alert('Deleted');
-    } else {
-      alert('Not deleted');
-    }
+    } 
   }
 
 }

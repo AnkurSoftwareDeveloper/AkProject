@@ -21,7 +21,14 @@ export class ContactPageComponent implements OnInit {
   }
 
   delcont(id: any){
-
+    var result = confirm("Want to delete?");
+    if (result) {       
+      this.myservice.deleteContact(id).subscribe(
+        (response) => console.log(response),
+        (error) => console.log(error)); 
+        alert('Deleted');
+        window. location. reload();
+    } 
   }
 
 }

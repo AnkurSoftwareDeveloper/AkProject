@@ -1,9 +1,9 @@
-<form class="form-horizontal" method="post" [formGroup]="editproduct" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+<form class="form-horizontal" method="post" [formGroup]="editproduct" (ngSubmit)="editProdValidation()" enctype="multipart/form-data">
     <fieldset>
     
     <!-- Form Name -->
-    <legend>EDIT PRODUCTS</legend>
-  
+    <h3 style="text-align: center;"><b>EDIT PRODUCTS</b></h3>
+  <br>
     <!-- Text input-->
     <div class="form-group">
       <label class="col-md-4 control-label" for="product_name">PRODUCT NAME</label>  
@@ -26,7 +26,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="category">PRODUCT CATEGORY</label>
       <div class="col-md-4">
-        <select id="category" name="category" formControlName="category" class="form-control">
+        <select id="category" name="category" formControlName="category" class="form-control" (change)="onCategoryChange($event)">
           <option value="">Select Category</option>
           <option *ngFor="let cat of category" value="{{cat.category_id}}">{{cat.category_name}}</option>
         </select>
@@ -39,7 +39,9 @@
         <div class="col-md-4">
           <select id="subcategory" name="subcategory" formControlName="subcategory" class="form-control">
             <option value="">Select SubCategory</option>
-          <option *ngFor="let subcat of subCategory" value="{{subcat.subCategory_id}}">{{subcat.subCategory_name}}</option>
+            <ng-container *ngFor="let subcat of subCategory">
+              <option *ngIf="subcat.category_id==this.selectedCategory" value="{{subcat.subCategory_id}}">{{subcat.subCategory_name}}</option>
+            </ng-container>
           </select>
         </div>
       </div>
@@ -57,7 +59,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="price">PRICE</label>  
       <div class="col-md-4">
-      <input id="price" name="price" formControlName="price" placeholder="PRODUCT WEIGHT" class="form-control input-md" required="" type="text">
+      <input id="price" name="price" formControlName="price" placeholder="PRICE" class="form-control input-md" required="" type="number">
         
       </div>
     </div>
@@ -66,7 +68,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="discount_price">DISCOUNT PRICE</label>  
       <div class="col-md-4">
-      <input id="discount_price" name="discount_price" formControlName="discount_price" placeholder="PERCENTAGE DISCOUNT" class="form-control input-md" required="" type="text">
+      <input id="discount_price" name="discount_price" formControlName="discount_price" placeholder="DISCOUNT PRICE" class="form-control input-md" required="" type="number">
         
       </div>
     </div>
@@ -101,6 +103,8 @@
     <!-- Button -->
     <div class="form-group" style="text-align: center;">
         <button id="singlebutton" name="singlebutton" type="submit" class="btn btn-primary">Update Product</button>
+        <br><br>
+        <span *ngIf="Error" class="alert alert-danger">{{Error}}</span>
       </div>
     
     </fieldset>

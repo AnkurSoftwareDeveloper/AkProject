@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MyServiceService } from 'projects/admin/src/app/services/my-service.service';
 import { environment } from '../../environments/environment';
 
@@ -16,7 +16,8 @@ export class ProductlistPageComponent implements OnInit {
   subCategory: any[];
   stockAlert: any[];
   envURL:any;
-  constructor(private myservice: MyServiceService,private http: HttpClient,private route : ActivatedRoute) {
+  constructor(private myservice: MyServiceService,private http: HttpClient,private route : ActivatedRoute
+    ,private router: Router) {
     this.envURL =environment.baseURL;
    }
 
@@ -72,16 +73,21 @@ export class ProductlistPageComponent implements OnInit {
     }
   }
 
+  editProduct(id: any){
+    this.router.navigate(['/editproduct', id]).then(() => {
+      window. location. reload();
+      });  
+  }
+
   delProduct(id: any){
     var result = confirm("Want to delete?");
     if (result) {       
-      // this.myservice.deleteCategory(id).subscribe(
-      //   (response) => console.log(response),
-      //   (error) => console.log(error)); 
-      alert('Deleted');
-    } else {
-      alert('Not deleted');
-    }
+      this.myservice.deleteProducts(id).subscribe(
+        (response) => console.log(response),
+        (error) => console.log(error)); 
+        alert('Deleted');
+        window. location. reload();
+    } 
   }
 
 }

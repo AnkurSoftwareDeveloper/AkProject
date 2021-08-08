@@ -7,7 +7,7 @@ from .models import *
 from .serializers import *
 from rest_framework.parsers import JSONParser 
 import json
-from rest_framework.permissions import IsAdminUser, IsAuthenticated
+from rest_framework.permissions import IsAdminUser, IsAuthenticated, IsAuthenticatedOrReadOnly, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 
 #  PinCode ////////////////////////////////////////////////////////////////////
