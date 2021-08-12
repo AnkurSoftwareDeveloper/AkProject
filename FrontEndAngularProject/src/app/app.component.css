@@ -18,6 +18,12 @@
     }
 }
 
+@media (max-width: 480px){
+    .mylogo{
+        display: none;
+    }
+}
+
 /* rotate caret on hover */
 .dropdown-menu > li > a:hover:after {
     text-decoration: underline;

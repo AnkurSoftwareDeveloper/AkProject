@@ -1,1 +1,74 @@
-<p>search-page works!</p>
+<!-- banner -->
+<div class="banner">
+    <div class="w3l_banner_nav_right">
+
+        
+        <div class="w3l_banner_nav_right_banner5">
+            <h3>Best Deals For New Products<span class="blink_me"></span></h3>
+        </div>
+
+        <div *ngIf="searchResult.length!=0" class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_veg">
+            <h3> Search Result "{{search}}"({{searchResult.length}})</h3>
+            <div class="row w3ls_w3l_banner_nav_right_grid1 w3ls_w3l_banner_nav_right_grid1_veg">
+
+                <div *ngFor="let pro of searchResult">
+                    <div class="col-md-3 sm-4 clearfix w3ls_w3l_banner_left w3ls_w3l_banner_left_asdfdfd">
+                        <div class="hover14 column">
+                            <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+                                <div class="agile_top_brand_left_grid_pos">
+                                    <img src="./assets/images/offer.png" alt=" " class="img-responsive" />
+                                </div>
+                                <!-- <div class="tag" style="z-index: 1;">
+                                    <img src="./assets/images/tag.png" alt=" " class="img-responsive">
+                                </div> -->
+                                <div class="agile_top_brand_left_grid1">
+                                    <figure>
+                                        <div class="snipcart-item block">
+                                            <div class="snipcart-thumb" style="text-align: center;">
+                                                <a [routerLink]="['/productDescription', pro.product_id]">
+                                                    <img src="{{envURL}}{{pro.image}}" alt=" " style="height: 10em; width: 10em;" class="img-responsive" />
+                                                </a>
+                                                <p>{{pro.product_name}}</p>
+                                                 <span>{{pro.quantity}}</span>
+                                                <h4 style="padding-top: 0.6em;">₹{{pro.discount_price}} <span>₹{{pro.price}}</span></h4>
+                                            </div>
+                                            <div class="snipcart-details">
+                                                <div *ngIf="cart[pro.product_id] && pro.stockalert==1"
+                                                    class="input-group bootstrap-touchspin">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default bootstrap-touchspin-down"
+                                                            (click)="minusCart(pro.product_id)"
+                                                            type="button">-</button>
+                                                    </span>
+                                                    <input type="number" name="" value="{{cart[pro.product_id]}}"
+                                                        [(ngModel)]="cart[pro.product_id]" (ngModelChange)="updateCart(cart)"
+                                                        class="input-qty form-control text-center"
+                                                        style="display: block;">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default bootstrap-touchspin-up"
+                                                            (click)="plusCart(pro.product_id)"
+                                                            type="button">+</button>
+                                                    </span>
+                                                </div>
+                                                <input *ngIf="!cart[pro.product_id] && pro.stockalert==1"
+                                                    (click)="addCart(pro.product_id)" type="submit" name="submit"
+                                                    value="Add to cart" class="button" />
+                                                <h5 *ngIf="pro.stockalert==2" style="color: red;padding: 8px;">Out Of Stock</h5>
+                                            </div>
+                                        </div>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="clearfix"> </div> -->
+            </div>
+        </div>
+        <div *ngIf="searchResult.length==0">
+            <h2 style="display: flex; justify-content: center;">NO SEARCH FOUND</h2>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<!-- //banner -->

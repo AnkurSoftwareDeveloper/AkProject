@@ -215,4 +215,10 @@ public deleteContact(id:any) {
   return this.httpClient.delete(environment.baseURL + endPoints);
 }
 
+/////////////////////////////////////////////////////////
+public getSearch(postData: Object) {
+  let endPoints = "/api/search/"
+  return this.httpClient.post(environment.baseURL + endPoints, postData);
+}
+
 }

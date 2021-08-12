@@ -4,6 +4,7 @@ import { MyServiceService } from '../services/my-service.service';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
+import { DatePipe } from '@angular/common'
 
 @Component({
   selector: 'app-orderdetails-page',
@@ -21,10 +22,15 @@ export class OrderdetailsPageComponent implements OnInit {
   pincode: any[];
   getUserById: any;
   envURL: any;
+  date: Date;
+  latest_date:any;
 
   constructor(private formBuilder: FormBuilder,private myservice: MyServiceService,private http: HttpClient,
-    private route : ActivatedRoute) {
-      this.envURL =environment.baseURL;
+    private route : ActivatedRoute,public datepipe: DatePipe) {
+      
+    this.envURL =environment.baseURL;
+    this.date=new Date();
+    this.latest_date =this.datepipe.transform(this.date, "EEEE, d MMMM, y, h:mm a");
       
     this.route.params.subscribe(params => {
       this.orderId = params['ord'];

@@ -4,8 +4,8 @@
 			<a href="index.html"><img src="./assets/images/mylogo.png" alt=" " class="logo_products_left"/></a>
 		</div>
 		<div class="w3l_search">
-			<form action="#" method="post">
-				<input type="text" name="Product" value="Search a product..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search a product...';}" required="">
+			<form style="margin: 0 1em;" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+				<input type="text" name="search" formControlName="search" placeholder="Search a product..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search a product...';}" required="">
 				<input type="submit" value=" ">
 			</form>
 		</div>
@@ -102,9 +102,8 @@
 			<div class="col-md-3 w3_footer_grid">
 				<h3>information</h3>
 				<ul class="w3_footer_grid_list">
-					<li><a href="events.html">Events</a></li>
-					<li><a routerLink="/aboutPage">About Us</a></li>
 					<li><a routerLink="/allBestProducts">Best Deals</a></li>
+					<li><a routerLink="/aboutPage">About Us</a></li>
 					<li><a href="services.html">Services</a></li>
 					<li><a routerLink="/contactUs">Contact Us</a></li>
 				</ul>
@@ -118,13 +117,9 @@
 				</ul>
 			</div>
 			<div class="col-md-3 w3_footer_grid">
-				<h3>what in stores</h3>
+				<h3>Download Our App</h3>
 				<ul class="w3_footer_grid_list">
-					<li><a href="pet.html">Pet Food</a></li>
-					<li><a href="frozen.html">Frozen Snacks</a></li>
-					<li><a href="kitchen.html">Kitchen</a></li>
-					<li><a href="products.html">Branded Foods</a></li>
-					<li><a href="household.html">Households</a></li>
+					<a href="index.html"><img src="./assets/images/Google-App-store-icon.png" alt=" " style="margin-top: 1em;"/></a>
 				</ul>
 			</div>
 			<div class="col-md-3">
@@ -135,11 +130,10 @@
 				<div class="w3_footer_grid_bottom">
 					<h5>connect with us</h5>
 					<ul class="agileits_social_icons">
-						<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-						<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-						<li><a href="#" class="google"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-						<li><a href="#" class="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-						<li><a href="#" class="dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+						<li style="margin: 5px !important;"><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+						<li style="margin: 5px !important;"><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+						<li style="margin: 5px !important;"><a href="#" class="google"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+						<li style="margin: 5px !important;"><a href="#" class="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
 					</ul>
 				</div>
 			</div>

@@ -5,7 +5,7 @@ import { AdminRoutingModule} from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ModuleWithProviders } from '@angular/compiler/src/core';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -48,7 +48,7 @@ import { EditproductPageComponent } from './editproduct-page/editproduct-page.co
     RouterModule,
     NgxPrintModule
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
+  providers: [DatePipe,{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,12 +3,6 @@
     margin-left: auto;
     margin-right: auto;
 }
-.content-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 30px;
-}
 .float-end {
     float: right !important;
 }

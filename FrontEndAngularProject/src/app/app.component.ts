@@ -7,6 +7,7 @@ import * as $ from 'jquery';
 import { AuthService } from './services/auth.service';
 import { User } from './_models/user';
 import { stringify } from '@angular/compiler/src/util';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -21,12 +22,13 @@ export class AppComponent {
   cartno: number;
   currentUser: User;
   login_name: any;
+  searchForm: FormGroup;
   // postData = 
   // {
   //   "category_name": "Fruits & Vegetables"
   // };
 
-  constructor(private myservice: MyServiceService,private http: HttpClient,private route : ActivatedRoute,
+  constructor(private formBuilder: FormBuilder,private myservice: MyServiceService,private http: HttpClient,private route : ActivatedRoute,
     private authenticationService: AuthService, private router: Router,) {
 
       if(this.currentUser){
@@ -75,6 +77,24 @@ export class AppComponent {
       window.scrollTo(0, 0)
   });
   
+  this.searchForm = this.formBuilder.group({
+    search: ['', Validators.required],
+
+  });
+}
+
+get f() { return this.searchForm.controls; }
+onSubmit(){
+  if(this.searchForm.controls.search.hasError('required')){
+    // this.Error = "category name required";
+    return
+  }
+  console.log("this.searchForm.value", this.searchForm.value);
+
+  this.router.navigate(['/searchPage',{search: this.f.search.value}]).then(() => {
+    window. location. reload();
+    });
+   
 }
 
 logout() {

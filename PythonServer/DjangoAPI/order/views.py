@@ -101,9 +101,9 @@ def AddressByUser(request):
                 serializer = AddressSerializer(address, many=True)
                 return JsonResponse(serializer.data, safe=False)
             else:
-                return HttpResponse('{}')
+                return HttpResponse(status=status.HTTP_404_NOT_FOUND)
         except Exception as e:
-            return HttpResponse('{}')
+            return HttpResponse(status=status.HTTP_404_NOT_FOUND)
 
 
 #order////////////////////////////////////////////
@@ -139,9 +139,9 @@ def myorder(request):
                 serializer = OrderSerializer(order, many=True)
                 return JsonResponse(serializer.data, safe=False)
             else:
-                return HttpResponse('{}')
+                return HttpResponse(status=status.HTTP_404_NOT_FOUND)
         except Exception as e:
-            return HttpResponse('{}')
+            return HttpResponse(status=status.HTTP_404_NOT_FOUND)
 
 @csrf_exempt 
 def myorder_detail(request, pk):
@@ -184,9 +184,9 @@ def tracker(request):
                     response = json.dumps(updates, default=str)
                 return HttpResponse(response)
             else:
-                return HttpResponse('{}')
+                return HttpResponse(status=status.HTTP_404_NOT_FOUND)
         except Exception as e:
-            return HttpResponse('{}')
+            return HttpResponse(status=status.HTTP_404_NOT_FOUND)
 
 @csrf_exempt
 def trackAll(request):
@@ -203,9 +203,9 @@ def trackAll(request):
                     response = json.dumps(updates, default=str)
                 return HttpResponse(response)
             else:
-                return HttpResponse('{}')
+                return HttpResponse(status=status.HTTP_404_NOT_FOUND)
         except Exception as e:
-            return HttpResponse('{}')
+            return HttpResponse(status=status.HTTP_404_NOT_FOUND)
 
 # //////////////////////////////////////////////////
 @csrf_exempt

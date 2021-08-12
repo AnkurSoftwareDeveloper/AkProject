@@ -11,4 +11,5 @@ urlpatterns = [
     path('productDetails/<int:pk>/', Product_detail),
     path('stockalert/',  StockAlert_list),
     path('stockalertDetails/<int:pk>/',  StockAlert_detail),
+    path('search/',  search),
 ]

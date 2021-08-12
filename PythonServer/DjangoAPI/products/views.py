@@ -175,4 +175,18 @@ def StockAlert_detail(request, pk):
         StockAlerts.delete() 
         return HttpResponse(status=status.HTTP_204_NO_CONTENT)
 
-
+# search product//////////////////////////////////////////////////////////////
+@api_view(['POST'])
+@csrf_exempt 
+def search(request):        
+    if request.method == 'POST': # this will be GET now      
+        search_products =  request.data.get('search') # do some research what it does 
+        print(search_products)      
+        try:
+            search_result = Product.objects.filter(product_name__icontains=search_products) # filter returns a list so you might consider skip except part
+        except: 
+            return HttpResponse('{}') 
+        serializer = ProductSerializer(search_result, many=True)
+        return JsonResponse(serializer.data, safe=False)
+    else:
+        return HttpResponse(status=status.HTTP_404_NOT_FOUND)
